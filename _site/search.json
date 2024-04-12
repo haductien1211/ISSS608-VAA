@@ -33,5 +33,12 @@
     "title": "Hands-on Exercise 1",
     "section": "",
     "text": "exam_data &lt;- read.csv(\"data/Exam_data.csv\")"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hand-on_Ex01/Hands-on_Ex01.html#modifying-a-geometric-object-by-changing-aes",
+    "href": "Hands-on_Ex/Hand-on_Ex01/Hands-on_Ex01.html#modifying-a-geometric-object-by-changing-aes",
+    "title": "Hands-on Exercise 1",
+    "section": "Modifying a geometric object by changing aes()",
+    "text": "Modifying a geometric object by changing aes()\n\nggplot(data=exam_data, \n       aes(x= MATHS, \n           fill = GENDER)) +\n  geom_histogram(bins=20, \n                 color=\"grey30\")"
   }
 ]

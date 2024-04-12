@@ -26,3 +26,32 @@ ggplot(data = exam_data,
        aes(x = RACE)) +
   geom_bar()
 ```
+
+# Plotting a simple dot plot
+```{r}
+ggplot(data=exam_data, 
+       aes(x = MATHS)) + 
+  geom_dotplot(binwidth=2.5,
+               dotsize = 0.5) + 
+  scale_y_continuous(NULL,
+                     breaks = NULL)
+                     
+```
+
+# Plotting a simple histogram plot
+
+```{r}
+ggplot(data=exam_data,
+       aes(x = MATHS)) + 
+  geom_histogram()       
+```
+
+## Modifying a geometric object by changing aes()
+
+```{r}
+ggplot(data=exam_data, 
+       aes(x= MATHS, 
+           fill = GENDER)) +
+  geom_histogram(bins=20, 
+                 color="grey30")
+```
