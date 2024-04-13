@@ -217,3 +217,35 @@ ggplot(data=exam_data,
 ```
 
 # Essential Grammatical Elements in ggplot2: themes
+
+## Working with theme
+
+### Plot a horizontal bar chart using theme_gray()
+
+```{r}
+ggplot(data=exam_data, 
+       aes(x=RACE)) +
+  geom_bar() +
+  coord_flip() +
+  theme_gray()
+```
+### Plotted using theme_classic()
+
+```{r}
+ggplot(data=exam_data, 
+       aes(x=RACE)) +
+  geom_bar() +
+  coord_flip() +
+  theme_classic()
+```
+
+### Plotted using theme_minimal()
+
+```{r}
+ggplot(data=exam_data, 
+       aes(x=RACE)) +
+  geom_bar() +
+  coord_flip() +
+  theme_minimal()
+```
+
