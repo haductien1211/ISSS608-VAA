@@ -19,6 +19,28 @@ pacman::p_load(tidyverse)
 exam_data <- read.csv("data/Exam_data.csv")
 ```
 
+# R Graphics VS ggplot
+
+::: {.panel-tabset}
+
+## R Graphics
+
+```{r}
+hist(exam_data$MATHS)
+```
+
+## ggplot2
+
+```{r}
+ggplot(data=exam_data, aes(x = MATHS)) +
+  geom_histogram(bins=10, 
+                 boundary = 100,
+                 color="black", 
+                 fill="grey") +
+  ggtitle("Distribution of Maths scores")
+```
+:::
+
 # Plotting a simple bar chart
 
 ```{r}

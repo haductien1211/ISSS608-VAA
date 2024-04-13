@@ -7,13 +7,6 @@
     "text": "Welcome to ISSS608 Visual Analytics and Applications. In this website, you will find coursework prepared for this course."
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
-  },
-  {
     "objectID": "Hands-on_Ex/Hand-on_Ex01/Hands-on_Ex01.html",
     "href": "Hands-on_Ex/Hand-on_Ex01/Hands-on_Ex01.html",
     "title": "Hands-on Exercise 1",
@@ -124,5 +117,12 @@
     "title": "Hands-on Exercise 1",
     "section": "Working with theme",
     "text": "Working with theme\n\nPlot a horizontal bar chart using theme_gray()\n\nggplot(data=exam_data, \n       aes(x=RACE)) +\n  geom_bar() +\n  coord_flip() +\n  theme_gray()\n\n\n\n\n\n\nPlotted using theme_classic()\n\nggplot(data=exam_data, \n       aes(x=RACE)) +\n  geom_bar() +\n  coord_flip() +\n  theme_classic()\n\n\n\n\n\n\nPlotted using theme_minimal()\n\nggplot(data=exam_data, \n       aes(x=RACE)) +\n  geom_bar() +\n  coord_flip() +\n  theme_minimal()"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
   }
 ]
