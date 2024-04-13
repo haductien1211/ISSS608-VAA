@@ -153,7 +153,7 @@ ggplot(data=exam_data,
        aes(y = MATHS, x= GENDER)) +
   geom_boxplot() +
   stat_summary(geom = "point",       
-               fun.y="mean",         
+               fun="mean",         
                colour ="red",        
                size=4)               
 ```
@@ -165,7 +165,7 @@ ggplot(data=exam_data,
        aes(y = MATHS, x= GENDER)) +
   geom_boxplot() +
   geom_point(stat="summary",        
-             fun.y="mean",           
+             fun ="mean",           
              colour ="red",          
              size=4)          
 ```
@@ -177,7 +177,7 @@ ggplot(data=exam_data,
 ggplot(data=exam_data, 
        aes(x= MATHS, y=ENGLISH)) +
   geom_point() +
-  geom_smooth(size=0.5)
+  geom_smooth(linewidth=0.5)
 ```
 
 ### Default smoothing method
