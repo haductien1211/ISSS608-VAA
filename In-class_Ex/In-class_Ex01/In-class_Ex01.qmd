@@ -10,6 +10,10 @@ execute:
   freeze: true
 ---
 
+## Loading R packages
+
+In the code chunk below, [p_load()](https://www.rdocumentation.org/packages/pacman/versions/0.5.1/topics/p_load) of [pacman](https://trinker.github.io/pacman/vignettes/Introduction_to_pacman.html) is used to load tidyverse family of packages.
+
 ```{r}
 pacman::p_load(tidyverse)
 ```
@@ -17,5 +21,15 @@ pacman::p_load(tidyverse)
 ## Importing the data
 
 ```{r}
-realis <- read.csv("data/realis2019.csv")
+realis <- read_csv("data/realis2019.csv")
+```
+
+```{r}
+realis.csv <- read.csv("data/realis2019.csv")
+```
+
+```{r}
+ggplot(data = realis,
+       aes(x = `Unit Price ($ psm)`)) +
+  geom_histogram()
 ```
