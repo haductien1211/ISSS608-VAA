@@ -81,7 +81,7 @@
     "href": "Hands-on_Ex/Hand-on_Ex01/Hands-on_Ex01.html#adding-a-best-fit-curve-on-a-scatterplot",
     "title": "Hands-on Exercise 1",
     "section": "Adding a best fit curve on a scatterplot",
-    "text": "Adding a best fit curve on a scatterplot\n\nggplot(data=exam_data, \n       aes(x= MATHS, y=ENGLISH)) +\n  geom_point() +\n  geom_smooth(linewidth=0.5)\n\n`geom_smooth()` using method = 'loess' and formula = 'y ~ x'\n\n\n\n\n\n\nDefault smoothing method\n\nggplot(data=exam_data, \n       aes(x= MATHS, \n           y=ENGLISH)) +\n  geom_point() +\n  geom_smooth(method=lm, \n              size=0.5)\n\nWarning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.\nℹ Please use `linewidth` instead.\n\n\n`geom_smooth()` using formula = 'y ~ x'"
+    "text": "Adding a best fit curve on a scatterplot\n\nggplot(data=exam_data, \n       aes(x= MATHS, y=ENGLISH)) +\n  geom_point() +\n  geom_smooth(linewidth=0.5)\n\n\n\n\n\nDefault smoothing method\n\nggplot(data=exam_data, \n       aes(x= MATHS, \n           y=ENGLISH)) +\n  geom_point() +\n  geom_smooth(method=lm, \n              size=0.5)"
   },
   {
     "objectID": "Hands-on_Ex/Hand-on_Ex01/Hands-on_Ex01.html#working-with-facet_wrap",
@@ -109,7 +109,7 @@
     "href": "Hands-on_Ex/Hand-on_Ex01/Hands-on_Ex01.html#changing-the-y--and-x-axis-range",
     "title": "Hands-on Exercise 1",
     "section": "Changing the y- and x-axis range",
-    "text": "Changing the y- and x-axis range\n\nFixed both the y-axis and x-axis range from 0-100.\n\nggplot(data=exam_data, \n       aes(x= MATHS, y=ENGLISH)) +\n  geom_point() +\n  geom_smooth(method=lm, \n              size=0.5) +  \n  coord_cartesian(xlim=c(0,100),\n                  ylim=c(0,100))\n\n`geom_smooth()` using formula = 'y ~ x'"
+    "text": "Changing the y- and x-axis range\n\nFixed both the y-axis and x-axis range from 0-100.\n\nggplot(data=exam_data, \n       aes(x= MATHS, y=ENGLISH)) +\n  geom_point() +\n  geom_smooth(method=lm, \n              size=0.5) +  \n  coord_cartesian(xlim=c(0,100),\n                  ylim=c(0,100))"
   },
   {
     "objectID": "Hands-on_Ex/Hand-on_Ex01/Hands-on_Ex01.html#working-with-theme",
@@ -124,5 +124,19 @@
     "title": "About",
     "section": "",
     "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "In-class_Ex/In-class_Ex01/In-class_Ex01.html",
+    "href": "In-class_Ex/In-class_Ex01/In-class_Ex01.html",
+    "title": "In-class Exercise 1",
+    "section": "",
+    "text": "pacman::p_load(tidyverse)"
+  },
+  {
+    "objectID": "In-class_Ex/In-class_Ex01/In-class_Ex01.html#importing-the-data",
+    "href": "In-class_Ex/In-class_Ex01/In-class_Ex01.html#importing-the-data",
+    "title": "In-class Exercise 1",
+    "section": "Importing the data",
+    "text": "Importing the data\n\nrealis &lt;- read.csv(\"data/realis2019.csv\")"
   }
 ]

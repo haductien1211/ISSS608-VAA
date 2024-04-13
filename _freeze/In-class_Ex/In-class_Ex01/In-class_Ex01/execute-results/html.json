@@ -1,0 +1,14 @@
+{
+  "hash": "9701d742e80ee000cc4aa23587e30fb7",
+  "result": {
+    "markdown": "---\ntitle: \"In-class Exercise 1\"\nauthor: \"Ha Duc Tien\"\ndate: \"April 13, 2024\"\ndate-modified: \"last-modified\"\nexecute: \n  eval: true\n  echo: true\n  warning: false\n  freeze: true\n---\n\n::: {.cell}\n\n```{.r .cell-code}\npacman::p_load(tidyverse)\n```\n:::\n\n\n## Importing the data\n\n\n::: {.cell}\n\n```{.r .cell-code}\nrealis <- read.csv(\"data/realis2019.csv\")\n```\n:::",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

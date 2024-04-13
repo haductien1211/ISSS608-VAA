@@ -1,6 +1,13 @@
 ---
 title: "Hands-on Exercise 1"
 author: "Ha Duc Tien"
+date: "April 12, 2024"
+date-modified: "last-modified"
+execute: 
+  eval: true
+  echo: true
+  warning: false
+  freeze: true
 ---
 
 # Getting Started
@@ -21,8 +28,7 @@ exam_data <- read.csv("data/Exam_data.csv")
 
 # R Graphics VS ggplot
 
-::: {.panel-tabset}
-
+::: panel-tabset
 ## R Graphics
 
 ```{r}
@@ -145,8 +151,8 @@ ggplot(data=exam_data,
              size = 0.5)        
 ```
 
-
 # Essential Grammatical Elements in ggplot2: stat
+
 ## Working with stat - the stat_summary() method
 
 ```{r}
@@ -172,7 +178,6 @@ ggplot(data=exam_data,
 ```
 
 ## Adding a best fit curve on a scatterplot
-
 
 ```{r}
 ggplot(data=exam_data, 
@@ -252,6 +257,7 @@ ggplot(data=exam_data,
   coord_flip() +
   theme_gray()
 ```
+
 ### Plotted using theme_classic()
 
 ```{r}
@@ -271,4 +277,3 @@ ggplot(data=exam_data,
   coord_flip() +
   theme_minimal()
 ```
-
