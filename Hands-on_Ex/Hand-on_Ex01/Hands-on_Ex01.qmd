@@ -50,6 +50,7 @@ ggplot(data = exam_data,
 ```
 
 # Plotting a simple dot plot
+
 ```{r}
 ggplot(data=exam_data, 
        aes(x = MATHS)) + 
