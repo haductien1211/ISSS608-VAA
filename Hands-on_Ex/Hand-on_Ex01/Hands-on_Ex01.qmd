@@ -75,3 +75,145 @@ ggplot(data=exam_data,
   geom_density()
 ```
 
+# Plotting a simple box plot
+
+```{r}
+ggplot(data=exam_data, 
+       aes(y = MATHS,       
+           x= GENDER)) +    
+  geom_boxplot()            
+```
+
+## Plotting a simple box plot using notched plot
+
+```{r}
+ggplot(data=exam_data, 
+       aes(y = MATHS, 
+           x= GENDER)) +
+  geom_boxplot(notch=TRUE)
+```
+
+# Plotting a simple violin plot
+
+```{r}
+ggplot(data=exam_data, 
+       aes(y = MATHS, 
+           x= GENDER)) +
+  geom_violin()
+```
+
+# Plotting a simple scatterplot
+
+```{r}
+ggplot(data=exam_data, 
+       aes(x= MATHS, 
+           y=ENGLISH)) +
+  geom_point()            
+```
+
+## Combining box plot and scatterplot
+
+```{r}
+ggplot(data=exam_data, 
+       aes(y = MATHS, 
+           x= GENDER)) +
+  geom_boxplot() +                    
+  geom_point(position="jitter", 
+             size = 0.5)        
+```
+
+
+# Essential Grammatical Elements in ggplot2: stat
+## Working with stat - the stat_summary() method
+
+```{r}
+ggplot(data=exam_data, 
+       aes(y = MATHS, x= GENDER)) +
+  geom_boxplot() +
+  stat_summary(geom = "point",       
+               fun.y="mean",         
+               colour ="red",        
+               size=4)               
+```
+
+## Working with stat - the geom() method
+
+```{r}
+ggplot(data=exam_data, 
+       aes(y = MATHS, x= GENDER)) +
+  geom_boxplot() +
+  geom_point(stat="summary",        
+             fun.y="mean",           
+             colour ="red",          
+             size=4)          
+```
+
+## Adding a best fit curve on a scatterplot
+
+
+```{r}
+ggplot(data=exam_data, 
+       aes(x= MATHS, y=ENGLISH)) +
+  geom_point() +
+  geom_smooth(size=0.5)
+```
+
+### Default smoothing method
+
+```{r}
+ggplot(data=exam_data, 
+       aes(x= MATHS, 
+           y=ENGLISH)) +
+  geom_point() +
+  geom_smooth(method=lm, 
+              size=0.5)
+```
+
+# Essential Grammatical Elements in ggplot2: Facets
+
+## Working with facet_wrap()
+
+```{r}
+ggplot(data=exam_data, 
+       aes(x= MATHS)) +
+  geom_histogram(bins=20) +
+    facet_wrap(~ CLASS)
+```
+
+## facet_grid() function
+
+```{r}
+ggplot(data=exam_data, 
+       aes(x= MATHS)) +
+  geom_histogram(bins=20) +
+    facet_grid(~ CLASS)
+```
+
+# Essential Grammatical Elements in ggplot2: Coordinates
+
+## Working with Coordinate
+
+### Flips the horizontal bar chart into vertical bar chart by using coord_flip()
+
+```{r}
+ggplot(data=exam_data, 
+       aes(x=RACE)) +
+  geom_bar() +
+  coord_flip()
+```
+
+## Changing the y- and x-axis range
+
+### Fixed both the y-axis and x-axis range from 0-100.
+
+```{r}
+ggplot(data=exam_data, 
+       aes(x= MATHS, y=ENGLISH)) +
+  geom_point() +
+  geom_smooth(method=lm, 
+              size=0.5) +  
+  coord_cartesian(xlim=c(0,100),
+                  ylim=c(0,100))
+```
+
+# Essential Grammatical Elements in ggplot2: themes
