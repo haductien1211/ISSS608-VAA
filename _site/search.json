@@ -40,5 +40,19 @@
     "title": "Hands-on Exercise 1",
     "section": "Modifying a geometric object by changing aes()",
     "text": "Modifying a geometric object by changing aes()\n\nggplot(data=exam_data, \n       aes(x= MATHS, \n           fill = GENDER)) +\n  geom_histogram(bins=20, \n                 color=\"grey30\")"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hand-on_Ex01/Hands-on_Ex01.html#modifying-a-geometric-object-by-changing-geom",
+    "href": "Hands-on_Ex/Hand-on_Ex01/Hands-on_Ex01.html#modifying-a-geometric-object-by-changing-geom",
+    "title": "Hands-on Exercise 1",
+    "section": "Modifying a geometric object by changing geom()",
+    "text": "Modifying a geometric object by changing geom()\n\nggplot(data=exam_data, \n       aes(x= MATHS)) +\n  geom_histogram(bins=20,            \n                 color=\"black\",      \n                 fill=\"light blue\")"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hand-on_Ex01/Hands-on_Ex01.html#using-geom-density-to-plots-kernel-density-estimate",
+    "href": "Hands-on_Ex/Hand-on_Ex01/Hands-on_Ex01.html#using-geom-density-to-plots-kernel-density-estimate",
+    "title": "Hands-on Exercise 1",
+    "section": "Using geom-density() to plots kernel density estimate",
+    "text": "Using geom-density() to plots kernel density estimate\n\nggplot(data=exam_data, \n       aes(x = MATHS, \n           colour = GENDER)) +\n  geom_density()"
   }
 ]

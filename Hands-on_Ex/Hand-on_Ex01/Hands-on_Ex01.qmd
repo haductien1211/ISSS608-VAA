@@ -55,3 +55,23 @@ ggplot(data=exam_data,
   geom_histogram(bins=20, 
                  color="grey30")
 ```
+
+## Modifying a geometric object by changing geom()
+
+```{r}
+ggplot(data=exam_data, 
+       aes(x= MATHS)) +
+  geom_histogram(bins=20,            
+                 color="black",      
+                 fill="light blue")  
+```
+
+## Using geom-density() to plots kernel density estimate
+
+```{r}
+ggplot(data=exam_data, 
+       aes(x = MATHS, 
+           colour = GENDER)) +
+  geom_density()
+```
+
