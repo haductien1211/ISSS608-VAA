@@ -1,0 +1,14 @@
+{
+  "hash": "e6c5b1ab668344e1f6c9aaaa29e7e796",
+  "result": {
+    "markdown": "---\ntitle: \"Hands-on Exercise 2\"\nauthor: \"Ha Duc Tien\"\ndate: \"April 14, 2024\"\ndate-modified: \"last-modified\"\nexecute: \n  eval: true\n  echo: true\n  warning: false\n  freeze: true\n---\n\n\n\n# Installing and loading the required libraries\n\n\n::: {.cell}\n\n```{.r .cell-code}\npacman::p_load(ggrepel, patchwork, \n               ggthemes, hrbrthemes,\n               tidyverse) \n```\n:::\n\n\n# Importing data\n\n\n::: {.cell}\n\n```{.r .cell-code}\nexam_data <- read_csv(\"data/Exam_data.csv\")\n```\n:::",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

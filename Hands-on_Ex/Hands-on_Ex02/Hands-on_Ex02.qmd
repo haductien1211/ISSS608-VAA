@@ -11,3 +11,16 @@ execute:
 ---
 
 
+# Installing and loading the required libraries
+
+```{r}
+pacman::p_load(ggrepel, patchwork, 
+               ggthemes, hrbrthemes,
+               tidyverse) 
+```
+
+# Importing data
+
+```{r}
+exam_data <- read_csv("data/Exam_data.csv")
+```

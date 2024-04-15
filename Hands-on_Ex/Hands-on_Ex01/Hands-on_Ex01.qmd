@@ -277,3 +277,11 @@ ggplot(data=exam_data,
   coord_flip() +
   theme_minimal()
 ```
+
+```{r}
+ggplot(data=exam_data, 
+       aes(x=RACE)) +
+  geom_bar() +
+  coord_flip() +
+  theme_bw()
+```
