@@ -42,27 +42,6 @@
     "text": "4.2 Working with hrbthems package\nhrbrthemes package provides a base theme that focuses on typographic elements, including where various labels are placed as well as the fonts that are used.\n\nThe plotThe code\n\n\n\n\n\n\n\n\n\n\nggplot(data = exam_data, aes(x = MATHS)) +\n  geom_histogram(bins = 20, boundary = 100, color = \"grey10\", fill = \"grey90\") +\n  ggtitle(\"Distribution of Maths scores\") +\n  theme_ipsum()\n\n\n\n\nUsing the elements of hrbrthemes\n\nThe plotThe code\n\n\n\n\n\n\n\n\n\n\nggplot(data = exam_data, aes(x = MATHS)) +\n  geom_histogram(bins = 20, boundary = 100, color = \"grey10\", fill = \"grey90\") +\n  ggtitle(\"Distribution of Maths scores\") +\n  theme_ipsum(axis_title_size = 18, base_size = 15, grid = \"Y\")"
   },
   {
-    "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#p1-distribution-of-math-score-plot",
-    "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#p1-distribution-of-math-score-plot",
-    "title": "Hands-on Exercise 2",
-    "section": "p1 distribution of Math score plot",
-    "text": "p1 distribution of Math score plot\n\nThe plotThe code\n\n\n\n\n\n\n\n\n\n\np1 &lt;- ggplot(data = exam_data, aes(x = MATHS)) +\n        geom_histogram(bins = 20, boundary = 100, color = \"grey10\", fill = \"grey90\") +\n        coord_cartesian(xlim = c(0,100)) +\n        ggtitle(\"Distribution of Maths scores\")"
-  },
-  {
-    "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#p2-distribution-of-english-score-plot",
-    "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#p2-distribution-of-english-score-plot",
-    "title": "Hands-on Exercise 2",
-    "section": "p2 distribution of English score plot",
-    "text": "p2 distribution of English score plot\n\nThe plotThe code\n\n\n\n\n\n\n\n\n\n\np2 &lt;- ggplot(data = exam_data, aes(x = ENGLISH)) +\n        geom_histogram(bins = 20, boundary = 100, color = \"grey10\", fill = \"grey90\") +\n        coord_cartesian(xlim = c(0,100)) +\n        ggtitle(\"Distribution of English scores\")"
-  },
-  {
-    "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#p3-a-scatterplot-for-english-score-versus-maths-score",
-    "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#p3-a-scatterplot-for-english-score-versus-maths-score",
-    "title": "Hands-on Exercise 2",
-    "section": "p3 a scatterplot for English score versus Maths score",
-    "text": "p3 a scatterplot for English score versus Maths score\n\nThe plotThe code\n\n\n\n\n\n\n\n\n\n\np3 &lt;- ggplot(data = exam_data, aes(x = MATHS, y = ENGLISH)) +\n      geom_point()+\n      geom_smooth(method = lm, linewidth = 0.5) +\n      coord_cartesian(xlim = c(0,100), ylim = c(0,100)) +\n      ggtitle(\"English scores vs Maths scores for primary 3\")"
-  },
-  {
     "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#creating-composite-graphics-patchwork-methods",
     "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#creating-composite-graphics-patchwork-methods",
     "title": "Hands-on Exercise 2",
@@ -81,14 +60,14 @@
     "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#combining-three-ggplot2-graphs",
     "title": "Hands-on Exercise 2",
     "section": "5.3 Combining three ggplot2 graphs",
-    "text": "5.3 Combining three ggplot2 graphs\n\n“|” operator to stack two ggplot2 graphs,\n“/” operator to place the plots beside each other,\n“()” operator the define the sequence of the plotting.\n\n\nThe plotThe code\n\n\n\n\n\n\n\n\n\n\n(p1 / p2) | p4"
+    "text": "5.3 Combining three ggplot2 graphs\n\n“|” operator to stack two ggplot2 graphs,\n“/” operator to place the plots beside each other,\n“()” operator the define the sequence of the plotting.\n\n\nThe plotThe code\n\n\n\n\n\n\n\n\n\n\n((p1 / p2) | p4) &\n  theme(plot.title = element_text(size = 8))"
   },
   {
     "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#creating-a-composite-figure-with-tag",
     "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#creating-a-composite-figure-with-tag",
     "title": "Hands-on Exercise 2",
     "section": "5.4 Creating a composite figure with tag",
-    "text": "5.4 Creating a composite figure with tag\nUse patchwork for auto-tagging capabilities\n\nThe plotThe code\n\n\n\n\n\n\n\n\n\n\n((p1 / p2) | p4) +\n  plot_annotation(tag_levels = '1') &\n  theme(plot.title = element_text(size = 10))"
+    "text": "5.4 Creating a composite figure with tag\nUse patchwork for auto-tagging capabilities\n\nThe plotThe code\n\n\n\n\n\n\n\n\n\n\n((p1 / p2) | p4) +\n  plot_annotation(tag_levels = '1') &\n  theme(plot.title = element_text(size = 8))"
   },
   {
     "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#creating-figure-with-insert",
@@ -102,7 +81,7 @@
     "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#creating-a-composite-figure-by-using-patchwork-and-ggtheme",
     "title": "Hands-on Exercise 2",
     "section": "5.6 Creating a composite figure by using patchwork and ggtheme",
-    "text": "5.6 Creating a composite figure by using patchwork and ggtheme\nFigure below is created by combining patchwork and theme_economist() of ggthemes package\n\nThe plotThe code\n\n\n\n\n\n\n\n\n\n\npatchwork &lt;- (p1 / p2) | p4\npatchwork & theme_economist() & \n  theme(plot.title = element_text(size = 10))"
+    "text": "5.6 Creating a composite figure by using patchwork and ggtheme\nFigure below is created by combining patchwork and theme_economist() of ggthemes package\n\nThe plotThe code\n\n\n\n\n\n\n\n\n\n\npatchwork &lt;- (p1 / p2) | p4\npatchwork & theme_economist() & \n  theme(plot.title = element_text(size = 8))"
   },
   {
     "objectID": "about.html",
