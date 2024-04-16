@@ -10,9 +10,9 @@ execute:
   freeze: true
 ---
 
-# Getting Started
+# 1. Getting Started
 
-## Install and launching R packages
+## 1.1 Install and launching R packages
 
 The Code chunk below uses p_load() function of pacman package to check if tidyverse packages are installed in the computer. If they are, then they will be launched into R.
 
@@ -20,22 +20,22 @@ The Code chunk below uses p_load() function of pacman package to check if tidyve
 pacman::p_load(tidyverse)
 ```
 
-## Importing the data
+## 1.1 Importing the data
 
 ```{r}
 exam_data <- read_csv("data/Exam_data.csv")
 ```
 
-# R Graphics VS ggplot
+# 2. R Graphics VS ggplot
 
 ::: panel-tabset
-## R Graphics
+## 2.1 R Graphics
 
 ```{r}
 hist(exam_data$MATHS)
 ```
 
-## ggplot2
+## 2.2 ggplot2
 
 ```{r}
 ggplot(data=exam_data, aes(x = MATHS)) +
@@ -47,7 +47,7 @@ ggplot(data=exam_data, aes(x = MATHS)) +
 ```
 :::
 
-# Plotting a simple bar chart
+# 3. Plotting a simple bar chart
 
 ```{r}
 ggplot(data = exam_data,
@@ -55,7 +55,7 @@ ggplot(data = exam_data,
   geom_bar()
 ```
 
-# Plotting a simple dot plot
+# 4. Plotting a simple dot plot
 
 ```{r}
 ggplot(data=exam_data, 
@@ -67,7 +67,7 @@ ggplot(data=exam_data,
                      
 ```
 
-# Plotting a simple histogram plot
+# 5. Plotting a simple histogram plot
 
 ```{r}
 ggplot(data=exam_data,
@@ -75,7 +75,7 @@ ggplot(data=exam_data,
   geom_histogram()       
 ```
 
-## Modifying a geometric object by changing aes()
+## 5.1 Modifying a geometric object by changing aes()
 
 ```{r}
 ggplot(data=exam_data, 
@@ -85,7 +85,7 @@ ggplot(data=exam_data,
                  color="grey30")
 ```
 
-## Modifying a geometric object by changing geom()
+## 5.2 Modifying a geometric object by changing geom()
 
 ```{r}
 ggplot(data=exam_data, 
@@ -95,7 +95,7 @@ ggplot(data=exam_data,
                  fill="light blue")  
 ```
 
-## Using geom-density() to plots kernel density estimate
+## 5.3 Using geom-density() to plots kernel density estimate
 
 ```{r}
 ggplot(data=exam_data, 
@@ -104,7 +104,7 @@ ggplot(data=exam_data,
   geom_density()
 ```
 
-# Plotting a simple box plot
+# 6. Plotting a simple box plot
 
 ```{r}
 ggplot(data=exam_data, 
@@ -113,7 +113,7 @@ ggplot(data=exam_data,
   geom_boxplot()            
 ```
 
-## Plotting a simple box plot using notched plot
+## 6.1 Plotting a simple box plot using notched plot
 
 ```{r}
 ggplot(data=exam_data, 
@@ -122,7 +122,7 @@ ggplot(data=exam_data,
   geom_boxplot(notch=TRUE)
 ```
 
-# Plotting a simple violin plot
+# 7. Plotting a simple violin plot
 
 ```{r}
 ggplot(data=exam_data, 
@@ -131,7 +131,7 @@ ggplot(data=exam_data,
   geom_violin()
 ```
 
-# Plotting a simple scatterplot
+# 8. Plotting a simple scatterplot
 
 ```{r}
 ggplot(data=exam_data, 
@@ -140,7 +140,7 @@ ggplot(data=exam_data,
   geom_point()            
 ```
 
-## Combining box plot and scatterplot
+## 8.1 Combining box plot and scatterplot
 
 ```{r}
 ggplot(data=exam_data, 
@@ -148,12 +148,12 @@ ggplot(data=exam_data,
            x= GENDER)) +
   geom_boxplot() +                    
   geom_point(position="jitter", 
-             size = 0.5)        
+             linewidth = 0.5)        
 ```
 
-# Essential Grammatical Elements in ggplot2: stat
+# 9. Essential Grammatical Elements in ggplot2: stat
 
-## Working with stat - the stat_summary() method
+## 9.1 Working with stat - the stat_summary() method
 
 ```{r}
 ggplot(data=exam_data, 
@@ -165,7 +165,7 @@ ggplot(data=exam_data,
                size=4)               
 ```
 
-## Working with stat - the geom() method
+## 9.2 Working with stat - the geom() method
 
 ```{r}
 ggplot(data=exam_data, 
@@ -177,7 +177,7 @@ ggplot(data=exam_data,
              size=4)          
 ```
 
-## Adding a best fit curve on a scatterplot
+## 9.3 Adding a best fit curve on a scatterplot
 
 ```{r}
 ggplot(data=exam_data, 
@@ -186,7 +186,7 @@ ggplot(data=exam_data,
   geom_smooth(linewidth=0.5)
 ```
 
-### Default smoothing method
+### 9.3.1 Default smoothing method
 
 ```{r}
 ggplot(data=exam_data, 
@@ -197,9 +197,9 @@ ggplot(data=exam_data,
               size=0.5)
 ```
 
-# Essential Grammatical Elements in ggplot2: Facets
+# 10. Essential Grammatical Elements in ggplot2: Facets
 
-## Working with facet_wrap()
+## 10.1 Working with facet_wrap()
 
 ```{r}
 ggplot(data=exam_data, 
@@ -208,7 +208,7 @@ ggplot(data=exam_data,
     facet_wrap(~ CLASS)
 ```
 
-## facet_grid() function
+## 10.2 facet_grid() function
 
 ```{r}
 ggplot(data=exam_data, 
@@ -217,11 +217,11 @@ ggplot(data=exam_data,
     facet_grid(~ CLASS)
 ```
 
-# Essential Grammatical Elements in ggplot2: Coordinates
+# 11. Essential Grammatical Elements in ggplot2: Coordinates
 
-## Working with Coordinate
+## 11.1 Working with Coordinate
 
-### Flips the horizontal bar chart into vertical bar chart by using coord_flip()
+### 11.1.1 Flips the horizontal bar chart into vertical bar chart by using coord_flip()
 
 ```{r}
 ggplot(data=exam_data, 
@@ -230,9 +230,9 @@ ggplot(data=exam_data,
   coord_flip()
 ```
 
-## Changing the y- and x-axis range
+## 11.2 Changing the y- and x-axis range
 
-### Fixed both the y-axis and x-axis range from 0-100.
+### 11.2.1 Fixed both the y-axis and x-axis range from 0-100.
 
 ```{r}
 ggplot(data=exam_data, 
@@ -244,11 +244,11 @@ ggplot(data=exam_data,
                   ylim=c(0,100))
 ```
 
-# Essential Grammatical Elements in ggplot2: themes
+# 12. Essential Grammatical Elements in ggplot2: themes
 
-## Working with theme
+## 12.1 Working with theme
 
-### Plot a horizontal bar chart using theme_gray()
+### 12.1.1 Plot a horizontal bar chart using theme_gray()
 
 ```{r}
 ggplot(data=exam_data, 
@@ -258,7 +258,7 @@ ggplot(data=exam_data,
   theme_gray()
 ```
 
-### Plotted using theme_classic()
+### 12.1.2 Plotted using theme_classic()
 
 ```{r}
 ggplot(data=exam_data, 
@@ -268,7 +268,7 @@ ggplot(data=exam_data,
   theme_classic()
 ```
 
-### Plotted using theme_minimal()
+### 12.1.3 Plotted using theme_minimal()
 
 ```{r}
 ggplot(data=exam_data, 
