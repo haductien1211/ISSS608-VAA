@@ -2,8 +2,7 @@
 title: "About"
 ---
 
-About this site
+# About this site
 
-```{r}
-1 + 1
-```
+
+This website is for showcasing works related to **ISSS608 Visual Analytics and Application**

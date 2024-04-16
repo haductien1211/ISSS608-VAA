@@ -11,14 +11,28 @@
     "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html",
     "title": "Hands-on Exercise 2",
     "section": "",
-    "text": "Installing and loading the required libraries\n\npacman::p_load(ggrepel, patchwork, \n               ggthemes, hrbrthemes,\n               tidyverse) \n\n\n\nImporting data\n\nexam_data &lt;- read_csv(\"data/Exam_data.csv\")"
+    "text": "pacman::p_load(ggrepel, patchwork, \n               ggthemes, hrbrthemes,\n               tidyverse)"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#working-without-ggrepel",
+    "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#working-without-ggrepel",
+    "title": "Hands-on Exercise 2",
+    "section": "Working without ggrepel",
+    "text": "Working without ggrepel\n\nThe plotThe code\n\n\n\n\n\n\n\n\n\n\nggplot(data = exam_data, aes(x = MATHS, y = ENGLISH)) +\n  geom_point() +\n  geom_smooth(method = lm, size = 0.5) +\n  geom_label(aes(label = ID), hjust = 0.5, vjust = -0.5) +\n  coord_cartesian(xlim = c(0,100), ylim = c(0,100)) +\n  ggtitle(\"English scores versus Maths scores for Primary 3\")"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#working-with-ggrepel",
+    "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#working-with-ggrepel",
+    "title": "Hands-on Exercise 2",
+    "section": "Working with ggrepel",
+    "text": "Working with ggrepel\nSimply replace geom_label() by geom_label_repel()\n\nThe plotThe code\n\n\n\n\n\n\n\n\n\n\nggplot(data = exam_data, aes(x = MATHS, y = ENGLISH)) +\n  geom_point() +\n  geom_smooth(method = lm, size = 0.5) +\n  geom_label_repel(aes(label = ID), fontface = \"bold\") +\n  coord_cartesian(xlim = c(0,100), ylim = c(0,100)) +\n  ggtitle(\"English scores versus Maths scores for Primary 3\")"
   },
   {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
+    "text": "About this site\nThis website is for showcasing works related to ISSS608 Visual Analytics and Application"
   },
   {
     "objectID": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html",
@@ -152,5 +166,12 @@
     "title": "In-class Exercise 1",
     "section": "Importing the data",
     "text": "Importing the data\n\nrealis &lt;- read_csv(\"data/realis2019.csv\")\n\n\nrealis.csv &lt;- read.csv(\"data/realis2019.csv\")\n\n\nggplot(data = realis,\n       aes(x = `Unit Price ($ psm)`)) +\n  geom_histogram()"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#working-with-ggtheme-package",
+    "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#working-with-ggtheme-package",
+    "title": "Hands-on Exercise 2",
+    "section": "Working with ggtheme package",
+    "text": "Working with ggtheme package\nggthemes provides ‘ggplot2’ themes that replicate the look of plots by Edward Tufte, Stephen Few, Fivethirtyeight, The Economist, ‘Stata’, ‘Excel’, and The Wall Street Journal, among others.\n\nThe plotThe code\n\n\n\n\n\n\n\n\n\n\nggplot(data = exam_data, aes(x= MATHS))+\n  geom_histogram(bin = 20, boundary = 100, color = \"grey10\", fill = \"grey90\") +\n  ggtitle(\"Distribution of Maths scores\") +\n  theme_economist()"
   }
 ]
