@@ -36,7 +36,8 @@ exam_data <- read_csv("data/Exam_data.csv")
 ggplot(data = exam_data, aes(x = MATHS, y = ENGLISH)) +
   geom_point() +
   geom_smooth(method = lm, linewidth = 0.5) +
-  geom_label(aes(label = ID), hjust = 0.5, vjust = -0.5) +
+  geom_label(aes(label = ID, colour = factor(RACE)), 
+             hjust = 0.5, vjust = -0.5) +
   coord_cartesian(xlim = c(0,100), ylim = c(0,100)) +
   ggtitle("English scores versus Maths scores for Primary 3")
 
@@ -49,7 +50,8 @@ ggplot(data = exam_data, aes(x = MATHS, y = ENGLISH)) +
 ggplot(data = exam_data, aes(x = MATHS, y = ENGLISH)) +
   geom_point() +
   geom_smooth(method = lm, linewidth = 0.5) +
-  geom_label(aes(label = ID), hjust = 0.5, vjust = -0.5) +
+  geom_label(aes(label = ID, colour = factor(RACE)), 
+             hjust = 0.5, vjust = -0.5) +
   coord_cartesian(xlim = c(0,100), ylim = c(0,100)) +
   ggtitle("English scores versus Maths scores for Primary 3")
 
@@ -58,6 +60,8 @@ ggplot(data = exam_data, aes(x = MATHS, y = ENGLISH)) +
 :::
 
 ## 3.2 Working with ggrepel
+
+### 3.2.1 Using geom_label_repel()
 
 Simply replace geom_label() by [geom_label_repel()](https://ggrepel.slowkow.com/reference/geom_text_repel.html)
 
@@ -69,7 +73,8 @@ Simply replace geom_label() by [geom_label_repel()](https://ggrepel.slowkow.com/
 ggplot(data = exam_data, aes(x = MATHS, y = ENGLISH)) +
   geom_point() +
   geom_smooth(method = lm, linewidth = 0.5) +
-  geom_label_repel(aes(label = ID), fontface = "bold") +
+  geom_label_repel(aes(label = ID, colour = factor(RACE)),
+                   max.overlaps = 20, fontface = "bold") +
   coord_cartesian(xlim = c(0,100), ylim = c(0,100)) +
   ggtitle("English scores versus Maths scores for Primary 3")
 
@@ -82,7 +87,40 @@ ggplot(data = exam_data, aes(x = MATHS, y = ENGLISH)) +
 ggplot(data = exam_data, aes(x = MATHS, y = ENGLISH)) +
   geom_point() +
   geom_smooth(method = lm, linewidth = 0.5) +
-  geom_label_repel(aes(label = ID), fontface = "bold") +
+  geom_label_repel(aes(label = ID, colour = factor(RACE)),
+                   max.overlaps = 20, fontface = "bold") +
+  coord_cartesian(xlim = c(0,100), ylim = c(0,100)) +
+  ggtitle("English scores versus Maths scores for Primary 3")
+
+```
+:::
+
+### 3.2.1 Using geom_text_repel()
+
+::: panel-tabset
+## The plot
+
+```{r}
+#| echo: false
+ggplot(data = exam_data, aes(x = MATHS, y = SCIENCE)) +
+  geom_point() +
+  geom_smooth(method = lm, linewidth = 0.5) +
+  geom_text_repel(aes(label = ID, colour = factor(RACE)),
+                   max.overlaps = 20, fontface = "bold") +
+  coord_cartesian(xlim = c(0,100), ylim = c(0,100)) +
+  ggtitle("English scores versus Maths scores for Primary 3")
+
+```
+
+## The code
+
+```{r}
+#| eval: false
+ggplot(data = exam_data, aes(x = MATHS, y = SCIENCE)) +
+  geom_point() +
+  geom_smooth(method = lm, linewidth = 0.5) +
+  geom_text_repel(aes(label = ID, colour = factor(RACE)),
+                   max.overlaps = 20, fontface = "bold") +
   coord_cartesian(xlim = c(0,100), ylim = c(0,100)) +
   ggtitle("English scores versus Maths scores for Primary 3")
 
@@ -119,6 +157,8 @@ ggplot(data = exam_data, aes(x= MATHS))+
 
 [**ggthemes**](https://cran.r-project.org/web/packages/ggthemes/) provides [‘ggplot2’ themes](https://yutannihilation.github.io/allYourFigureAreBelongToUs/ggthemes/) that replicate the look of plots by Edward Tufte, Stephen Few, [Fivethirtyeight](https://abcnews.go.com/538), [The Economist](https://www.economist.com/graphic-detail), ‘Stata’, ‘Excel’, and [The Wall Street Journal](https://www.pinterest.com/wsjgraphics/wsj-graphics/), among others.
 
+### 4.1.1 The economist theme
+
 ::: panel-tabset
 ## The plot
 
@@ -138,6 +178,53 @@ ggplot(data = exam_data, aes(x= MATHS))+
   geom_histogram(bins = 20, boundary = 100, color = "grey10", fill = "grey90") +
   ggtitle("Distribution of Maths scores") +
   theme_economist()
+```
+:::
+
+### 4.1.2 The WSJ theme
+
+::: panel-tabset
+## The plot
+
+```{r}
+#| echo: false
+ggplot(data = exam_data, aes(x= ENGLISH))+
+  geom_histogram(bins = 20, boundary = 100, color = "grey10", fill = "grey90") +
+  ggtitle("Distribution of English scores") +
+  theme_wsj(base_size = 8)
+```
+
+## The code
+
+```{r}
+#| eval: false
+ggplot(data = exam_data, aes(x= ENGLISH))+
+  geom_histogram(bins = 20, boundary = 100, color = "grey10", fill = "grey90") +
+  ggtitle("Distribution of English scores") +
+  theme_wsj(base_size = 8)
+```
+:::
+
+### 4.1.3 The fivethirtyeight theme
+::: panel-tabset
+## The plot
+
+```{r}
+#| echo: false
+ggplot(data = exam_data, aes(x= SCIENCE))+
+  geom_histogram(bins = 20, boundary = 100, color = "grey10", fill = "grey90") +
+  ggtitle("Distribution of Science scores") +
+  theme_fivethirtyeight()
+```
+
+## The code
+
+```{r}
+#| eval: false
+ggplot(data = exam_data, aes(x= SCIENCE))+
+  geom_histogram(bins = 20, boundary = 100, color = "grey10", fill = "grey90") +
+  ggtitle("Distribution of Science scores") +
+  theme_fivethirtyeight()
 ```
 :::
 
@@ -195,7 +282,7 @@ ggplot(data = exam_data, aes(x = MATHS)) +
 
 In this section, I will create composite plot by combining multiple graphs
 
-## p1 distribution of Math score plot
+p1 distribution of Math score plot
 
 ::: panel-tabset
 ## The plot
@@ -218,7 +305,7 @@ p1 <- ggplot(data = exam_data, aes(x = MATHS)) +
 ```
 :::
 
-## p2 distribution of English score plot
+p2 distribution of English score plot
 
 ::: panel-tabset
 ## The plot
@@ -241,7 +328,31 @@ p2 <- ggplot(data = exam_data, aes(x = ENGLISH)) +
 ```
 :::
 
-## p3 a scatterplot for English score versus Maths score
+p3 distribution of Science score plot
+
+::: panel-tabset
+## The plot
+
+```{r}
+#| echo: false
+ggplot(data = exam_data, aes(x = SCIENCE)) +
+  geom_histogram(bins = 20, boundary = 100, color = "grey10", fill = "grey90") +
+  coord_cartesian(xlim = c(0,100)) +
+  ggtitle("Distribution of English scores")
+```
+
+## The code
+
+```{r}
+p3 <- ggplot(data = exam_data, aes(x = ENGLISH)) +
+        geom_histogram(bins = 20, boundary = 100, color = "grey10", fill = "grey90") +
+        coord_cartesian(xlim = c(0,100)) +
+        ggtitle("Distribution of English scores")
+```
+:::
+
+
+p4 a scatterplot for English score versus Maths score
 
 ::: panel-tabset
 ## The plot
@@ -258,7 +369,7 @@ ggplot(data = exam_data, aes(x = MATHS, y = ENGLISH)) +
 ## The code
 
 ```{r}
-p3 <- ggplot(data = exam_data, aes(x = MATHS, y = ENGLISH)) +
+p4 <- ggplot(data = exam_data, aes(x = MATHS, y = ENGLISH)) +
       geom_point()+
       geom_smooth(method = lm, linewidth = 0.5) +
       coord_cartesian(xlim = c(0,100), ylim = c(0,100)) +
@@ -306,14 +417,14 @@ p1 + p2
 ## The plot
 ```{r}
 #| echo: false
-(p1 / p2) | p3
+(p1 / p2) | p4
 ```
 
 ## The code
 
 ```{r}
 #| eval: false
-(p1 / p2) | p3
+(p1 / p2) | p4
 ```
 :::
 
@@ -326,16 +437,18 @@ Use **patchwork** for auto-tagging capabilities
 ## The plot
 ```{r}
 #| echo: false
-((p1 / p2) | p3) +
-  plot_annotation(tag_levels = '1')
+((p1 / p2) | p4) +
+  plot_annotation(tag_levels = '1') & 
+  theme(plot.title = element_text(size = 10))
 ```
 
 ## The code
 
 ```{r}
 #| eval: false
-((p1 / p2) | p3) +
-  plot_annotation(tag_levels = '1')
+((p1 / p2) | p4) +
+  plot_annotation(tag_levels = '1') &
+  theme(plot.title = element_text(size = 10))
 ```
 :::
 
@@ -350,7 +463,7 @@ With [inset_element()](https://patchwork.data-imaginist.com/reference/inset_elem
 
 ```{r}
 #| echo: false
-p3 + inset_element(p2, left = 0.02, right = 0.5, top = 1, bottom = 0.7)
+p4 + inset_element(p2, left = 0.02, right = 0.5, top = 1, bottom = 0.7)
 ```
 
 ## The code
@@ -358,7 +471,7 @@ p3 + inset_element(p2, left = 0.02, right = 0.5, top = 1, bottom = 0.7)
 ```{r}
 #| eval: false
 
-p3 + inset_element(p2, left = 0.02, right = 0.5, top = 1, bottom = 0.7)
+p4 + inset_element(p2, left = 0.02, right = 0.5, top = 1, bottom = 0.7)
 ```
 :::
 
@@ -372,13 +485,15 @@ Figure below is created by combining **patchwork** and **theme_economist()** of 
 
 ```{r}
 #| echo: false
-((p1 / p2) | p3) & theme_economist()
+((p1 / p2) | p4) & theme_economist(base_size = 5) &
+  theme(plot.title = element_text(size = 10))
 ```
 
 ## The code
 
 ```{r}
-patchwork <- (p1 / p2) | p3
-patchwork & theme_economist()
+patchwork <- (p1 / p2) | p4
+patchwork & theme_economist() & 
+  theme(plot.title = element_text(size = 10))
 ```
 :::

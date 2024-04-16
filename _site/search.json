@@ -18,21 +18,21 @@
     "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#working-without-ggrepel",
     "title": "Hands-on Exercise 2",
     "section": "3.1 Working without ggrepel",
-    "text": "3.1 Working without ggrepel\n\nThe plotThe code\n\n\n\n\n\n\n\n\n\n\nggplot(data = exam_data, aes(x = MATHS, y = ENGLISH)) +\n  geom_point() +\n  geom_smooth(method = lm, linewidth = 0.5) +\n  geom_label(aes(label = ID), hjust = 0.5, vjust = -0.5) +\n  coord_cartesian(xlim = c(0,100), ylim = c(0,100)) +\n  ggtitle(\"English scores versus Maths scores for Primary 3\")"
+    "text": "3.1 Working without ggrepel\n\nThe plotThe code\n\n\n\n\n\n\n\n\n\n\nggplot(data = exam_data, aes(x = MATHS, y = ENGLISH)) +\n  geom_point() +\n  geom_smooth(method = lm, linewidth = 0.5) +\n  geom_label(aes(label = ID, colour = factor(RACE)), \n             hjust = 0.5, vjust = -0.5) +\n  coord_cartesian(xlim = c(0,100), ylim = c(0,100)) +\n  ggtitle(\"English scores versus Maths scores for Primary 3\")"
   },
   {
     "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#working-with-ggrepel",
     "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#working-with-ggrepel",
     "title": "Hands-on Exercise 2",
     "section": "3.2 Working with ggrepel",
-    "text": "3.2 Working with ggrepel\nSimply replace geom_label() by geom_label_repel()\n\nThe plotThe code\n\n\n\n\n\n\n\n\n\n\nggplot(data = exam_data, aes(x = MATHS, y = ENGLISH)) +\n  geom_point() +\n  geom_smooth(method = lm, linewidth = 0.5) +\n  geom_label_repel(aes(label = ID), fontface = \"bold\") +\n  coord_cartesian(xlim = c(0,100), ylim = c(0,100)) +\n  ggtitle(\"English scores versus Maths scores for Primary 3\")"
+    "text": "3.2 Working with ggrepel\n\n3.2.1 Using geom_label_repel()\nSimply replace geom_label() by geom_label_repel()\n\nThe plotThe code\n\n\n\n\n\n\n\n\n\n\nggplot(data = exam_data, aes(x = MATHS, y = ENGLISH)) +\n  geom_point() +\n  geom_smooth(method = lm, linewidth = 0.5) +\n  geom_label_repel(aes(label = ID, colour = factor(RACE)),\n                   max.overlaps = 20, fontface = \"bold\") +\n  coord_cartesian(xlim = c(0,100), ylim = c(0,100)) +\n  ggtitle(\"English scores versus Maths scores for Primary 3\")\n\n\n\n\n\n\n3.2.1 Using geom_text_repel()\n\nThe plotThe code\n\n\n\n\n\n\n\n\n\n\nggplot(data = exam_data, aes(x = MATHS, y = SCIENCE)) +\n  geom_point() +\n  geom_smooth(method = lm, linewidth = 0.5) +\n  geom_text_repel(aes(label = ID, colour = factor(RACE)),\n                   max.overlaps = 20, fontface = \"bold\") +\n  coord_cartesian(xlim = c(0,100), ylim = c(0,100)) +\n  ggtitle(\"English scores versus Maths scores for Primary 3\")"
   },
   {
     "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#working-with-ggtheme-package",
     "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#working-with-ggtheme-package",
     "title": "Hands-on Exercise 2",
     "section": "4.1 Working with ggtheme package",
-    "text": "4.1 Working with ggtheme package\nggthemes provides ‘ggplot2’ themes that replicate the look of plots by Edward Tufte, Stephen Few, Fivethirtyeight, The Economist, ‘Stata’, ‘Excel’, and The Wall Street Journal, among others.\n\nThe plotThe code\n\n\n\n\n\n\n\n\n\n\nggplot(data = exam_data, aes(x= MATHS))+\n  geom_histogram(bins = 20, boundary = 100, color = \"grey10\", fill = \"grey90\") +\n  ggtitle(\"Distribution of Maths scores\") +\n  theme_economist()"
+    "text": "4.1 Working with ggtheme package\nggthemes provides ‘ggplot2’ themes that replicate the look of plots by Edward Tufte, Stephen Few, Fivethirtyeight, The Economist, ‘Stata’, ‘Excel’, and The Wall Street Journal, among others.\n\n4.1.1 The economist theme\n\nThe plotThe code\n\n\n\n\n\n\n\n\n\n\nggplot(data = exam_data, aes(x= MATHS))+\n  geom_histogram(bins = 20, boundary = 100, color = \"grey10\", fill = \"grey90\") +\n  ggtitle(\"Distribution of Maths scores\") +\n  theme_economist()\n\n\n\n\n\n\n4.1.2 The WSJ theme\n\nThe plotThe code\n\n\n\n\n\n\n\n\n\n\nggplot(data = exam_data, aes(x= ENGLISH))+\n  geom_histogram(bins = 20, boundary = 100, color = \"grey10\", fill = \"grey90\") +\n  ggtitle(\"Distribution of English scores\") +\n  theme_wsj(base_size = 8)\n\n\n\n\n\n\n4.1.3 The fivethirtyeight theme\n\nThe plotThe code\n\n\n\n\n\n\n\n\n\n\nggplot(data = exam_data, aes(x= SCIENCE))+\n  geom_histogram(bins = 20, boundary = 100, color = \"grey10\", fill = \"grey90\") +\n  ggtitle(\"Distribution of Science scores\") +\n  theme_fivethirtyeight()"
   },
   {
     "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#working-with-hrbthems-package",
@@ -61,6 +61,48 @@
     "title": "Hands-on Exercise 2",
     "section": "p3 a scatterplot for English score versus Maths score",
     "text": "p3 a scatterplot for English score versus Maths score\n\nThe plotThe code\n\n\n\n\n\n\n\n\n\n\np3 &lt;- ggplot(data = exam_data, aes(x = MATHS, y = ENGLISH)) +\n      geom_point()+\n      geom_smooth(method = lm, linewidth = 0.5) +\n      coord_cartesian(xlim = c(0,100), ylim = c(0,100)) +\n      ggtitle(\"English scores vs Maths scores for primary 3\")"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#creating-composite-graphics-patchwork-methods",
+    "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#creating-composite-graphics-patchwork-methods",
+    "title": "Hands-on Exercise 2",
+    "section": "5.1 Creating Composite Graphics: patchwork methods",
+    "text": "5.1 Creating Composite Graphics: patchwork methods\nPatchwork package has a very simple syntax where we can create layouts:\n\nTwo-Column Layout using the Plus Sign +.\nParenthesis () to create a subplot group.\nTwo-Row Layout using the Division Sign /"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#combining-two-ggplot2-graphs",
+    "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#combining-two-ggplot2-graphs",
+    "title": "Hands-on Exercise 2",
+    "section": "5.2 Combining two ggplot2 graphs",
+    "text": "5.2 Combining two ggplot2 graphs\n\nThe plotThe code\n\n\n\n\n\n\n\n\n\n\np1 + p2"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#combining-three-ggplot2-graphs",
+    "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#combining-three-ggplot2-graphs",
+    "title": "Hands-on Exercise 2",
+    "section": "5.3 Combining three ggplot2 graphs",
+    "text": "5.3 Combining three ggplot2 graphs\n\n“|” operator to stack two ggplot2 graphs,\n“/” operator to place the plots beside each other,\n“()” operator the define the sequence of the plotting.\n\n\nThe plotThe code\n\n\n\n\n\n\n\n\n\n\n(p1 / p2) | p4"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#creating-a-composite-figure-with-tag",
+    "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#creating-a-composite-figure-with-tag",
+    "title": "Hands-on Exercise 2",
+    "section": "5.4 Creating a composite figure with tag",
+    "text": "5.4 Creating a composite figure with tag\nUse patchwork for auto-tagging capabilities\n\nThe plotThe code\n\n\n\n\n\n\n\n\n\n\n((p1 / p2) | p4) +\n  plot_annotation(tag_levels = '1') &\n  theme(plot.title = element_text(size = 10))"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#creating-figure-with-insert",
+    "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#creating-figure-with-insert",
+    "title": "Hands-on Exercise 2",
+    "section": "5.5 Creating figure with insert",
+    "text": "5.5 Creating figure with insert\nWith inset_element() of patchwork, we can place one or several plots or graphic elements freely on top or below another plot.\n\nThe plotThe code\n\n\n\n\n\n\n\n\n\n\np4 + inset_element(p2, left = 0.02, right = 0.5, top = 1, bottom = 0.7)"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#creating-a-composite-figure-by-using-patchwork-and-ggtheme",
+    "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#creating-a-composite-figure-by-using-patchwork-and-ggtheme",
+    "title": "Hands-on Exercise 2",
+    "section": "5.6 Creating a composite figure by using patchwork and ggtheme",
+    "text": "5.6 Creating a composite figure by using patchwork and ggtheme\nFigure below is created by combining patchwork and theme_economist() of ggthemes package\n\nThe plotThe code\n\n\n\n\n\n\n\n\n\n\npatchwork &lt;- (p1 / p2) | p4\npatchwork & theme_economist() & \n  theme(plot.title = element_text(size = 10))"
   },
   {
     "objectID": "about.html",
@@ -201,47 +243,5 @@
     "title": "In-class Exercise 1",
     "section": "Importing the data",
     "text": "Importing the data\n\nrealis &lt;- read_csv(\"data/realis2019.csv\")\n\n\nrealis.csv &lt;- read.csv(\"data/realis2019.csv\")\n\n\nggplot(data = realis,\n       aes(x = `Unit Price ($ psm)`)) +\n  geom_histogram()"
-  },
-  {
-    "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#creating-composite-graphics-patchwork-methods",
-    "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#creating-composite-graphics-patchwork-methods",
-    "title": "Hands-on Exercise 2",
-    "section": "5.1 Creating Composite Graphics: patchwork methods",
-    "text": "5.1 Creating Composite Graphics: patchwork methods\nPatchwork package has a very simple syntax where we can create layouts:\n\nTwo-Column Layout using the Plus Sign +.\nParenthesis () to create a subplot group.\nTwo-Row Layout using the Division Sign /"
-  },
-  {
-    "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#combining-two-ggplot2-graphs",
-    "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#combining-two-ggplot2-graphs",
-    "title": "Hands-on Exercise 2",
-    "section": "5.2 Combining two ggplot2 graphs",
-    "text": "5.2 Combining two ggplot2 graphs\n\nThe plotThe code\n\n\n\n\n\n\n\n\n\n\np1 + p2"
-  },
-  {
-    "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#combining-three-ggplot2-graphs",
-    "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#combining-three-ggplot2-graphs",
-    "title": "Hands-on Exercise 2",
-    "section": "5.3 Combining three ggplot2 graphs",
-    "text": "5.3 Combining three ggplot2 graphs\n\n“|” operator to stack two ggplot2 graphs,\n“/” operator to place the plots beside each other,\n“()” operator the define the sequence of the plotting.\n\n\nThe plotThe code\n\n\n\n\n\n\n\n\n\n\n(p1 / p2) | p3"
-  },
-  {
-    "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#creating-a-composite-figure-with-tag",
-    "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#creating-a-composite-figure-with-tag",
-    "title": "Hands-on Exercise 2",
-    "section": "5.4 Creating a composite figure with tag",
-    "text": "5.4 Creating a composite figure with tag\nUse patchwork for auto-tagging capabilities\n\nThe plotThe code\n\n\n\n\n\n\n\n\n\n\n((p1 / p2) | p3) +\n  plot_annotation(tag_levels = '1')"
-  },
-  {
-    "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#creating-figure-with-insert",
-    "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#creating-figure-with-insert",
-    "title": "Hands-on Exercise 2",
-    "section": "5.5 Creating figure with insert",
-    "text": "5.5 Creating figure with insert\nWith inset_element() of patchwork, we can place one or several plots or graphic elements freely on top or below another plot.\n\nThe plotThe code\n\n\n\n\n\n\n\n\n\n\np3 + inset_element(p2, left = 0.02, right = 0.5, top = 1, bottom = 0.7)"
-  },
-  {
-    "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#creating-a-composite-figure-by-using-patchwork-and-ggtheme",
-    "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#creating-a-composite-figure-by-using-patchwork-and-ggtheme",
-    "title": "Hands-on Exercise 2",
-    "section": "5.6 Creating a composite figure by using patchwork and ggtheme",
-    "text": "5.6 Creating a composite figure by using patchwork and ggtheme\nFigure below is created by combining patchwork and theme_economist() of ggthemes package\n\nThe plotThe code\n\n\n\n\n\n\n\n\n\n\npatchwork &lt;- (p1 / p2) | p3\npatchwork & theme_economist()"
   }
 ]
