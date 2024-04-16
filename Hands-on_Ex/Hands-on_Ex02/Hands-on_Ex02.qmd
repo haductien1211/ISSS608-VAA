@@ -439,7 +439,7 @@ Use **patchwork** for auto-tagging capabilities
 #| echo: false
 ((p1 / p2) | p4) +
   plot_annotation(tag_levels = '1') & 
-  theme(plot.title = element_text(size = 10))
+  theme(plot.title = element_text(size = 8))
 ```
 
 ## The code
@@ -448,7 +448,7 @@ Use **patchwork** for auto-tagging capabilities
 #| eval: false
 ((p1 / p2) | p4) +
   plot_annotation(tag_levels = '1') &
-  theme(plot.title = element_text(size = 10))
+  theme(plot.title = element_text(size = 8))
 ```
 :::
 
@@ -486,7 +486,7 @@ Figure below is created by combining **patchwork** and **theme_economist()** of 
 ```{r}
 #| echo: false
 ((p1 / p2) | p4) & theme_economist(base_size = 5) &
-  theme(plot.title = element_text(size = 10))
+  theme(plot.title = element_text(size = 8))
 ```
 
 ## The code
@@ -494,6 +494,6 @@ Figure below is created by combining **patchwork** and **theme_economist()** of 
 ```{r}
 patchwork <- (p1 / p2) | p4
 patchwork & theme_economist() & 
-  theme(plot.title = element_text(size = 10))
+  theme(plot.title = element_text(size = 8))
 ```
 :::
