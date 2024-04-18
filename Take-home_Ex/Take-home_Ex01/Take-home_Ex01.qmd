@@ -46,7 +46,6 @@ Realis <- Realis %>%
 colSums(is.na(Realis))
 ```
 
-
 ```{r}
 ggplot(data = Realis, aes(x = `Unit Price ($ PSM)`)) +
   geom_histogram(bins = 20, color = "grey10", fill = "lightblue")
