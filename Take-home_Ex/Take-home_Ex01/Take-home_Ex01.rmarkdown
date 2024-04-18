@@ -1,0 +1,105 @@
+---
+title: "Take-home Exercise 1"
+author: "Ha Duc Tien"
+date: "April 17, 2024"
+date-modified: "last-modified"
+execute: 
+  eval: true
+  echo: true
+  warning: false
+  freeze: true
+---
+
+
+# 1. Loading the needed libraries
+
+For this take-home exercise 1, I will be using some of the libraries below:
+
+tidyverse patchwork ggrepel ggthemes hrbrthemes
+
+
+```{r}
+pacman::p_load(ggrepel, patchwork, 
+               ggthemes, hrbrthemes,
+               tidyverse) 
+```
+
+```{r}
+first_quarter <- read_csv("data/ResidentialTransaction20240308160536.csv")
+
+list_of_files <- list.files(path = "data",
+                            recursive = TRUE,
+                            pattern = "\\.csv$",
+                            full.names = TRUE)
+
+Realis <- read_csv(list_of_files)
+```
+
+```{r}
+
+##Realis <- Realis %>%
+##  parse_date_time(`Sale Date`, "%B %d %Y")
+
+Realis <- Realis %>% 
+  mutate(`Sale Date FORMAT` = format(as.Date((parse_date_time(`Sale Date`, 
+        orders = c("%d %b %Y")))), "%b %Y"))
+
+##write.csv(Realis, "data/\\Realis.csv", row.names=FALSE)
+colSums(is.na(Realis))
+```
+
+```{r}
+ggplot(data = Realis, aes(x = `Unit Price ($ PSM)`)) +
+  geom_histogram(bins = 20, color = "grey10", fill = "lightblue")
+```
+
+```{r}
+ggplot(data = Realis, aes(x = `Property Type`)) + 
+  geom_bar(color = "grey10", fill = "lightblue") + 
+  theme(axis.text=element_text(size=6))
+```
+
+```{r}
+ggplot(data = Realis, aes(x = `Planning Region`)) +
+  geom_bar(color = "grey10", fill = "lightblue")
+```
+
+```{r}
+ggplot(data = Realis, aes(x = `Planning Region`, y = `Unit Price ($ PSM)`)) +
+  geom_boxplot(color = "grey10", fill = "lightblue") + 
+  geom_point(stat="summary", fun ="mean", color = "red")
+```
+
+```{r}
+ggplot(data = Realis, aes(x = `Sale Date FORMAT`)) +
+  geom_bar(color = "grey10", fill = "lightblue", inherit.aes = TRUE) +
+  scale_x_discrete(name ="Sale Month", 
+                   limits = c("Jan 2023", "Feb 2023", "Mar 2023", 
+                      "Apr 2023","May 2023","Jun 2023", 
+                      "Jul 2023", "Aug 2023", "Sep 2023",
+                      "Oct 2023", "Nov 2023", "Dec 2023", 
+                      "Jan 2024", "Feb 2024", "Mar 2024"))+
+  theme(axis.text=element_text(size=6))
+```
+
+```{r}
+ggplot(data = Realis, aes(y = `Area (SQM)`, x = `Transacted Price ($)`)) +
+  geom_point()+
+  geom_smooth(method = glm, linewidth = 1) +
+  coord_cartesian(ylim = c(30,450), xlim=c(450000,8000000)) +
+  geom_label_repel(aes(label = `Postal Code`), fontface = "bold", max.overlaps = 80)
+```
+
+```{r}
+ggplot(data = Realis, aes(x = `Sale Date FORMAT`, y = `Unit Price ($ PSM)`)) +
+  scale_x_discrete(name ="Sale Month", 
+                 limits = c("Jan 2023", "Feb 2023", "Mar 2023", 
+                    "Apr 2023","May 2023","Jun 2023", 
+                    "Jul 2023", "Aug 2023", "Sep 2023",
+                    "Oct 2023", "Nov 2023", "Dec 2023", 
+                    "Jan 2024", "Feb 2024", "Mar 2024")) +
+  
+  geom_boxplot(color = "grey10", fill = "lightblue") + 
+  geom_point(stat="summary", fun ="mean", color = "red") +
+  theme(axis.text=element_text(size=6))
+```
