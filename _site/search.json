@@ -222,5 +222,12 @@
     "title": "In-class Exercise 1",
     "section": "Importing the data",
     "text": "Importing the data\n\nrealis &lt;- read_csv(\"data/realis2019.csv\")\n\n\nrealis.csv &lt;- read.csv(\"data/realis2019.csv\")\n\n\nggplot(data = realis,\n       aes(x = `Unit Price ($ psm)`)) +\n  geom_histogram()"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\nThis website is for showcasing works related to ISSS608 Visual Analytics and Application for homework and exercises"
   }
 ]

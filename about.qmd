@@ -4,5 +4,4 @@ title: "About"
 
 # About this site
 
-
-This website is for showcasing works related to **ISSS608 Visual Analytics and Application**
+This website is for showcasing works related to **ISSS608 Visual Analytics and Application** for homework and exercises
