@@ -4,6 +4,223 @@
     "href": "Take-home_Ex/Take-home_Ex01/Take-home_Ex01.html",
     "title": "Take-home Exercise 1",
     "section": "",
-    "text": "1. Loading the needed libraries\nFor this take-home exercise 1, I will be using some of the libraries below:\ntidyverse patchwork ggrepel ggthemes hrbrthemes\n\npacman::p_load(ggrepel, patchwork, \n               ggthemes, hrbrthemes,\n               tidyverse) \n\n\nfirst_quarter &lt;- read_csv(\"data/ResidentialTransaction20240308160536.csv\")\n\nlist_of_files &lt;- list.files(path = \"data\",\n                            recursive = TRUE,\n                            pattern = \"\\\\.csv$\",\n                            full.names = TRUE)\n\nRealis &lt;- read_csv(list_of_files)\n\n\n##Realis &lt;- Realis %&gt;%\n##  parse_date_time(`Sale Date`, \"%B %d %Y\")\n\nRealis &lt;- Realis %&gt;% \n  mutate(`Sale Date FORMAT` = format(as.Date((parse_date_time(`Sale Date`, \n        orders = c(\"%d %b %Y\")))), \"%b %Y\"))\n\n##write.csv(Realis, \"data/\\\\Realis.csv\", row.names=FALSE)\ncolSums(is.na(Realis))\n\n               Project Name        Transacted Price ($) \n                          0                           0 \n                Area (SQFT)          Unit Price ($ PSF) \n                          0                           0 \n                  Sale Date                     Address \n                          0                           0 \n               Type of Sale                Type of Area \n                          0                           0 \n                 Area (SQM)          Unit Price ($ PSM) \n                          0                           0 \n              Nett Price($)               Property Type \n                          0                           0 \n            Number of Units                      Tenure \n                          0                           0 \n            Completion Date Purchaser Address Indicator \n                          0                           0 \n                Postal Code             Postal District \n                          0                           0 \n              Postal Sector             Planning Region \n                          0                           0 \n              Planning Area            Sale Date FORMAT \n                          0                           0 \n\n\n\nggplot(data = Realis, aes(x = `Unit Price ($ PSM)`)) +\n  geom_histogram(bins = 20, color = \"grey10\", fill = \"lightblue\")\n\n\n\n\n\nggplot(data = Realis, aes(x = `Property Type`)) + \n  geom_bar(color = \"grey10\", fill = \"lightblue\") + \n  theme(axis.text=element_text(size=6))\n\n\n\n\n\nggplot(data = Realis, aes(x = `Planning Region`)) +\n  geom_bar(color = \"grey10\", fill = \"lightblue\")\n\n\n\n\n\nggplot(data = Realis, aes(x = `Planning Region`, y = `Unit Price ($ PSM)`)) +\n  geom_boxplot(color = \"grey10\", fill = \"lightblue\") + \n  geom_point(stat=\"summary\", fun =\"mean\", color = \"red\")\n\n\n\n\n\nggplot(data = Realis, aes(x = `Sale Date FORMAT`)) +\n  geom_bar(color = \"grey10\", fill = \"lightblue\", inherit.aes = TRUE) +\n  scale_x_discrete(name =\"Sale Month\", \n                   limits = c(\"Jan 2023\", \"Feb 2023\", \"Mar 2023\", \n                      \"Apr 2023\",\"May 2023\",\"Jun 2023\", \n                      \"Jul 2023\", \"Aug 2023\", \"Sep 2023\",\n                      \"Oct 2023\", \"Nov 2023\", \"Dec 2023\", \n                      \"Jan 2024\", \"Feb 2024\", \"Mar 2024\"))+\n  theme(axis.text=element_text(size=6))\n\n\n\n\n\nggplot(data = Realis, aes(y = `Area (SQM)`, x = `Transacted Price ($)`)) +\n  geom_point()+\n  geom_smooth(method = glm, linewidth = 1) +\n  coord_cartesian(ylim = c(30,450), xlim=c(450000,8000000)) +\n  geom_label_repel(aes(label = `Postal Code`), fontface = \"bold\", max.overlaps = 80)\n\n\n\n\n\nggplot(data = Realis, aes(x = `Sale Date FORMAT`, y = `Unit Price ($ PSM)`)) +\n  scale_x_discrete(name =\"Sale Month\", \n                 limits = c(\"Jan 2023\", \"Feb 2023\", \"Mar 2023\", \n                    \"Apr 2023\",\"May 2023\",\"Jun 2023\", \n                    \"Jul 2023\", \"Aug 2023\", \"Sep 2023\",\n                    \"Oct 2023\", \"Nov 2023\", \"Dec 2023\", \n                    \"Jan 2024\", \"Feb 2024\", \"Mar 2024\")) +\n  \n  geom_boxplot(color = \"grey10\", fill = \"lightblue\") + \n  geom_point(stat=\"summary\", fun =\"mean\", color = \"red\") +\n  theme(axis.text=element_text(size=6))"
+    "text": "1. Loading the needed libraries\nFor this take-home exercise 1, I will be using some of the libraries below:\ntidyverse patchwork ggrepel ggthemes hrbrthemes\n\npacman::p_load(ggrepel, patchwork, \n               ggthemes, hrbrthemes,\n               tidyverse) \n\n\nfirst_quarter &lt;- read_csv(\"data/ResidentialTransaction20240308160536.csv\")\n\nlist_of_files &lt;- list.files(path = \"data\",\n                            recursive = TRUE,\n                            pattern = \"\\\\.csv$\",\n                            full.names = TRUE)\n\nRealis &lt;- read_csv(list_of_files)\n\n\nRealis &lt;- Realis %&gt;% \n  mutate(`Sale Date FORMAT` = format(as.Date((parse_date_time(`Sale Date`, \n        orders = c(\"%d %b %Y\")))), \"%b %Y\"))\n\ncolSums(is.na(Realis))\n\n               Project Name        Transacted Price ($) \n                          0                           0 \n                Area (SQFT)          Unit Price ($ PSF) \n                          0                           0 \n                  Sale Date                     Address \n                          0                           0 \n               Type of Sale                Type of Area \n                          0                           0 \n                 Area (SQM)          Unit Price ($ PSM) \n                          0                           0 \n              Nett Price($)               Property Type \n                          0                           0 \n            Number of Units                      Tenure \n                          0                           0 \n            Completion Date Purchaser Address Indicator \n                          0                           0 \n                Postal Code             Postal District \n                          0                           0 \n              Postal Sector             Planning Region \n                          0                           0 \n              Planning Area            Sale Date FORMAT \n                          0                           0 \n\n\n\nsummary(Realis)\n\n Project Name       Transacted Price ($)  Area (SQFT)       Unit Price ($ PSF)\n Length:26806       Min.   :   440000    Min.   :   322.9   Min.   : 138      \n Class :character   1st Qu.:  1280000    1st Qu.:   721.2   1st Qu.:1384      \n Mode  :character   Median :  1660000    Median :   990.3   Median :1762      \n                    Mean   :  2143286    Mean   :  1191.6   Mean   :1852      \n                    3rd Qu.:  2320000    3rd Qu.:  1302.4   3rd Qu.:2260      \n                    Max.   :392180000    Max.   :144883.4   Max.   :5756      \n  Sale Date           Address          Type of Sale       Type of Area      \n Length:26806       Length:26806       Length:26806       Length:26806      \n Class :character   Class :character   Class :character   Class :character  \n Mode  :character   Mode  :character   Mode  :character   Mode  :character  \n                                                                            \n                                                                            \n                                                                            \n   Area (SQM)      Unit Price ($ PSM) Nett Price($)      Property Type     \n Min.   :   30.0   Min.   : 1484      Length:26806       Length:26806      \n 1st Qu.:   67.0   1st Qu.:14893      Class :character   Class :character  \n Median :   92.0   Median :18966      Mode  :character   Mode  :character  \n Mean   :  110.7   Mean   :19930                                           \n 3rd Qu.:  121.0   3rd Qu.:24327                                           \n Max.   :13460.0   Max.   :61962                                           \n Number of Units     Tenure          Completion Date   \n Min.   : 1.000   Length:26806       Length:26806      \n 1st Qu.: 1.000   Class :character   Class :character  \n Median : 1.000   Mode  :character   Mode  :character  \n Mean   : 1.005                                        \n 3rd Qu.: 1.000                                        \n Max.   :60.000                                        \n Purchaser Address Indicator Postal Code        Postal District   \n Length:26806                Length:26806       Length:26806      \n Class :character            Class :character   Class :character  \n Mode  :character            Mode  :character   Mode  :character  \n                                                                  \n                                                                  \n                                                                  \n Postal Sector      Planning Region    Planning Area      Sale Date FORMAT  \n Length:26806       Length:26806       Length:26806       Length:26806      \n Class :character   Class :character   Class :character   Class :character  \n Mode  :character   Mode  :character   Mode  :character   Mode  :character  \n                                                                            \n                                                                            \n                                                                            \n\n\n\nggplot(data = Realis, aes(x = `Unit Price ($ PSM)`)) +\n  geom_histogram(bins = 20, color = \"grey10\", fill = \"lightblue\")+\n  ggtitle(\"Distribution of Unit Price ($PSM\") +\n  theme_ipsum_gs(axis_title_size = 15, base_size = 10, grid = \"Y\")\n\n\n\n\n\nggplot(data = Realis, aes(x = `Property Type`)) + \n  geom_bar(color = \"grey10\", fill = \"lightblue\") + \n  theme(axis.text=element_text(size=6)) +\n  ggtitle(\"Number of sales on different Property type\")\n\n\n\n\n\nggplot(data = Realis, aes(x = `Planning Region`)) +\n  geom_bar(color = \"grey10\", fill = \"lightblue\") +\n  ggtitle(\"Number of sales in different Planning Region\")\n\n\n\n\n\nggplot(data = Realis, aes(x = `Planning Region`, y = `Unit Price ($ PSM)`)) +\n  geom_boxplot(color = \"grey10\", fill = \"lightblue\") + \n  geom_point(stat=\"summary\", fun =\"mean\", color = \"red\") +\n  ggtitle(\"Unit Price ($PSM) in different Planning Region\")\n\n\n\n\n\nggplot(data = Realis, aes(x = `Sale Date FORMAT`)) +\n  geom_bar(color = \"grey10\", fill = \"lightblue\", inherit.aes = TRUE) +\n  scale_x_discrete(name =\"Sale Month\", \n                   limits = c(\"Jan 2023\", \"Feb 2023\", \"Mar 2023\", \n                      \"Apr 2023\",\"May 2023\",\"Jun 2023\", \n                      \"Jul 2023\", \"Aug 2023\", \"Sep 2023\",\n                      \"Oct 2023\", \"Nov 2023\", \"Dec 2023\", \n                      \"Jan 2024\", \"Feb 2024\", \"Mar 2024\"))+\n  theme(axis.text=element_text(size=6))+\n  ggtitle(\"Monthly number of sales\")\n\n\n\n\n\nggplot(data = Realis, aes(x = `Sale Date FORMAT`, y = `Unit Price ($ PSM)`)) +\n  scale_x_discrete(name =\"Sale Month\", \n                 limits = c(\"Jan 2023\", \"Feb 2023\", \"Mar 2023\", \n                    \"Apr 2023\",\"May 2023\",\"Jun 2023\", \n                    \"Jul 2023\", \"Aug 2023\", \"Sep 2023\",\n                    \"Oct 2023\", \"Nov 2023\", \"Dec 2023\", \n                    \"Jan 2024\", \"Feb 2024\", \"Mar 2024\")) +\n  \n  geom_boxplot(color = \"grey10\", fill = \"lightblue\") + \n  geom_point(stat=\"summary\", fun =\"mean\", color = \"red\") +\n  theme(axis.text=element_text(size=6)) +\n  ggtitle(\"Monthly changes in Unit Price ($PSM)\")\n\n\n\n\n\nggplot(data = Realis, aes(y = `Area (SQM)`, x = `Transacted Price ($)`)) +\n  geom_point()+\n  geom_smooth(method = glm, linewidth = 1) +\n  coord_cartesian(ylim = c(30,450), xlim=c(450000,8000000)) +\n  geom_label_repel(aes(label = `Postal Code`), fontface = \"bold\", max.overlaps = 63) +\n  ggtitle(\"Size (SQM) vs Transacted Price ($)\")"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "ISSS608-VAA",
+    "section": "",
+    "text": "Welcome to ISSS608 Visual Analytics and Applications. In this website, you will find coursework prepared for this course."
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html",
+    "href": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html",
+    "title": "Hands-on Exercise 1",
+    "section": "",
+    "text": "The Code chunk below uses p_load() function of pacman package to check if tidyverse packages are installed in the computer. If they are, then they will be launched into R.\n\npacman::p_load(tidyverse)\n\n\n\n\n\nexam_data &lt;- read_csv(\"data/Exam_data.csv\")"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#install-and-launching-r-packages",
+    "href": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#install-and-launching-r-packages",
+    "title": "Hands-on Exercise 1",
+    "section": "",
+    "text": "The Code chunk below uses p_load() function of pacman package to check if tidyverse packages are installed in the computer. If they are, then they will be launched into R.\n\npacman::p_load(tidyverse)"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#importing-the-data",
+    "href": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#importing-the-data",
+    "title": "Hands-on Exercise 1",
+    "section": "",
+    "text": "exam_data &lt;- read_csv(\"data/Exam_data.csv\")"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#modifying-a-geometric-object-by-changing-aes",
+    "href": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#modifying-a-geometric-object-by-changing-aes",
+    "title": "Hands-on Exercise 1",
+    "section": "Modifying a geometric object by changing aes()",
+    "text": "Modifying a geometric object by changing aes()\n\nggplot(data=exam_data, \n       aes(x= MATHS, \n           fill = GENDER)) +\n  geom_histogram(bins=20, \n                 color=\"grey30\")"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#modifying-a-geometric-object-by-changing-geom",
+    "href": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#modifying-a-geometric-object-by-changing-geom",
+    "title": "Hands-on Exercise 1",
+    "section": "Modifying a geometric object by changing geom()",
+    "text": "Modifying a geometric object by changing geom()\n\nggplot(data=exam_data, \n       aes(x= MATHS)) +\n  geom_histogram(bins=20,            \n                 color=\"black\",      \n                 fill=\"light blue\")"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#using-geom-density-to-plots-kernel-density-estimate",
+    "href": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#using-geom-density-to-plots-kernel-density-estimate",
+    "title": "Hands-on Exercise 1",
+    "section": "Using geom-density() to plots kernel density estimate",
+    "text": "Using geom-density() to plots kernel density estimate\n\nggplot(data=exam_data, \n       aes(x = MATHS, \n           colour = GENDER)) +\n  geom_density()"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#plotting-a-simple-box-plot-using-notched-plot",
+    "href": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#plotting-a-simple-box-plot-using-notched-plot",
+    "title": "Hands-on Exercise 1",
+    "section": "Plotting a simple box plot using notched plot",
+    "text": "Plotting a simple box plot using notched plot\n\nggplot(data=exam_data, \n       aes(y = MATHS, \n           x= GENDER)) +\n  geom_boxplot(notch=TRUE)"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#combining-box-plot-and-scatterplot",
+    "href": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#combining-box-plot-and-scatterplot",
+    "title": "Hands-on Exercise 1",
+    "section": "Combining box plot and scatterplot",
+    "text": "Combining box plot and scatterplot\n\nggplot(data=exam_data, \n       aes(y = MATHS, \n           x= GENDER)) +\n  geom_boxplot() +                    \n  geom_point(position=\"jitter\", \n             size = 0.5)"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#working-with-stat---the-stat_summary-method",
+    "href": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#working-with-stat---the-stat_summary-method",
+    "title": "Hands-on Exercise 1",
+    "section": "Working with stat - the stat_summary() method",
+    "text": "Working with stat - the stat_summary() method\n\nggplot(data=exam_data, \n       aes(y = MATHS, x= GENDER)) +\n  geom_boxplot() +\n  stat_summary(geom = \"point\",       \n               fun=\"mean\",         \n               colour =\"red\",        \n               size=4)"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#working-with-stat---the-geom-method",
+    "href": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#working-with-stat---the-geom-method",
+    "title": "Hands-on Exercise 1",
+    "section": "Working with stat - the geom() method",
+    "text": "Working with stat - the geom() method\n\nggplot(data=exam_data, \n       aes(y = MATHS, x= GENDER)) +\n  geom_boxplot() +\n  geom_point(stat=\"summary\",        \n             fun =\"mean\",           \n             colour =\"red\",          \n             size=4)"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#adding-a-best-fit-curve-on-a-scatterplot",
+    "href": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#adding-a-best-fit-curve-on-a-scatterplot",
+    "title": "Hands-on Exercise 1",
+    "section": "Adding a best fit curve on a scatterplot",
+    "text": "Adding a best fit curve on a scatterplot\n\nggplot(data=exam_data, \n       aes(x= MATHS, y=ENGLISH)) +\n  geom_point() +\n  geom_smooth(linewidth=0.5)\n\n\n\n\n\nDefault smoothing method\n\nggplot(data=exam_data, \n       aes(x= MATHS, \n           y=ENGLISH)) +\n  geom_point() +\n  geom_smooth(method=lm, \n              size=0.5)"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#working-with-facet_wrap",
+    "href": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#working-with-facet_wrap",
+    "title": "Hands-on Exercise 1",
+    "section": "Working with facet_wrap()",
+    "text": "Working with facet_wrap()\n\nggplot(data=exam_data, \n       aes(x= MATHS)) +\n  geom_histogram(bins=20) +\n    facet_wrap(~ CLASS)"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#facet_grid-function",
+    "href": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#facet_grid-function",
+    "title": "Hands-on Exercise 1",
+    "section": "facet_grid() function",
+    "text": "facet_grid() function\n\nggplot(data=exam_data, \n       aes(x= MATHS)) +\n  geom_histogram(bins=20) +\n    facet_grid(~ CLASS)"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#working-with-coordinate",
+    "href": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#working-with-coordinate",
+    "title": "Hands-on Exercise 1",
+    "section": "Working with Coordinate",
+    "text": "Working with Coordinate\n\nFlips the horizontal bar chart into vertical bar chart by using coord_flip()\n\nggplot(data=exam_data, \n       aes(x=RACE)) +\n  geom_bar() +\n  coord_flip()"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#changing-the-y--and-x-axis-range",
+    "href": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#changing-the-y--and-x-axis-range",
+    "title": "Hands-on Exercise 1",
+    "section": "Changing the y- and x-axis range",
+    "text": "Changing the y- and x-axis range\n\nFixed both the y-axis and x-axis range from 0-100.\n\nggplot(data=exam_data, \n       aes(x= MATHS, y=ENGLISH)) +\n  geom_point() +\n  geom_smooth(method=lm, \n              size=0.5) +  \n  coord_cartesian(xlim=c(0,100),\n                  ylim=c(0,100))"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#working-with-theme",
+    "href": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#working-with-theme",
+    "title": "Hands-on Exercise 1",
+    "section": "Working with theme",
+    "text": "Working with theme\n\nPlot a horizontal bar chart using theme_gray()\n\nggplot(data=exam_data, \n       aes(x=RACE)) +\n  geom_bar() +\n  coord_flip() +\n  theme_gray()\n\n\n\n\n\n\nPlotted using theme_classic()\n\nggplot(data=exam_data, \n       aes(x=RACE)) +\n  geom_bar() +\n  coord_flip() +\n  theme_classic()\n\n\n\n\n\n\nPlotted using theme_minimal()\n\nggplot(data=exam_data, \n       aes(x=RACE)) +\n  geom_bar() +\n  coord_flip() +\n  theme_minimal()\n\n\n\n\n\nggplot(data=exam_data, \n       aes(x=RACE)) +\n  geom_bar() +\n  coord_flip() +\n  theme_bw()"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html",
+    "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html",
+    "title": "Hands-on Exercise 2",
+    "section": "",
+    "text": "pacman::p_load(ggrepel, patchwork, \n               ggthemes, hrbrthemes,\n               tidyverse)"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#working-without-ggrepel",
+    "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#working-without-ggrepel",
+    "title": "Hands-on Exercise 2",
+    "section": "3.1 Working without ggrepel",
+    "text": "3.1 Working without ggrepel\n\nThe plotThe code\n\n\n\n\n\n\n\n\n\n\nggplot(data = exam_data, aes(x = MATHS, y = ENGLISH)) +\n  geom_point() +\n  geom_smooth(method = lm, linewidth = 0.5) +\n  geom_label(aes(label = ID, colour = factor(RACE)), \n             hjust = 0.5, vjust = -0.5) +\n  coord_cartesian(xlim = c(0,100), ylim = c(0,100)) +\n  ggtitle(\"English scores versus Maths scores for Primary 3\")"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#working-with-ggrepel",
+    "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#working-with-ggrepel",
+    "title": "Hands-on Exercise 2",
+    "section": "3.2 Working with ggrepel",
+    "text": "3.2 Working with ggrepel\n\n3.2.1 Using geom_label_repel()\nSimply replace geom_label() by geom_label_repel()\n\nThe plotThe code\n\n\n\n\n\n\n\n\n\n\nggplot(data = exam_data, aes(x = MATHS, y = ENGLISH)) +\n  geom_point() +\n  geom_smooth(method = lm, linewidth = 0.5) +\n  geom_label_repel(aes(label = ID, colour = factor(RACE)),\n                   max.overlaps = 20, fontface = \"bold\") +\n  coord_cartesian(xlim = c(0,100), ylim = c(0,100)) +\n  ggtitle(\"English scores versus Maths scores for Primary 3\")\n\n\n\n\n\n\n3.2.1 Using geom_text_repel()\n\nThe plotThe code\n\n\n\n\n\n\n\n\n\n\nggplot(data = exam_data, aes(x = MATHS, y = SCIENCE)) +\n  geom_point() +\n  geom_smooth(method = lm, linewidth = 0.5) +\n  geom_text_repel(aes(label = ID, colour = factor(RACE)),\n                   max.overlaps = 20, fontface = \"bold\") +\n  coord_cartesian(xlim = c(0,100), ylim = c(0,100)) +\n  ggtitle(\"English scores versus Maths scores for Primary 3\")"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#working-with-ggtheme-package",
+    "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#working-with-ggtheme-package",
+    "title": "Hands-on Exercise 2",
+    "section": "4.1 Working with ggtheme package",
+    "text": "4.1 Working with ggtheme package\nggthemes provides ‘ggplot2’ themes that replicate the look of plots by Edward Tufte, Stephen Few, Fivethirtyeight, The Economist, ‘Stata’, ‘Excel’, and The Wall Street Journal, among others.\n\n4.1.1 The economist theme\n\nThe plotThe code\n\n\n\n\n\n\n\n\n\n\nggplot(data = exam_data, aes(x= MATHS))+\n  geom_histogram(bins = 20, boundary = 100, color = \"grey10\", fill = \"grey90\") +\n  ggtitle(\"Distribution of Maths scores\") +\n  theme_economist()\n\n\n\n\n\n\n4.1.2 The WSJ theme\n\nThe plotThe code\n\n\n\n\n\n\n\n\n\n\nggplot(data = exam_data, aes(x= ENGLISH))+\n  geom_histogram(bins = 20, boundary = 100, color = \"grey10\", fill = \"grey90\") +\n  ggtitle(\"Distribution of English scores\") +\n  theme_wsj(base_size = 8)\n\n\n\n\n\n\n4.1.3 The fivethirtyeight theme\n\nThe plotThe code\n\n\n\n\n\n\n\n\n\n\nggplot(data = exam_data, aes(x= SCIENCE))+\n  geom_histogram(bins = 20, boundary = 100, color = \"grey10\", fill = \"grey90\") +\n  ggtitle(\"Distribution of Science scores\") +\n  theme_fivethirtyeight()"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#working-with-hrbthems-package",
+    "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#working-with-hrbthems-package",
+    "title": "Hands-on Exercise 2",
+    "section": "4.2 Working with hrbthems package",
+    "text": "4.2 Working with hrbthems package\nhrbrthemes package provides a base theme that focuses on typographic elements, including where various labels are placed as well as the fonts that are used.\n\nThe plotThe code\n\n\n\n\n\n\n\n\n\n\nggplot(data = exam_data, aes(x = MATHS)) +\n  geom_histogram(bins = 20, boundary = 100, color = \"grey10\", fill = \"grey90\") +\n  ggtitle(\"Distribution of Maths scores\") +\n  theme_ipsum()\n\n\n\n\nUsing the elements of hrbrthemes\n\nThe plotThe code\n\n\n\n\n\n\n\n\n\n\nggplot(data = exam_data, aes(x = MATHS)) +\n  geom_histogram(bins = 20, boundary = 100, color = \"grey10\", fill = \"grey90\") +\n  ggtitle(\"Distribution of Maths scores\") +\n  theme_ipsum(axis_title_size = 18, base_size = 15, grid = \"Y\")"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#creating-composite-graphics-patchwork-methods",
+    "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#creating-composite-graphics-patchwork-methods",
+    "title": "Hands-on Exercise 2",
+    "section": "5.1 Creating Composite Graphics: patchwork methods",
+    "text": "5.1 Creating Composite Graphics: patchwork methods\nPatchwork package has a very simple syntax where we can create layouts:\n\nTwo-Column Layout using the Plus Sign +.\nParenthesis () to create a subplot group.\nTwo-Row Layout using the Division Sign /"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#combining-two-ggplot2-graphs",
+    "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#combining-two-ggplot2-graphs",
+    "title": "Hands-on Exercise 2",
+    "section": "5.2 Combining two ggplot2 graphs",
+    "text": "5.2 Combining two ggplot2 graphs\n\nThe plotThe code\n\n\n\n\n\n\n\n\n\n\np1 + p2"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#combining-three-ggplot2-graphs",
+    "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#combining-three-ggplot2-graphs",
+    "title": "Hands-on Exercise 2",
+    "section": "5.3 Combining three ggplot2 graphs",
+    "text": "5.3 Combining three ggplot2 graphs\n\n“|” operator to stack two ggplot2 graphs,\n“/” operator to place the plots beside each other,\n“()” operator the define the sequence of the plotting.\n\n\nThe plotThe code\n\n\n\n\n\n\n\n\n\n\n((p1 / p2) | p4) &\n  theme(plot.title = element_text(size = 8))"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#creating-a-composite-figure-with-tag",
+    "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#creating-a-composite-figure-with-tag",
+    "title": "Hands-on Exercise 2",
+    "section": "5.4 Creating a composite figure with tag",
+    "text": "5.4 Creating a composite figure with tag\nUse patchwork for auto-tagging capabilities\n\nThe plotThe code\n\n\n\n\n\n\n\n\n\n\n((p1 / p2) | p4) +\n  plot_annotation(tag_levels = '1') &\n  theme(plot.title = element_text(size = 8))"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#creating-figure-with-insert",
+    "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#creating-figure-with-insert",
+    "title": "Hands-on Exercise 2",
+    "section": "5.5 Creating figure with insert",
+    "text": "5.5 Creating figure with insert\nWith inset_element() of patchwork, we can place one or several plots or graphic elements freely on top or below another plot.\n\nThe plotThe code\n\n\n\n\n\n\n\n\n\n\np4 + inset_element(p2, left = 0.02, right = 0.5, top = 1, bottom = 0.7)"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#creating-a-composite-figure-by-using-patchwork-and-ggtheme",
+    "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#creating-a-composite-figure-by-using-patchwork-and-ggtheme",
+    "title": "Hands-on Exercise 2",
+    "section": "5.6 Creating a composite figure by using patchwork and ggtheme",
+    "text": "5.6 Creating a composite figure by using patchwork and ggtheme\nFigure below is created by combining patchwork and theme_economist() of ggthemes package\n\nThe plotThe code\n\n\n\n\n\n\n\n\n\n\npatchwork &lt;- (p1 / p2) | p4\npatchwork & theme_economist() & \n  theme(plot.title = element_text(size = 8))"
+  },
+  {
+    "objectID": "In-class_Ex/In-class_Ex01/In-class_Ex01.html",
+    "href": "In-class_Ex/In-class_Ex01/In-class_Ex01.html",
+    "title": "In-class Exercise 1",
+    "section": "",
+    "text": "In the code chunk below, p_load() of pacman is used to load tidyverse family of packages.\n\npacman::p_load(tidyverse)"
+  },
+  {
+    "objectID": "In-class_Ex/In-class_Ex01/In-class_Ex01.html#loading-r-packages",
+    "href": "In-class_Ex/In-class_Ex01/In-class_Ex01.html#loading-r-packages",
+    "title": "In-class Exercise 1",
+    "section": "",
+    "text": "In the code chunk below, p_load() of pacman is used to load tidyverse family of packages.\n\npacman::p_load(tidyverse)"
+  },
+  {
+    "objectID": "In-class_Ex/In-class_Ex01/In-class_Ex01.html#importing-the-data",
+    "href": "In-class_Ex/In-class_Ex01/In-class_Ex01.html#importing-the-data",
+    "title": "In-class Exercise 1",
+    "section": "Importing the data",
+    "text": "Importing the data\n\nrealis &lt;- read_csv(\"data/realis2019.csv\")\n\n\nrealis.csv &lt;- read.csv(\"data/realis2019.csv\")\n\n\nggplot(data = realis,\n       aes(x = `Unit Price ($ psm)`)) +\n  geom_histogram()"
   }
 ]
