@@ -1,0 +1,16 @@
+{
+  "hash": "6f466b823a2fa214dbdc4510b13e2ce4",
+  "result": {
+    "markdown": "---\ntitle: \"In-class Exercise 2\"\nauthor: \"Ha Duc Tien\"\ndate: \"April 20, 2024\"\ndate-modified: \"last-modified\"\nexecute: \n  eval: true\n  echo: true\n  warning: false\n  freeze: true\n---\n\n\n#Getting Started\n## Loading R packages\n\n:::panel-tabset\n## The task\n\nLoading the below library:\ntidyverse, ggdist, ggridges, colorspace, ggthemes\n\n## The code\n\n\n::: {.cell}\n\n```{.r .cell-code}\npacman::p_load(tidyverse, ggdist, ggridges,\n               colorspace, ggthemes)\n```\n:::\n\n:::\n\n## Importing the data\n\n\n::: {.cell}\n\n```{.r .cell-code}\nexam_df <- read_csv(\"data/Exam_data.csv\")\n```\n:::\n\n\n\n## Visualising Distribution\n\n### Histogram\n\n\n::: {.cell}\n\n```{.r .cell-code}\nggplot(exam_df, aes(x=ENGLISH))+\n  geom_histogram(bins = 20, color = \"grey10\", fill = \"lightblue\")\n```\n\n::: {.cell-output-display}\n![](In-class_Ex02_files/figure-html/unnamed-chunk-3-1.png){width=672}\n:::\n:::\n\n\n### The alternative Design\n\n\n::: {.cell}\n\n```{.r .cell-code}\nggplot(exam_df, aes(x=ENGLISH))+\n  geom_density(color = \"#1696d2\", adjust = 0.65, alpha = 0.6)\n```\n\n::: {.cell-output-display}\n![](In-class_Ex02_files/figure-html/unnamed-chunk-4-1.png){width=672}\n:::\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\nmedian_eng <- median(exam_df$ENGLISH)\nmean_eng <- mean(exam_df$ENGLISH)\nstd_eng <- sd(exam_df$ENGLISH)\n\nggplot(exam_df, aes(x=ENGLISH))+\n  geom_density(color = \"#1696d2\", adjust = 0.65, alpha = 0.6) +\n  geom_vline(aes(xintercept = mean_eng), colour = \"#4d5887\", linewidth = 0.6, linetype = \"dashed\")\n```\n\n::: {.cell-output-display}\n![](In-class_Ex02_files/figure-html/unnamed-chunk-5-1.png){width=672}\n:::\n\n```{.r .cell-code}\n  # annotate(geom = \"text\", x = mean_eng - 8, y = 0.04 label = paste0(\"Mean ENGLISH: \", round((mean_eng),2)))\n```\n:::",
+    "supporting": [
+      "In-class_Ex02_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

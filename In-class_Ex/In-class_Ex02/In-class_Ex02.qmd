@@ -1,0 +1,64 @@
+---
+title: "In-class Exercise 2"
+author: "Ha Duc Tien"
+date: "April 20, 2024"
+date-modified: "last-modified"
+execute: 
+  eval: true
+  echo: true
+  warning: false
+  freeze: true
+---
+
+#Getting Started
+## Loading R packages
+
+:::panel-tabset
+## The task
+
+Loading the below library:
+tidyverse, ggdist, ggridges, colorspace, ggthemes
+
+## The code
+
+```{r}
+pacman::p_load(tidyverse, ggdist, ggridges,
+               colorspace, ggthemes)
+```
+:::
+
+## Importing the data
+
+```{r}
+exam_df <- read_csv("data/Exam_data.csv")
+```
+
+
+## Visualising Distribution
+
+### Histogram
+
+```{r}
+ggplot(exam_df, aes(x=ENGLISH))+
+  geom_histogram(bins = 20, color = "grey10", fill = "lightblue")
+```
+
+### The alternative Design
+
+```{r}
+ggplot(exam_df, aes(x=ENGLISH))+
+  geom_density(color = "#1696d2", adjust = 0.65, alpha = 0.6)
+```
+
+```{r}
+
+median_eng <- median(exam_df$ENGLISH)
+mean_eng <- mean(exam_df$ENGLISH)
+std_eng <- sd(exam_df$ENGLISH)
+
+ggplot(exam_df, aes(x=ENGLISH))+
+  geom_density(color = "#1696d2", adjust = 0.65, alpha = 0.6) +
+  geom_vline(aes(xintercept = mean_eng), colour = "#4d5887", linewidth = 0.6, linetype = "dashed")
+  # annotate(geom = "text", x = mean_eng - 8, y = 0.04 label = paste0("Mean ENGLISH: ", round((mean_eng),2)))
+
+```

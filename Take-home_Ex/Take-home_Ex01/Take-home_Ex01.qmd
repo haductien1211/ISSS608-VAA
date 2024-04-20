@@ -22,35 +22,46 @@ pacman::p_load(ggrepel, patchwork,
                tidyverse) 
 ```
 
-```{r}
-first_quarter <- read_csv("data/ResidentialTransaction20240308160536.csv")
+# 2. Importing the data
 
+Since the data given is a list of csv 
+```{r}
 list_of_files <- list.files(path = "data",
                             recursive = TRUE,
                             pattern = "\\.csv$",
                             full.names = TRUE)
-
+first_quarter_2024 <- read_csv("data/ResidentialTransaction20240414220633.csv")
 Realis <- read_csv(list_of_files)
-
 ```
 
 ```{r}
+
+Realis <- Realis %>% 
+  mutate(`Sale Date asDate` = as.Date((parse_date_time(`Sale Date`, 
+        orders = c("%d %b %Y")))))
 Realis <- Realis %>% 
   mutate(`Sale Date FORMAT` = format(as.Date((parse_date_time(`Sale Date`, 
         orders = c("%d %b %Y")))), "%b %Y"))
 
+first_quarter_2024 <- first_quarter_2024 %>% 
+  mutate(`Sale Date asDate` = as.Date((parse_date_time(`Sale Date`, 
+        orders = c("%d %b %Y")))))
+
+first_quarter_2024 <- first_quarter_2024 %>% 
+  mutate(`Sale Date FORMAT` = format(as.Date((parse_date_time(`Sale Date`, 
+        orders = c("%d %b %Y")))), "%b %Y"))
 colSums(is.na(Realis))
 ```
+
 ```{r}
 summary(Realis)
 ```
 
-
 ```{r}
 ggplot(data = Realis, aes(x = `Unit Price ($ PSM)`)) +
   geom_histogram(bins = 20, color = "grey10", fill = "lightblue")+
-  ggtitle("Distribution of Unit Price ($PSM") +
-  theme_ipsum_gs(axis_title_size = 15, base_size = 10, grid = "Y")
+  ggtitle("Distribution of Unit Price ($PSM)") +
+  theme_ipsum_gs(axis_title_size = 10, base_size = 8)
 ```
 
 ```{r}
@@ -58,6 +69,12 @@ ggplot(data = Realis, aes(x = `Property Type`)) +
   geom_bar(color = "grey10", fill = "lightblue") + 
   theme(axis.text=element_text(size=6)) +
   ggtitle("Number of sales on different Property type")
+
+ggplot(data = Realis, aes(x = `Property Type`, y = `Unit Price ($ PSM)`)) +
+  geom_boxplot(color = "grey10", fill = "lightblue") + 
+  geom_point(stat="summary", fun ="mean", color = "red") +
+  theme(axis.text=element_text(size=6)) +
+  ggtitle("Unit Price ($PSM) in different Property type")
 ```
 
 ```{r}
@@ -87,24 +104,33 @@ ggplot(data = Realis, aes(x = `Sale Date FORMAT`)) +
 ```
 
 ```{r}
-ggplot(data = Realis, aes(x = `Sale Date FORMAT`, y = `Unit Price ($ PSM)`)) +
-  scale_x_discrete(name ="Sale Month", 
-                 limits = c("Jan 2023", "Feb 2023", "Mar 2023", 
-                    "Apr 2023","May 2023","Jun 2023", 
-                    "Jul 2023", "Aug 2023", "Sep 2023",
-                    "Oct 2023", "Nov 2023", "Dec 2023", 
-                    "Jan 2024", "Feb 2024", "Mar 2024")) +
+ggplot(data = first_quarter_2024, aes(x = `Sale Date FORMAT`, y = `Unit Price ($ PSM)`)) +
+  # scale_x_discrete(name ="Sale Month", 
+  #                limits = c("Jan 2023", "Feb 2023", "Mar 2023", 
+  #                   "Apr 2023","May 2023","Jun 2023", 
+  #                   "Jul 2023", "Aug 2023", "Sep 2023",
+  #                   "Oct 2023", "Nov 2023", "Dec 2023", 
+  #                   "Jan 2024", "Feb 2024", "Mar 2024")) +
   
-  geom_boxplot(color = "grey10", fill = "lightblue") + 
-  geom_point(stat="summary", fun ="mean", color = "red") +
+  geom_boxplot(aes(color=`Property Type`)) + 
+  # geom_point(stat="summary", fun ="mean", color = "red") +
   theme(axis.text=element_text(size=6)) +
-  ggtitle("Monthly changes in Unit Price ($PSM)")
+  ggtitle("Monthly changes in Unit Price ($PSM) in first quarter of 2024")
 ```
+
+
 ```{r}
-ggplot(data = Realis, aes(y = `Area (SQM)`, x = `Transacted Price ($)`)) +
+ggplot(data = first_quarter_2024, aes(x = `Sale Date asDate`, y = `Unit Price ($ PSM)`)) +
+  geom_path(aes(color = `Property Type`), stat="summary", fun ="median", size=0.6) +
+  theme(axis.text=element_text(size=6)) +
+  ggtitle("Daily changes in mean Unit Price ($PSM) for first quarter 2024")
+```
+
+```{r}
+ggplot(data = first_quarter_2024, aes(y = `Area (SQM)`, x = `Transacted Price ($)`)) +
   geom_point()+
   geom_smooth(method = glm, linewidth = 1) +
   coord_cartesian(ylim = c(30,450), xlim=c(450000,8000000)) +
-  geom_label_repel(aes(label = `Postal Code`), fontface = "bold", max.overlaps = 63) +
+  geom_label_repel(aes(label = `Postal Code`), fontface = "bold", max.overlaps = 6) +
   ggtitle("Size (SQM) vs Transacted Price ($)")
 ```
