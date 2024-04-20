@@ -24,7 +24,8 @@ pacman::p_load(ggrepel, patchwork,
 
 # 2. Importing the data
 
-Since the data given is a list of csv 
+Since the data given is a list of csv
+
 ```{r}
 list_of_files <- list.files(path = "data",
                             recursive = TRUE,
@@ -40,7 +41,7 @@ Realis <- Realis %>%
   mutate(`Sale Date asDate` = as.Date((parse_date_time(`Sale Date`, 
         orders = c("%d %b %Y")))))
 Realis <- Realis %>% 
-  mutate(`Sale Date FORMAT` = format(as.Date((parse_date_time(`Sale Date`, 
+  mutate(`Sale Month` = format(as.Date((parse_date_time(`Sale Date`, 
         orders = c("%d %b %Y")))), "%b %Y"))
 
 first_quarter_2024 <- first_quarter_2024 %>% 
@@ -48,7 +49,7 @@ first_quarter_2024 <- first_quarter_2024 %>%
         orders = c("%d %b %Y")))))
 
 first_quarter_2024 <- first_quarter_2024 %>% 
-  mutate(`Sale Date FORMAT` = format(as.Date((parse_date_time(`Sale Date`, 
+  mutate(`Sale Month` = format(as.Date((parse_date_time(`Sale Date`, 
         orders = c("%d %b %Y")))), "%b %Y"))
 colSums(is.na(Realis))
 ```
@@ -60,8 +61,8 @@ summary(Realis)
 ```{r}
 ggplot(data = Realis, aes(x = `Unit Price ($ PSM)`)) +
   geom_histogram(bins = 20, color = "grey10", fill = "lightblue")+
-  ggtitle("Distribution of Unit Price ($PSM)") +
-  theme_ipsum_gs(axis_title_size = 10, base_size = 8)
+  ggtitle("Distribution of Unit Price ($PSM)")
+  # theme_ipsum_gs(axis_title_size = 10, base_size = 8)
 ```
 
 ```{r}
@@ -90,8 +91,8 @@ ggplot(data = Realis, aes(x = `Planning Region`, y = `Unit Price ($ PSM)`)) +
   ggtitle("Unit Price ($PSM) in different Planning Region")
 ```
 
-```{r}
-ggplot(data = Realis, aes(x = `Sale Date FORMAT`)) +
+```{r, fig.width = 20, fig.height = 8, dpi = 300}
+ggplot(data = Realis, aes(x = `Sale Month`)) +
   geom_bar(color = "grey10", fill = "lightblue", inherit.aes = TRUE) +
   scale_x_discrete(name ="Sale Month", 
                    limits = c("Jan 2023", "Feb 2023", "Mar 2023", 
@@ -99,38 +100,55 @@ ggplot(data = Realis, aes(x = `Sale Date FORMAT`)) +
                       "Jul 2023", "Aug 2023", "Sep 2023",
                       "Oct 2023", "Nov 2023", "Dec 2023", 
                       "Jan 2024", "Feb 2024", "Mar 2024"))+
-  theme(axis.text=element_text(size=6))+
+  theme(axis.text=element_text(size=12))+
   ggtitle("Monthly number of sales")
 ```
 
-```{r}
-ggplot(data = first_quarter_2024, aes(x = `Sale Date FORMAT`, y = `Unit Price ($ PSM)`)) +
-  # scale_x_discrete(name ="Sale Month", 
-  #                limits = c("Jan 2023", "Feb 2023", "Mar 2023", 
-  #                   "Apr 2023","May 2023","Jun 2023", 
-  #                   "Jul 2023", "Aug 2023", "Sep 2023",
-  #                   "Oct 2023", "Nov 2023", "Dec 2023", 
-  #                   "Jan 2024", "Feb 2024", "Mar 2024")) +
+```{r, fig.width = 20, fig.height = 8, dpi = 300}
+ggplot(data = Realis, aes(x = `Sale Month`, y = `Unit Price ($ PSM)`)) +
+  scale_x_discrete(name ="Sale Month",
+                 limits = c("Jan 2023", "Feb 2023", "Mar 2023",
+                    "Apr 2023","May 2023","Jun 2023",
+                    "Jul 2023", "Aug 2023", "Sep 2023",
+                    "Oct 2023", "Nov 2023", "Dec 2023",
+                    "Jan 2024", "Feb 2024", "Mar 2024")) +
   
   geom_boxplot(aes(color=`Property Type`)) + 
   # geom_point(stat="summary", fun ="mean", color = "red") +
-  theme(axis.text=element_text(size=6)) +
+  theme(axis.text=element_text(size=12)) +
   ggtitle("Monthly changes in Unit Price ($PSM) in first quarter of 2024")
 ```
 
+```{r, fig.width = 20, fig.height = 8, dpi = 300}
+by_month <- Realis %>%
+  group_by(`Property Type`, `Sale Month`) %>%
+  summarise(`Avg Unit Price ($ PSM)` = median(`Unit Price ($ PSM)`))
 
-```{r}
-ggplot(data = first_quarter_2024, aes(x = `Sale Date asDate`, y = `Unit Price ($ PSM)`)) +
-  geom_path(aes(color = `Property Type`), stat="summary", fun ="median", size=0.6) +
-  theme(axis.text=element_text(size=6)) +
-  ggtitle("Daily changes in mean Unit Price ($PSM) for first quarter 2024")
+by_month$`Sale Month` <- factor(by_month$`Sale Month`, 
+                                levels = c("Jan 2023", "Feb 2023", "Mar 2023",
+                                            "Apr 2023","May 2023","Jun 2023",
+                                            "Jul 2023", "Aug 2023", "Sep 2023",
+                                            "Oct 2023", "Nov 2023", "Dec 2023",
+                                            "Jan 2024", "Feb 2024", "Mar 2024"))
+
+by_month <- by_month[order(by_month$`Sale Month`),]
+
+
+ggplot(data = by_month, aes(x = `Sale Month`, y = `Avg Unit Price ($ PSM)`, 
+                            group = `Property Type`)) +
+  geom_path(aes(color = `Property Type`)) +
+
+  theme(axis.text=element_text(size=12))+
+  ggtitle("Monthly changes in mean Unit Price ($PSM) 2023 to first quarter 2024")
 ```
 
 ```{r}
-ggplot(data = first_quarter_2024, aes(y = `Area (SQM)`, x = `Transacted Price ($)`)) +
-  geom_point()+
-  geom_smooth(method = glm, linewidth = 1) +
-  coord_cartesian(ylim = c(30,450), xlim=c(450000,8000000)) +
-  geom_label_repel(aes(label = `Postal Code`), fontface = "bold", max.overlaps = 6) +
-  ggtitle("Size (SQM) vs Transacted Price ($)")
+# ggplot(data = first_quarter_2024, aes(y = `Area (SQM)`, 
+#                                       x = `Transacted Price ($)`)) +
+#   geom_point()+
+#   geom_smooth(method = glm, linewidth = 1) +
+#   coord_cartesian(ylim = c(30,450), xlim=c(450000,8000000)) +
+#   geom_label_repel(aes(label = `Postal Code`), fontface = "bold", 
+#                    max.overlaps = 6) +
+#   ggtitle("Size (SQM) vs Transacted Price ($)")
 ```

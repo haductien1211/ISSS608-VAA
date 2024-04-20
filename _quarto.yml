@@ -33,6 +33,10 @@ format:
     css: styles.css
     toc: true
     toc-location: left
+    grid: 
+      body-width: 1500px
+      sidebar-width: 300px
+      margin-width:	150px
 
 editor: visual
 
