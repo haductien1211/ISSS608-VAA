@@ -203,8 +203,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#exploratory-data-analysis" id="toc-exploratory-data-analysis" class="nav-link" data-scroll-target="#exploratory-data-analysis">4. Exploratory Data Analysis</a>
   <ul class="collapse">
-  <li><a href="#data-visualization-for-the-first-quarter-of-2024" id="toc-data-visualization-for-the-first-quarter-of-2024" class="nav-link" data-scroll-target="#data-visualization-for-the-first-quarter-of-2024">4.1 Data visualization for the first quarter of 2024</a></li>
+  <li><a href="#data-visualization-for-the-first-quarter-of-2024" id="toc-data-visualization-for-the-first-quarter-of-2024" class="nav-link" data-scroll-target="#data-visualization-for-the-first-quarter-of-2024">4.1 Data visualization for the first quarter of 2024</a>
+  <ul class="collapse">
+  <li><a href="#main-part" id="toc-main-part" class="nav-link" data-scroll-target="#main-part">4.1.1 Main part</a></li>
+  <li><a href="#sub-part" id="toc-sub-part" class="nav-link" data-scroll-target="#sub-part">4.1.1 Sub part</a></li>
   </ul></li>
+  <li><a href="#time-series-data-visualization-from-2023-to-first-quarter-of-2024" id="toc-time-series-data-visualization-from-2023-to-first-quarter-of-2024" class="nav-link" data-scroll-target="#time-series-data-visualization-from-2023-to-first-quarter-of-2024">4.2 Time series data visualization from 2023 to first quarter of 2024</a></li>
+  </ul></li>
+  <li><a href="#summary-and-conclusion" id="toc-summary-and-conclusion" class="nav-link" data-scroll-target="#summary-and-conclusion">5. Summary and conclusion</a></li>
+  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference">6. Reference</a></li>
   </ul>
 </nav>
 </nav>
@@ -241,7 +248,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">April 24, 2024</p>
+      <p class="date-modified">April 25, 2024</p>
     </div>
   </div>
     
@@ -306,7 +313,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="the-code-2" class="level4">
 <h4 class="anchored" data-anchor-id="the-code-2">The Code:</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(Realis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(Realis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 26,806
+Columns: 21
+$ `Project Name`                &lt;chr&gt; "THE REEF AT KING'S DOCK", "URBAN TREASU…
+$ `Transacted Price ($)`        &lt;dbl&gt; 2317000, 1823500, 1421112, 1258112, 1280…
+$ `Area (SQFT)`                 &lt;dbl&gt; 882.65, 882.65, 1076.40, 1033.34, 871.88…
+$ `Unit Price ($ PSF)`          &lt;dbl&gt; 2625, 2066, 1320, 1218, 1468, 1767, 1095…
+$ `Sale Date`                   &lt;chr&gt; "01 Jan 2023", "02 Jan 2023", "02 Jan 20…
+$ Address                       &lt;chr&gt; "12 HARBOURFRONT AVENUE #05-32", "205 JA…
+$ `Type of Sale`                &lt;chr&gt; "New Sale", "New Sale", "New Sale", "New…
+$ `Type of Area`                &lt;chr&gt; "Strata", "Strata", "Strata", "Strata", …
+$ `Area (SQM)`                  &lt;dbl&gt; 82.0, 82.0, 100.0, 96.0, 81.0, 308.7, 42…
+$ `Unit Price ($ PSM)`          &lt;dbl&gt; 28256, 22238, 14211, 13105, 15802, 19015…
+$ `Nett Price($)`               &lt;chr&gt; "-", "-", "-", "-", "-", "-", "-", "-", …
+$ `Property Type`               &lt;chr&gt; "Condominium", "Condominium", "Executive…
+$ `Number of Units`             &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…
+$ Tenure                        &lt;chr&gt; "99 yrs from 12/01/2021", "Freehold", "9…
+$ `Completion Date`             &lt;chr&gt; "Uncompleted", "Uncompleted", "Uncomplet…
+$ `Purchaser Address Indicator` &lt;chr&gt; "HDB", "Private", "HDB", "HDB", "HDB", "…
+$ `Postal Code`                 &lt;chr&gt; "097996", "419535", "269343", "269294", …
+$ `Postal District`             &lt;chr&gt; "04", "14", "27", "27", "28", "19", "10"…
+$ `Postal Sector`               &lt;chr&gt; "09", "41", "26", "26", "79", "54", "27"…
+$ `Planning Region`             &lt;chr&gt; "Central Region", "East Region", "North …
+$ `Planning Area`               &lt;chr&gt; "Bukit Merah", "Bedok", "Yishun", "Yishu…</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(Realis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> Project Name       Transacted Price ($)  Area (SQFT)       Unit Price ($ PSF)
  Length:26806       Min.   :   440000    Min.   :   322.9   Min.   : 138      
@@ -351,7 +384,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
                                                          
                                                          </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(Realis))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(Realis))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>               Project Name        Transacted Price ($) 
                           0                           0 
@@ -376,11 +409,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
               Planning Area 
                           0 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Realis<span class="sc">$</span><span class="st">`</span><span class="at">Sale Date</span><span class="st">`</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "01 Jan 2023" "02 Jan 2023" "02 Jan 2023" "02 Jan 2023" "03 Jan 2023"
-[6] "03 Jan 2023"</code></pre>
-</div>
 </div>
 <p>A quick look at the data shown that there are 21 different columns, there are categorical variables that could be of interest such as <code>Project Name</code>, <code>Property Type</code>, <code>Planning Region</code>, <code>Planning Area</code> as well as continuous variables such as <code>Transacted Price ($)</code>, <code>Area (SQFT)</code>, <code>Area (SQM)</code>, <code>Unit Price ($ PSF)</code>, <code>Unit Price ($ PSM)</code>, <code>Number of Units</code>.</p>
 <p>There is also no missing data which is good and mean that we do not have to perform data wrangling for missing data.</p>
@@ -390,7 +418,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="data-wrangling" class="level2">
 <h2 class="anchored" data-anchor-id="data-wrangling">3.2 Data wrangling</h2>
-<p>Interestingly, <code>Sale Date</code> is supposed to be a kind of continuous variable or Discrete variable; however, it is in ‘character’ type instead of ‘datetime’ or rather it is just in ‘string’, even though, the format seems correct. In addition, I also want to use a sort of monthly data visualization and the time seems to be in Date format.</p>
+<p>Interestingly, <code>Sale Date</code> is supposed to be a kind of continuous variable or discrete variable; however, it is in ‘<em>character</em>’ type instead of ‘<em>datetime</em>’ or rather it is just in ‘<em>string</em>’, even though, the format seems correct. In addition, I also want to use a sort of monthly data visualization and the time seems to be in Date format.</p>
 <p>Therefore some data transformation would need to be performed to create 2 new column called <code>Sale Date asDate</code> which is properly in Datetime format, and <code>Sale Month</code>, which show the month Sale happened instead of date.</p>
 <p>To do this I would be using <a href="https://lubridate.tidyverse.org/reference/parse_date_time.html">parse_date_time</a> part of the <a href="https://lubridate.tidyverse.org/index.html">lubridate</a> in tidyverse package to correctly pasring the ‘string’ into datetime format then use <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/as.Date">as.Date</a> to finally turn it into proper ‘datetime’, this would also create the <code>Sale Date asDate</code> column.</p>
 <p>After above steps, I will be using <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/format">format</a> to create the <code>Sale Month</code> colum</p>
@@ -423,6 +451,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The reason for this is I want to do Exploratory Data Analysis for both only the first quarter of 2024 data as well as an overall time series for the full data set which would be the 2 main data visualizations for the purpose of this study. There would be another sub data visualization which would be mentioned later</p>
 <section id="data-visualization-for-the-first-quarter-of-2024" class="level2">
 <h2 class="anchored" data-anchor-id="data-visualization-for-the-first-quarter-of-2024">4.1 Data visualization for the first quarter of 2024</h2>
+<section id="main-part" class="level3">
+<h3 class="anchored" data-anchor-id="main-part">4.1.1 Main part</h3>
+<p>This part of the first quarter of 2024 data visualization contain 3 plots:</p>
+<ul>
+<li><p>On the left is the bar plot counting the number of sales breaking down by different <code>Planning Region</code></p></li>
+<li><p>On the right is a ridgeline plot showing the <code>Unit Price ($ PSM)</code> distribution breakdown by 4 quartiles by different <code>Planning Region</code></p></li>
+<li><p>Bottom plot is box plot showing a further breakdown from the ridgeline plot going into different <code>Property Type</code></p></li>
+</ul>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">The Plot</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">The Code</a></li></ul>
 <div class="tab-content">
@@ -437,49 +473,71 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>plot1 <span class="ot">&lt;-</span><span class="fu">ggplot</span>(<span class="at">data =</span> first_quarter_2024, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">Planning Region</span><span class="st">`</span>)) <span class="sc">+</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="at">color =</span> <span class="st">"grey10"</span>, <span class="fu">aes</span>(<span class="at">fill =</span> <span class="st">`</span><span class="at">Property Type</span><span class="st">`</span>)) <span class="sc">+</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">"Sales by Property Type by Planning Region in the first quarter of 2024 "</span>) <span class="sc">+</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">"Sales by Property Type by Planning Region"</span>) <span class="sc">+</span></span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_economist</span>() <span class="sc">+</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text=</span><span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">15</span>), </span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">20</span>), </span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">20</span>, <span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">b =</span> <span class="dv">15</span>)), </span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text=</span><span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">20</span>), </span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">25</span>), </span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">25</span>, <span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">b =</span> <span class="dv">15</span>)), </span>
 <span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">r =</span> <span class="dv">15</span>)),</span>
 <span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">t =</span> <span class="dv">15</span>)))</span>
 <span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>plot2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> first_quarter_2024, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">Planning Region</span><span class="st">`</span>, <span class="at">y =</span> <span class="st">`</span><span class="at">Unit Price ($ PSM)</span><span class="st">`</span>)) <span class="sc">+</span></span>
 <span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">color=</span><span class="st">`</span><span class="at">Property Type</span><span class="st">`</span>)) <span class="sc">+</span> </span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># geom_point(stat="summary", fun ="mean", color = "red") +</span></span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text=</span><span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">12</span>)) <span class="sc">+</span></span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">"Monthly changes in Unit Price ($PSM) in first quarter of 2024"</span>)<span class="sc">+</span></span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_economist</span>() <span class="sc">+</span></span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text=</span><span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">15</span>), </span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">20</span>), </span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>          <span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">20</span>, <span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">b =</span> <span class="dv">15</span>)), </span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">r =</span> <span class="dv">15</span>)),</span>
-<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">t =</span> <span class="dv">15</span>)))</span>
-<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>plot3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> first_quarter_2024, </span>
-<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">y =</span> <span class="st">`</span><span class="at">Planning Region</span><span class="st">`</span>, <span class="at">x =</span> <span class="st">`</span><span class="at">Unit Price ($ PSM)</span><span class="st">`</span>, </span>
-<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>            <span class="at">fill =</span> <span class="fu">factor</span>(<span class="fu">after_stat</span>(quantile)))) <span class="sc">+</span></span>
-<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_density_ridges</span>(</span>
-<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">geom =</span> <span class="st">"density_ridges_gradient"</span>,</span>
-<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">calc_ecdf =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">quantiles =</span> <span class="dv">4</span>,</span>
-<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">quantile_lines =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
-<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_d</span>(<span class="at">name =</span> <span class="st">"Quartiles"</span>) <span class="sc">+</span></span>
-<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_economist</span>()<span class="sc">+</span></span>
-<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Distribution of Unit Price ($ PSM) by Planning Region in the first quarter of 2024"</span>)<span class="sc">+</span></span>
-<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text=</span><span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">15</span>), </span>
-<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">20</span>), </span>
-<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>        <span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">20</span>, <span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">b =</span> <span class="dv">15</span>)), </span>
-<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">r =</span> <span class="dv">15</span>)),</span>
-<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">t =</span> <span class="dv">15</span>)))</span>
-<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a>(plot1 <span class="sc">+</span> plot2 ) <span class="sc">/</span> plot3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text=</span><span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">12</span>)) <span class="sc">+</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">"Distribution of Unit Price ($ PSM) by Planning Region by Property Type"</span>)<span class="sc">+</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_economist</span>() <span class="sc">+</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text=</span><span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">20</span>), </span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">25</span>), </span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>          <span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">25</span>, <span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">b =</span> <span class="dv">15</span>)), </span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">r =</span> <span class="dv">15</span>)),</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">t =</span> <span class="dv">15</span>)))</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>plot3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> first_quarter_2024, </span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">y =</span> <span class="st">`</span><span class="at">Planning Region</span><span class="st">`</span>, <span class="at">x =</span> <span class="st">`</span><span class="at">Unit Price ($ PSM)</span><span class="st">`</span>, </span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>            <span class="at">fill =</span> <span class="fu">factor</span>(<span class="fu">after_stat</span>(quantile)))) <span class="sc">+</span></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_density_ridges</span>(</span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">geom =</span> <span class="st">"density_ridges_gradient"</span>,</span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">calc_ecdf =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">quantiles =</span> <span class="dv">4</span>,</span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">quantile_lines =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_d</span>(<span class="at">name =</span> <span class="st">"Quartiles"</span>) <span class="sc">+</span></span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_economist</span>()<span class="sc">+</span></span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Distribution of Unit Price ($ PSM) by Planning Region"</span>)<span class="sc">+</span></span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text=</span><span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">20</span>), </span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">25</span>), </span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>        <span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">25</span>, <span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">b =</span> <span class="dv">15</span>)), </span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">r =</span> <span class="dv">15</span>)),</span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">t =</span> <span class="dv">15</span>)))</span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>(plot1 <span class="sc">+</span> plot3 ) <span class="sc">/</span> plot2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
 </div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Observations and insights
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>From the data visualizations above, here are my observations and insights on date from first quarter 2024:</p>
+<ul>
+<li><p>The Central region seems to have the highest number of sales followed by the North East region with main Property Type being Apartment and Condominium. North Region has the lowest number of sales, but their main Property Type sale is Executive Condominium; similarly West Region main Property Type sale is also Executive Condominium</p></li>
+<li><p>The <code>Unit Price ($ PSM)</code> seems to be on average higher in the Central and North East region with some of the highest being in Central region</p></li>
+<li><p>Further breakdown of <code>Unit Price ($ PSM)</code> by Property Type show an interesting trend of Apartment being more expensive than other types in Central and North East region. Meanwhile, in North and West region where their main Property Type sale is Executive Condominium the <code>Unit Price ($ PSM</code>) is lowest.</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="sub-part" class="level3">
+<h3 class="anchored" data-anchor-id="sub-part">4.1.1 Sub part</h3>
+<p>For this sub part, I am showing a scatterplot of <code>Area (SQM)</code> vs <code>Transacted Price ($)</code>, with a fit line using Generalized Linear Models, each data point is label under their <code>Planning Region</code> and different colors is for different <code>Property Type</code>.</p>
+<p>The purpose of this plot is to see if there is a relationship between property size and its price as well as to see which property type from which region is likely to be of bigger size and more expensive overall.</p>
+<p>However, since the proper size and its transacted price could be quite high (144883.4 SQM for size and 392,180,000 SGD for price), for this study, I have limited the data to be within 30 - 600 SQM for size and 450,000 - 10,000,000 SGD for transacted price</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">The Plot</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">The Code</a></li></ul>
 <div class="tab-content">
@@ -497,7 +555,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> glm, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">30</span>,<span class="dv">600</span>), <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">450000</span>,<span class="dv">10000000</span>)) <span class="sc">+</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label_repel</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="st">`</span><span class="at">Postal Code</span><span class="st">`</span>, <span class="at">color =</span> <span class="st">`</span><span class="at">Property Type</span><span class="st">`</span>), </span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label_repel</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="st">`</span><span class="at">Planning Region</span><span class="st">`</span>, <span class="at">color =</span> <span class="st">`</span><span class="at">Property Type</span><span class="st">`</span>), </span>
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>                   <span class="at">fontface =</span> <span class="st">"bold"</span>, <span class="at">max.overlaps =</span> <span class="dv">12</span>) <span class="sc">+</span></span>
 <span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Size (SQM) vs Transacted Price ($) in the first quarter of 2024"</span>) <span class="sc">+</span></span>
 <span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_economist</span>()<span class="sc">+</span></span>
@@ -510,6 +568,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Observations and insights
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>From the data visualizations above, here are my observations</p>
+<ul>
+<li>There seems to be a clear linear correlation between <code>Area (SQM)</code> and <code>Transacted Price ($)</code> based on the Generalized Linear Models fit line.</li>
+<li>Central region shows a high concentration of high value properties with some of the most expensive properties and these properties are mainly Condominium and Executive Condominium.</li>
+<li>Detached House seems to be generally larger than other types of property.</li>
+</ul>
+</div>
+</div>
+</section>
+</section>
+<section id="time-series-data-visualization-from-2023-to-first-quarter-of-2024" class="level2">
+<h2 class="anchored" data-anchor-id="time-series-data-visualization-from-2023-to-first-quarter-of-2024">4.2 Time series data visualization from 2023 to first quarter of 2024</h2>
+<p>This part of the data visualization contain 3 plots:</p>
+<ul>
+<li><p>On the top is a bar plot, counting the number of monthly sales breaking down by different <code>Property Type</code></p></li>
+<li><p>In the middle is a box plot showing the monthly distribution of <code>Unit Price ($ PSM)</code> by different <code>Property Type</code></p></li>
+<li><p>Bottom plot is a line plot as further breakdown from the middle box plot, showing the movement of <code>Mean Unit Price ($ PSM)</code> by different <code>Property Type</code></p></li>
+</ul>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">The Plot</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">The Code</a></li></ul>
 <div class="tab-content">
@@ -546,47 +632,85 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Jan 2024"</span>, <span class="st">"Feb 2024"</span>, <span class="st">"Mar 2024"</span>)) <span class="sc">+</span></span>
 <span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">color=</span><span class="st">`</span><span class="at">Property Type</span><span class="st">`</span>)) <span class="sc">+</span> </span>
-<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>    <span class="co"># geom_point(stat="summary", fun ="mean", color = "red") +</span></span>
-<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text=</span><span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">12</span>)) <span class="sc">+</span></span>
-<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">"Monthly changes in Unit Price ($PSM)"</span>)<span class="sc">+</span></span>
-<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_economist</span>() <span class="sc">+</span></span>
-<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text=</span><span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">15</span>), </span>
-<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">18</span>)</span>
-<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>          , <span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">20</span>))</span>
-<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>by_month <span class="ot">&lt;-</span> Realis <span class="sc">%&gt;%</span></span>
-<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="st">`</span><span class="at">Property Type</span><span class="st">`</span>, <span class="st">`</span><span class="at">Sale Month</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="st">`</span><span class="at">Mean Unit Price ($ PSM)</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">mean</span>(<span class="st">`</span><span class="at">Unit Price ($ PSM)</span><span class="st">`</span>))</span>
-<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a>by_month<span class="sc">$</span><span class="st">`</span><span class="at">Sale Month</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">factor</span>(by_month<span class="sc">$</span><span class="st">`</span><span class="at">Sale Month</span><span class="st">`</span>, </span>
-<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a>                                <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Jan 2023"</span>, <span class="st">"Feb 2023"</span>, <span class="st">"Mar 2023"</span>,</span>
-<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a>                                            <span class="st">"Apr 2023"</span>,<span class="st">"May 2023"</span>,<span class="st">"Jun 2023"</span>,</span>
-<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a>                                            <span class="st">"Jul 2023"</span>, <span class="st">"Aug 2023"</span>, <span class="st">"Sep 2023"</span>,</span>
-<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a>                                            <span class="st">"Oct 2023"</span>, <span class="st">"Nov 2023"</span>, <span class="st">"Dec 2023"</span>,</span>
-<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a>                                            <span class="st">"Jan 2024"</span>, <span class="st">"Feb 2024"</span>, <span class="st">"Mar 2024"</span>))</span>
-<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a>by_month <span class="ot">&lt;-</span> by_month[<span class="fu">order</span>(by_month<span class="sc">$</span><span class="st">`</span><span class="at">Sale Month</span><span class="st">`</span>),]</span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text=</span><span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">12</span>)) <span class="sc">+</span></span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">"Monthly changes in Unit Price ($PSM)"</span>)<span class="sc">+</span></span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_economist</span>() <span class="sc">+</span></span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text=</span><span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">15</span>), </span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">18</span>)</span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>          , <span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">20</span>))</span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>by_month <span class="ot">&lt;-</span> Realis <span class="sc">%&gt;%</span></span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="st">`</span><span class="at">Property Type</span><span class="st">`</span>, <span class="st">`</span><span class="at">Sale Month</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="st">`</span><span class="at">Mean Unit Price ($ PSM)</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">mean</span>(<span class="st">`</span><span class="at">Unit Price ($ PSM)</span><span class="st">`</span>))</span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a>by_month<span class="sc">$</span><span class="st">`</span><span class="at">Sale Month</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">factor</span>(by_month<span class="sc">$</span><span class="st">`</span><span class="at">Sale Month</span><span class="st">`</span>, </span>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a>                                <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Jan 2023"</span>, <span class="st">"Feb 2023"</span>, <span class="st">"Mar 2023"</span>,</span>
+<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a>                                            <span class="st">"Apr 2023"</span>,<span class="st">"May 2023"</span>,<span class="st">"Jun 2023"</span>,</span>
+<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a>                                            <span class="st">"Jul 2023"</span>, <span class="st">"Aug 2023"</span>, <span class="st">"Sep 2023"</span>,</span>
+<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a>                                            <span class="st">"Oct 2023"</span>, <span class="st">"Nov 2023"</span>, <span class="st">"Dec 2023"</span>,</span>
+<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a>                                            <span class="st">"Jan 2024"</span>, <span class="st">"Feb 2024"</span>, <span class="st">"Mar 2024"</span>))</span>
+<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a>by_month <span class="ot">&lt;-</span> by_month[<span class="fu">order</span>(by_month<span class="sc">$</span><span class="st">`</span><span class="at">Sale Month</span><span class="st">`</span>),]</span>
+<span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-45"><a href="#cb12-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-46"><a href="#cb12-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-47"><a href="#cb12-47" aria-hidden="true" tabindex="-1"></a>plot6 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> by_month, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">Sale Month</span><span class="st">`</span>, <span class="at">y =</span> <span class="st">`</span><span class="at">Mean Unit Price ($ PSM)</span><span class="st">`</span>, </span>
-<span id="cb12-48"><a href="#cb12-48" aria-hidden="true" tabindex="-1"></a>                            <span class="at">group =</span> <span class="st">`</span><span class="at">Property Type</span><span class="st">`</span>)) <span class="sc">+</span></span>
-<span id="cb12-49"><a href="#cb12-49" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_path</span>(<span class="fu">aes</span>(<span class="at">color =</span> <span class="st">`</span><span class="at">Property Type</span><span class="st">`</span>), <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb12-50"><a href="#cb12-50" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
-<span id="cb12-51"><a href="#cb12-51" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text=</span><span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">12</span>))<span class="sc">+</span></span>
-<span id="cb12-52"><a href="#cb12-52" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">"Monthly changes in Mean Unit Price ($PSM) 2023 to first quarter 2024"</span>)<span class="sc">+</span></span>
-<span id="cb12-53"><a href="#cb12-53" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_economist</span>() <span class="sc">+</span></span>
-<span id="cb12-54"><a href="#cb12-54" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text=</span><span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">15</span>), </span>
-<span id="cb12-55"><a href="#cb12-55" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">18</span>)</span>
-<span id="cb12-56"><a href="#cb12-56" aria-hidden="true" tabindex="-1"></a>        , <span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">20</span>))</span>
-<span id="cb12-57"><a href="#cb12-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-58"><a href="#cb12-58" aria-hidden="true" tabindex="-1"></a>(plot4 <span class="sc">/</span> plot5 <span class="sc">/</span> plot6)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-46"><a href="#cb12-46" aria-hidden="true" tabindex="-1"></a>plot6 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> by_month, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">Sale Month</span><span class="st">`</span>, <span class="at">y =</span> <span class="st">`</span><span class="at">Mean Unit Price ($ PSM)</span><span class="st">`</span>, </span>
+<span id="cb12-47"><a href="#cb12-47" aria-hidden="true" tabindex="-1"></a>                            <span class="at">group =</span> <span class="st">`</span><span class="at">Property Type</span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb12-48"><a href="#cb12-48" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_path</span>(<span class="fu">aes</span>(<span class="at">color =</span> <span class="st">`</span><span class="at">Property Type</span><span class="st">`</span>), <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb12-49"><a href="#cb12-49" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
+<span id="cb12-50"><a href="#cb12-50" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text=</span><span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">12</span>))<span class="sc">+</span></span>
+<span id="cb12-51"><a href="#cb12-51" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">"Monthly changes in Mean Unit Price ($PSM) 2023 to first quarter 2024"</span>)<span class="sc">+</span></span>
+<span id="cb12-52"><a href="#cb12-52" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_economist</span>() <span class="sc">+</span></span>
+<span id="cb12-53"><a href="#cb12-53" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text=</span><span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">15</span>), </span>
+<span id="cb12-54"><a href="#cb12-54" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">18</span>)</span>
+<span id="cb12-55"><a href="#cb12-55" aria-hidden="true" tabindex="-1"></a>        , <span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">20</span>))</span>
+<span id="cb12-56"><a href="#cb12-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-57"><a href="#cb12-57" aria-hidden="true" tabindex="-1"></a>(plot4 <span class="sc">/</span> plot5 <span class="sc">/</span> plot6)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
 </div>
-
-
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Observations and insights
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>From the data visualizations above, here are my observations:</p>
+<ul>
+<li><p>The main property types for sales from Jan 2023 to Mar 2024 seem to be Apartment and Condominium followed by Executive Condominium. The highest sales amount for this period occurred in July 2023</p></li>
+<li><p>The overall <code>Unit Price ($ PSM)</code> for different property type during the period seems stable except for Detached House which has a dip in July 2023 and Executive Condominium with overall downward trend and a dip in Jun 2023. For Apartment type, there seems to be an overall downward trend for <code>Mean Unit Price ($ PSM)</code> but seems to be picking up again</p></li>
+<li><p>Surprisingly, contrary to what being observed in the scatterplot where some of the most expensive properties are Executive Condominium, their overall <code>Mean Unit Price ($ PSM)</code> has been the lowest and quite stable, albeit there is a small increase starting 2024</p></li>
+</ul>
+</div>
+</div>
 </section>
+</section>
+<section id="summary-and-conclusion" class="level1">
+<h1>5. Summary and conclusion</h1>
+<p>This study has showcase the power of data visualization and R ggplot2 packages. From the plotted graphs here are the summary of the key findings:</p>
+<ul>
+<li>Different Planning Region varied in their total property sales and main property types</li>
+<li>The <code>Unit Price ($ PSM)</code> seems to be on average higher with some of the highest being in Central region, this trend is also true for <code>Transacted Price ($)</code></li>
+<li>There seems to be a clear linear correlation between <code>Area (SQM)</code> and <code>Transacted Price ($)</code> based on the Generalized Linear Models fit line</li>
+<li>Main property types for sales from Jan 2023 to Mar 2024 seem to be Apartment and Condominium followed by Executive Condominium</li>
+<li>Executive Condominium, their overall <code>Mean Unit Price ($ PSM)</code> has been the lowest and quite stable. For Apartment, there seems to be an overall downward trend in <code>Mean Unit Price ($ PSM)</code> but seems to be picking up again</li>
+</ul>
+<p>In conclusion, the above visualization has hopefully revealed more information on the private residential market and sub-markets of Singapore for better decision making.</p>
+</section>
+<section id="reference" class="level1">
+<h1>6. Reference</h1>
+<ul>
+<li><p><a href="https://r4va.netlify.app/" class="uri">https://r4va.netlify.app/</a></p></li>
+<li><p><a href="https://www.ura.gov.sg/reis/dataDictionary" class="uri">https://www.ura.gov.sg/reis/dataDictionary</a></p></li>
+<li><p><a href="https://isss608-ay2023-24apr.netlify.app/lesson/lesson02/lesson02-designing%20graphs%20to%20enlighten#/title-slide" class="uri">https://isss608-ay2023-24apr.netlify.app/lesson/lesson02/lesson02-designing%20graphs%20to%20enlighten#/title-slide</a></p></li>
+<li><p><a href="https://www.channelnewsasia.com/singapore/hdb-resale-private-home-prices-rise-waiting-period-property-analysts-4233876" class="uri">https://www.channelnewsasia.com/singapore/hdb-resale-private-home-prices-rise-waiting-period-property-analysts-4233876</a></p></li>
+</ul>
+
+
 </section>
 
 </main> <!-- /main -->
