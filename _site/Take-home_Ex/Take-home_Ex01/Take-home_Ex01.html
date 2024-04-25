@@ -150,7 +150,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">In-class Exercise 1</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../In-class_Ex/In-class_Ex02/In-class_Ex01.html" rel="" target="">
+    <a class="dropdown-item" href="../../In-class_Ex/In-class_Ex02/In-class_Ex02.html" rel="" target="">
  <span class="dropdown-text">In-class Exercise 2</span></a>
   </li>  
     </ul>
@@ -198,10 +198,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#loading-the-needed-libraries-and-data-preparation" id="toc-loading-the-needed-libraries-and-data-preparation" class="nav-link" data-scroll-target="#loading-the-needed-libraries-and-data-preparation">2. Loading the needed libraries and data preparation</a>
   <ul class="collapse">
-  <li><a href="#loading-the-packages" id="toc-loading-the-packages" class="nav-link" data-scroll-target="#loading-the-packages">2.1 Loading the packages</a>
-  <ul class="collapse">
-  <li><a href="#the-code" id="toc-the-code" class="nav-link" data-scroll-target="#the-code">The Code:</a></li>
-  </ul></li>
+  <li><a href="#loading-the-packages" id="toc-loading-the-packages" class="nav-link" data-scroll-target="#loading-the-packages">2.1 Loading the packages</a></li>
   <li><a href="#importing-data-and-preparation" id="toc-importing-data-and-preparation" class="nav-link" data-scroll-target="#importing-data-and-preparation">2.2 Importing data and preparation</a></li>
   </ul></li>
   <li><a href="#data-overview-and-data-wrangling" id="toc-data-overview-and-data-wrangling" class="nav-link" data-scroll-target="#data-overview-and-data-wrangling">3. Data overview and data wrangling</a>
@@ -273,7 +270,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="the-data" class="level2">
 <h2 class="anchored" data-anchor-id="the-data">1.2 The data</h2>
-<p>For this exercise and to accomplish the task, transaction data of REALIS will be used, which provides comprehensive and up-to-date statistics on the property market in Singapore.</p>
+<p>For this exercise and to accomplish the task, transaction data of <a href="https://www.ura.gov.sg/reis/index">REALIS</a> will be used, which provides comprehensive and up-to-date statistics on the property market in Singapore.</p>
 <p>A complete set of the private residential property transaction data from 1st January 2023 to 31st March 2024</p>
 </section>
 </section>
@@ -288,8 +285,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">ggthemes</a>: a package to provide some extra themes, geoms, and scales for ‘ggplot2’.</p>
 <p><a href="https://wilkelab.org/ggridges/">ggridges</a>: a package for Ridgeline plots, which are partially overlapping line plots that create the impression of a mountain range.</p>
 <p><a href="https://mjskay.github.io/ggdist/reference/ggdist-package.html">ggdist</a>: an R package that provides a flexible set of ggplot2 geoms and stats designed especially for visualizing distributions and uncertainty which will assist with ggridges package</p>
-<section id="the-code" class="level3">
-<h3 class="anchored" data-anchor-id="the-code">The Code:</h3>
+<section id="the-code" class="level4">
+<h4 class="anchored" data-anchor-id="the-code">The Code:</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(ggrepel, patchwork, </span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>               ggthemes, hrbrthemes,</span>
