@@ -1,0 +1,21 @@
+---
+title: "Hands-on Exercise 3.2"
+author: "Ha Duc Tien"
+date: "April 25, 2024"
+date-modified: "last-modified"
+execute: 
+  eval: true
+  echo: true
+  warning: false
+  freeze: true
+---
+
+# 1. Getting Started
+
+## 1.1 Install and launching R packages
+
+The Code chunk below uses p_load() function of pacman package to check if tidyverse packages are installed in the computer. If they are, then they will be launched into R.
+
+```{r}
+pacman::p_load(tidyverse)
+```

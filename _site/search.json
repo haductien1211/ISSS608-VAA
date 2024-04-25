@@ -136,92 +136,92 @@
     "objectID": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#modifying-a-geometric-object-by-changing-aes",
     "href": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#modifying-a-geometric-object-by-changing-aes",
     "title": "Hands-on Exercise 1",
-    "section": "Modifying a geometric object by changing aes()",
-    "text": "Modifying a geometric object by changing aes()\n\nggplot(data=exam_data, \n       aes(x= MATHS, \n           fill = GENDER)) +\n  geom_histogram(bins=20, \n                 color=\"grey30\")"
+    "section": "5.1 Modifying a geometric object by changing aes()",
+    "text": "5.1 Modifying a geometric object by changing aes()\n\nggplot(data=exam_data, \n       aes(x= MATHS, \n           fill = GENDER)) +\n  geom_histogram(bins=20, \n                 color=\"grey30\")"
   },
   {
     "objectID": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#modifying-a-geometric-object-by-changing-geom",
     "href": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#modifying-a-geometric-object-by-changing-geom",
     "title": "Hands-on Exercise 1",
-    "section": "Modifying a geometric object by changing geom()",
-    "text": "Modifying a geometric object by changing geom()\n\nggplot(data=exam_data, \n       aes(x= MATHS)) +\n  geom_histogram(bins=20,            \n                 color=\"black\",      \n                 fill=\"light blue\")"
+    "section": "5.2 Modifying a geometric object by changing geom()",
+    "text": "5.2 Modifying a geometric object by changing geom()\n\nggplot(data=exam_data, \n       aes(x= MATHS)) +\n  geom_histogram(bins=20,            \n                 color=\"black\",      \n                 fill=\"light blue\")"
   },
   {
     "objectID": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#using-geom-density-to-plots-kernel-density-estimate",
     "href": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#using-geom-density-to-plots-kernel-density-estimate",
     "title": "Hands-on Exercise 1",
-    "section": "Using geom-density() to plots kernel density estimate",
-    "text": "Using geom-density() to plots kernel density estimate\n\nggplot(data=exam_data, \n       aes(x = MATHS, \n           colour = GENDER)) +\n  geom_density()"
+    "section": "5.3 Using geom-density() to plots kernel density estimate",
+    "text": "5.3 Using geom-density() to plots kernel density estimate\n\nggplot(data=exam_data, \n       aes(x = MATHS, \n           colour = GENDER)) +\n  geom_density()"
   },
   {
     "objectID": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#plotting-a-simple-box-plot-using-notched-plot",
     "href": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#plotting-a-simple-box-plot-using-notched-plot",
     "title": "Hands-on Exercise 1",
-    "section": "Plotting a simple box plot using notched plot",
-    "text": "Plotting a simple box plot using notched plot\n\nggplot(data=exam_data, \n       aes(y = MATHS, \n           x= GENDER)) +\n  geom_boxplot(notch=TRUE)"
+    "section": "6.1 Plotting a simple box plot using notched plot",
+    "text": "6.1 Plotting a simple box plot using notched plot\n\nggplot(data=exam_data, \n       aes(y = MATHS, \n           x= GENDER)) +\n  geom_boxplot(notch=TRUE)"
   },
   {
     "objectID": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#combining-box-plot-and-scatterplot",
     "href": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#combining-box-plot-and-scatterplot",
     "title": "Hands-on Exercise 1",
-    "section": "Combining box plot and scatterplot",
-    "text": "Combining box plot and scatterplot\n\nggplot(data=exam_data, \n       aes(y = MATHS, \n           x= GENDER)) +\n  geom_boxplot() +                    \n  geom_point(position=\"jitter\", \n             size = 0.5)"
+    "section": "8.1 Combining box plot and scatterplot",
+    "text": "8.1 Combining box plot and scatterplot\n\nggplot(data=exam_data, \n       aes(y = MATHS, \n           x= GENDER)) +\n  geom_boxplot() +                    \n  geom_point(position=\"jitter\", \n             linewidth = 0.5)"
   },
   {
     "objectID": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#working-with-stat---the-stat_summary-method",
     "href": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#working-with-stat---the-stat_summary-method",
     "title": "Hands-on Exercise 1",
-    "section": "Working with stat - the stat_summary() method",
-    "text": "Working with stat - the stat_summary() method\n\nggplot(data=exam_data, \n       aes(y = MATHS, x= GENDER)) +\n  geom_boxplot() +\n  stat_summary(geom = \"point\",       \n               fun=\"mean\",         \n               colour =\"red\",        \n               size=4)"
+    "section": "9.1 Working with stat - the stat_summary() method",
+    "text": "9.1 Working with stat - the stat_summary() method\n\nggplot(data=exam_data, \n       aes(y = MATHS, x= GENDER)) +\n  geom_boxplot() +\n  stat_summary(geom = \"point\",       \n               fun=\"mean\",         \n               colour =\"red\",        \n               size=4)"
   },
   {
     "objectID": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#working-with-stat---the-geom-method",
     "href": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#working-with-stat---the-geom-method",
     "title": "Hands-on Exercise 1",
-    "section": "Working with stat - the geom() method",
-    "text": "Working with stat - the geom() method\n\nggplot(data=exam_data, \n       aes(y = MATHS, x= GENDER)) +\n  geom_boxplot() +\n  geom_point(stat=\"summary\",        \n             fun =\"mean\",           \n             colour =\"red\",          \n             size=4)"
+    "section": "9.2 Working with stat - the geom() method",
+    "text": "9.2 Working with stat - the geom() method\n\nggplot(data=exam_data, \n       aes(y = MATHS, x= GENDER)) +\n  geom_boxplot() +\n  geom_point(stat=\"summary\",        \n             fun =\"mean\",           \n             colour =\"red\",          \n             size=4)"
   },
   {
     "objectID": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#adding-a-best-fit-curve-on-a-scatterplot",
     "href": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#adding-a-best-fit-curve-on-a-scatterplot",
     "title": "Hands-on Exercise 1",
-    "section": "Adding a best fit curve on a scatterplot",
-    "text": "Adding a best fit curve on a scatterplot\n\nggplot(data=exam_data, \n       aes(x= MATHS, y=ENGLISH)) +\n  geom_point() +\n  geom_smooth(linewidth=0.5)\n\n\n\n\n\nDefault smoothing method\n\nggplot(data=exam_data, \n       aes(x= MATHS, \n           y=ENGLISH)) +\n  geom_point() +\n  geom_smooth(method=lm, \n              size=0.5)"
+    "section": "9.3 Adding a best fit curve on a scatterplot",
+    "text": "9.3 Adding a best fit curve on a scatterplot\n\nggplot(data=exam_data, \n       aes(x= MATHS, y=ENGLISH)) +\n  geom_point() +\n  geom_smooth(linewidth=0.5)\n\n\n\n\n\n9.3.1 Default smoothing method\n\nggplot(data=exam_data, \n       aes(x= MATHS, \n           y=ENGLISH)) +\n  geom_point() +\n  geom_smooth(method=lm, \n              size=0.5)"
   },
   {
     "objectID": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#working-with-facet_wrap",
     "href": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#working-with-facet_wrap",
     "title": "Hands-on Exercise 1",
-    "section": "Working with facet_wrap()",
-    "text": "Working with facet_wrap()\n\nggplot(data=exam_data, \n       aes(x= MATHS)) +\n  geom_histogram(bins=20) +\n    facet_wrap(~ CLASS)"
+    "section": "10.1 Working with facet_wrap()",
+    "text": "10.1 Working with facet_wrap()\n\nggplot(data=exam_data, \n       aes(x= MATHS)) +\n  geom_histogram(bins=20) +\n    facet_wrap(~ CLASS)"
   },
   {
     "objectID": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#facet_grid-function",
     "href": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#facet_grid-function",
     "title": "Hands-on Exercise 1",
-    "section": "facet_grid() function",
-    "text": "facet_grid() function\n\nggplot(data=exam_data, \n       aes(x= MATHS)) +\n  geom_histogram(bins=20) +\n    facet_grid(~ CLASS)"
+    "section": "10.2 facet_grid() function",
+    "text": "10.2 facet_grid() function\n\nggplot(data=exam_data, \n       aes(x= MATHS)) +\n  geom_histogram(bins=20) +\n    facet_grid(~ CLASS)"
   },
   {
     "objectID": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#working-with-coordinate",
     "href": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#working-with-coordinate",
     "title": "Hands-on Exercise 1",
-    "section": "Working with Coordinate",
-    "text": "Working with Coordinate\n\nFlips the horizontal bar chart into vertical bar chart by using coord_flip()\n\nggplot(data=exam_data, \n       aes(x=RACE)) +\n  geom_bar() +\n  coord_flip()"
+    "section": "11.1 Working with Coordinate",
+    "text": "11.1 Working with Coordinate\n\n11.1.1 Flips the horizontal bar chart into vertical bar chart by using coord_flip()\n\nggplot(data=exam_data, \n       aes(x=RACE)) +\n  geom_bar() +\n  coord_flip()"
   },
   {
     "objectID": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#changing-the-y--and-x-axis-range",
     "href": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#changing-the-y--and-x-axis-range",
     "title": "Hands-on Exercise 1",
-    "section": "Changing the y- and x-axis range",
-    "text": "Changing the y- and x-axis range\n\nFixed both the y-axis and x-axis range from 0-100.\n\nggplot(data=exam_data, \n       aes(x= MATHS, y=ENGLISH)) +\n  geom_point() +\n  geom_smooth(method=lm, \n              size=0.5) +  \n  coord_cartesian(xlim=c(0,100),\n                  ylim=c(0,100))"
+    "section": "11.2 Changing the y- and x-axis range",
+    "text": "11.2 Changing the y- and x-axis range\n\n11.2.1 Fixed both the y-axis and x-axis range from 0-100.\n\nggplot(data=exam_data, \n       aes(x= MATHS, y=ENGLISH)) +\n  geom_point() +\n  geom_smooth(method=lm, \n              size=0.5) +  \n  coord_cartesian(xlim=c(0,100),\n                  ylim=c(0,100))"
   },
   {
     "objectID": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#working-with-theme",
     "href": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#working-with-theme",
     "title": "Hands-on Exercise 1",
-    "section": "Working with theme",
-    "text": "Working with theme\n\nPlot a horizontal bar chart using theme_gray()\n\nggplot(data=exam_data, \n       aes(x=RACE)) +\n  geom_bar() +\n  coord_flip() +\n  theme_gray()\n\n\n\n\n\n\nPlotted using theme_classic()\n\nggplot(data=exam_data, \n       aes(x=RACE)) +\n  geom_bar() +\n  coord_flip() +\n  theme_classic()\n\n\n\n\n\n\nPlotted using theme_minimal()\n\nggplot(data=exam_data, \n       aes(x=RACE)) +\n  geom_bar() +\n  coord_flip() +\n  theme_minimal()\n\n\n\n\n\nggplot(data=exam_data, \n       aes(x=RACE)) +\n  geom_bar() +\n  coord_flip() +\n  theme_bw()"
+    "section": "12.1 Working with theme",
+    "text": "12.1 Working with theme\n\n12.1.1 Plot a horizontal bar chart using theme_gray()\n\nggplot(data=exam_data, \n       aes(x=RACE)) +\n  geom_bar() +\n  coord_flip() +\n  theme_gray()\n\n\n\n\n\n\n12.1.2 Plotted using theme_classic()\n\nggplot(data=exam_data, \n       aes(x=RACE)) +\n  geom_bar() +\n  coord_flip() +\n  theme_classic()\n\n\n\n\n\n\n12.1.3 Plotted using theme_minimal()\n\nggplot(data=exam_data, \n       aes(x=RACE)) +\n  geom_bar() +\n  coord_flip() +\n  theme_minimal()\n\n\n\n\n\nggplot(data=exam_data, \n       aes(x=RACE)) +\n  geom_bar() +\n  coord_flip() +\n  theme_bw()"
   },
   {
     "objectID": "In-class_Ex/In-class_Ex01/In-class_Ex01.html",
@@ -341,5 +341,61 @@
     "title": "Take-home Exercise 1",
     "section": "4.2 Time series data visualization from 2023 to first quarter of 2024",
     "text": "4.2 Time series data visualization from 2023 to first quarter of 2024\nThis part of the data visualization contain 3 plots:\n\nOn the top is a bar plot, counting the number of monthly sales breaking down by different Property Type\nIn the middle is a box plot showing the monthly distribution of Unit Price ($ PSM) by different Property Type\nBottom plot is a line plot as further breakdown from the middle box plot, showing the movement of Mean Unit Price ($ PSM) by different Property Type\n\n\nThe PlotThe Code\n\n\n\n\n\n\n\n\n\n\nplot4 &lt;- ggplot(data = Realis, aes(x = `Sale Month`)) +\n    geom_bar(color = \"grey10\", aes(fill = `Property Type`)) +\n    scale_x_discrete(name =\"Sale Month\", \n                     limits = c(\"Jan 2023\", \"Feb 2023\", \"Mar 2023\", \n                        \"Apr 2023\",\"May 2023\",\"Jun 2023\", \n                        \"Jul 2023\", \"Aug 2023\", \"Sep 2023\",\n                        \"Oct 2023\", \"Nov 2023\", \"Dec 2023\", \n                        \"Jan 2024\", \"Feb 2024\", \"Mar 2024\")) +\n  \n    ggtitle(\"Monthly number of sales by Property Type\") +\n    theme_economist() +\n    theme(axis.text=element_text(size = 15), \n          axis.title = element_text(size = 18)\n          , title = element_text(size = 20), axis)\n\nplot5 &lt;- ggplot(data = Realis, aes(x = `Sale Month`, y = `Unit Price ($ PSM)`)) +\n    scale_x_discrete(name =\"Sale Month\",\n                   limits = c(\"Jan 2023\", \"Feb 2023\", \"Mar 2023\",\n                      \"Apr 2023\",\"May 2023\",\"Jun 2023\",\n                      \"Jul 2023\", \"Aug 2023\", \"Sep 2023\",\n                      \"Oct 2023\", \"Nov 2023\", \"Dec 2023\",\n                      \"Jan 2024\", \"Feb 2024\", \"Mar 2024\")) +\n    \n    geom_boxplot(aes(color=`Property Type`)) + \n    theme(axis.text=element_text(size=12)) +\n    ggtitle(\"Monthly changes in Unit Price ($PSM)\")+\n    theme_economist() +\n    theme(axis.text=element_text(size = 15), \n          axis.title = element_text(size = 18)\n          , title = element_text(size = 20))\n\nby_month &lt;- Realis %&gt;%\n  group_by(`Property Type`, `Sale Month`) %&gt;%\n  summarise(`Mean Unit Price ($ PSM)` = mean(`Unit Price ($ PSM)`))\n\nby_month$`Sale Month` &lt;- factor(by_month$`Sale Month`, \n                                levels = c(\"Jan 2023\", \"Feb 2023\", \"Mar 2023\",\n                                            \"Apr 2023\",\"May 2023\",\"Jun 2023\",\n                                            \"Jul 2023\", \"Aug 2023\", \"Sep 2023\",\n                                            \"Oct 2023\", \"Nov 2023\", \"Dec 2023\",\n                                            \"Jan 2024\", \"Feb 2024\", \"Mar 2024\"))\n\nby_month &lt;- by_month[order(by_month$`Sale Month`),]\n\n\nplot6 &lt;- ggplot(data = by_month, aes(x = `Sale Month`, y = `Mean Unit Price ($ PSM)`, \n                            group = `Property Type`)) +\n    geom_path(aes(color = `Property Type`), size = 1) +\n    geom_point(size = 1.5) +\n    theme(axis.text=element_text(size=12))+\n    ggtitle(\"Monthly changes in Mean Unit Price ($PSM) 2023 to first quarter 2024\")+\n    theme_economist() +\n    theme(axis.text=element_text(size = 15), \n        axis.title = element_text(size = 18)\n        , title = element_text(size = 20))\n\n(plot4 / plot5 / plot6)\n\n\n\n\n\n\n\n\n\n\nObservations and insights\n\n\n\nFrom the data visualizations above, here are my observations:\n\nThe main property types for sales from Jan 2023 to Mar 2024 seem to be Apartment and Condominium followed by Executive Condominium. The highest sales amount for this period occurred in July 2023\nThe overall Unit Price ($ PSM) for different property type during the period seems stable except for Detached House which has a dip in July 2023 and Executive Condominium with overall downward trend and a dip in Jun 2023. For Apartment type, there seems to be an overall downward trend for Mean Unit Price ($ PSM) but seems to be picking up again\nSurprisingly, contrary to what being observed in the scatterplot where some of the most expensive properties are Executive Condominium, their overall Mean Unit Price ($ PSM) has been the lowest and quite stable, albeit there is a small increase starting 2024"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex03.1/Hands-on_Ex03.1.html",
+    "href": "Hands-on_Ex/Hands-on_Ex03.1/Hands-on_Ex03.1.html",
+    "title": "Hands-on Exercise 3.1",
+    "section": "",
+    "text": "In this hands-on exercise, I will be exploring interactive data visualisation by using functions provided by ggiraph and plotlyr packages\n\n\nThe Code chunk below uses p_load() function of pacman package to check if tidyverse packages are installed in the computer. If they are, then they will be launched into R.\n\npacman::p_load(tidyverse, ggiraph, patchwork, DT, plotly)\n\n\n\n\n\nexam_data &lt;- read_csv(\"data/Exam_data.csv\")"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex03.1/Hands-on_Ex03.1.html#install-and-launching-r-packages",
+    "href": "Hands-on_Ex/Hands-on_Ex03.1/Hands-on_Ex03.1.html#install-and-launching-r-packages",
+    "title": "Hands-on Exercise 3.1",
+    "section": "",
+    "text": "The Code chunk below uses p_load() function of pacman package to check if tidyverse packages are installed in the computer. If they are, then they will be launched into R.\n\npacman::p_load(tidyverse, ggiraph, patchwork, DT, plotly)"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex03.1/Hands-on_Ex03.1.html#importing-the-data",
+    "href": "Hands-on_Ex/Hands-on_Ex03.1/Hands-on_Ex03.1.html#importing-the-data",
+    "title": "Hands-on Exercise 3.1",
+    "section": "",
+    "text": "exam_data &lt;- read_csv(\"data/Exam_data.csv\")"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex03.1/Hands-on_Ex03.1.html#tooltip-effect-with-tooltip-aesthetic",
+    "href": "Hands-on_Ex/Hands-on_Ex03.1/Hands-on_Ex03.1.html#tooltip-effect-with-tooltip-aesthetic",
+    "title": "Hands-on Exercise 3.1",
+    "section": "2.1 Tooltip effect with tooltip aesthetic",
+    "text": "2.1 Tooltip effect with tooltip aesthetic\n\nThe Code\n\np1 &lt;- ggplot(data=exam_data, aes(x = MATHS)) +\n      geom_dotplot_interactive(aes(tooltip = ID), stackgroups = TRUE, \n                               binwidth = 1, method = \"histodot\") +\n      scale_y_continuous(NULL,  breaks = NULL)\n\ngirafe(ggobj = p1, width_svg = 6,height_svg = 6*0.618)\n\nTwo steps are involved, first, an interactive version of ggplot2 geom (geom_dotplot_interactive()) will be used to create the basic graph. Then, girafe() will be used to generate an svg object to be displayed on an html page.\n###Interactivity\nBy hovering the mouse pointer on an data point of interest, the student’s ID will be displayed."
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex03.1/Hands-on_Ex03.1.html#displaying-multiple-information-on-tooltip",
+    "href": "Hands-on_Ex/Hands-on_Ex03.1/Hands-on_Ex03.1.html#displaying-multiple-information-on-tooltip",
+    "title": "Hands-on Exercise 3.1",
+    "section": "2.2 Displaying multiple information on tooltip",
+    "text": "2.2 Displaying multiple information on tooltip\nThe content of the tooltip can be customised by including a list object as shown in the code chunk below.\n\nThe Code\n\nexam_data$tooltip &lt;- c(paste0( \"Name = \", exam_data$ID, \n                               \"\\n Class = \", exam_data$CLASS)) \n\np2 &lt;- ggplot(data=exam_data, aes(x = ENGLISH)) +\n      geom_dotplot_interactive(aes(tooltip = exam_data$tooltip), stackgroups = TRUE, \n                               binwidth = 1, method = \"histodot\") +\n      scale_y_continuous(NULL,  breaks = NULL)\n\ngirafe(ggobj = p2, width_svg = 8,height_svg = 8*0.618)\n\n###Interactivity\nBy hovering the mouse pointer on an data point of interest, the student’s ID and Class will be displayed."
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex03.1/Hands-on_Ex03.1.html#customising-tooltip-style",
+    "href": "Hands-on_Ex/Hands-on_Ex03.1/Hands-on_Ex03.1.html#customising-tooltip-style",
+    "title": "Hands-on Exercise 3.1",
+    "section": "2.3 Customising Tooltip style",
+    "text": "2.3 Customising Tooltip style\nCode chunk below uses opts_tooltip() of ggiraph to customize tooltip rendering by add css declarations\n\nThe Code\n\ntooltip_css &lt;- \"background-color:white; font-style:bold; color:black;\"\n\np3 &lt;- ggplot(data=exam_data, aes(x = MATHS)) +\n  geom_dotplot_interactive(aes(tooltip = ID), stackgroups = TRUE,\n                           binwidth = 1, method = \"histodot\") +               \n  scale_y_continuous(NULL,breaks = NULL)\n\ngirafe(ggobj = p3, width_svg = 6, height_svg = 6*0.618, \n       options = list(opts_tooltip(css = tooltip_css)))\n\n\n\nInteractivity"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex03.2/Hands-on_Ex03.2.html",
+    "href": "Hands-on_Ex/Hands-on_Ex03.2/Hands-on_Ex03.2.html",
+    "title": "Hands-on Exercise 3.2",
+    "section": "",
+    "text": "The Code chunk below uses p_load() function of pacman package to check if tidyverse packages are installed in the computer. If they are, then they will be launched into R.\n\npacman::p_load(tidyverse)"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex03.2/Hands-on_Ex03.2.html#install-and-launching-r-packages",
+    "href": "Hands-on_Ex/Hands-on_Ex03.2/Hands-on_Ex03.2.html#install-and-launching-r-packages",
+    "title": "Hands-on Exercise 3.2",
+    "section": "",
+    "text": "The Code chunk below uses p_load() function of pacman package to check if tidyverse packages are installed in the computer. If they are, then they will be launched into R.\n\npacman::p_load(tidyverse)"
   }
 ]

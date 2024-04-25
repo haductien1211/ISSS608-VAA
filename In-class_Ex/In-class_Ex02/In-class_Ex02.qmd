@@ -10,14 +10,12 @@ execute:
   freeze: true
 ---
 
-#Getting Started
-## Loading R packages
+#Getting Started \## Loading R packages
 
-:::panel-tabset
+::: panel-tabset
 ## The task
 
-Loading the below library:
-tidyverse, ggdist, ggridges, colorspace, ggthemes
+Loading the below library: tidyverse, ggdist, ggridges, colorspace, ggthemes
 
 ## The code
 
@@ -32,7 +30,6 @@ pacman::p_load(tidyverse, ggdist, ggridges,
 ```{r}
 exam_df <- read_csv("data/Exam_data.csv")
 ```
-
 
 ## Visualising Distribution
 
