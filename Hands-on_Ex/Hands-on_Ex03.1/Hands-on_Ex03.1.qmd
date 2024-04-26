@@ -309,4 +309,221 @@ girafe(ggobj = p7, width_svg = 6, height_svg = 6*0.618)
 
 # 2.9 Coordinated Multiple Views with ggiraph
 
+```{r}
+#| echo: false
+p8 <- ggplot(data=exam_data, aes(x = MATHS)) +
+      geom_dotplot_interactive(aes(data_id = ID), stackgroups = TRUE, 
+                               binwidth = 1, method = "histodot") +  
+      coord_cartesian(xlim=c(0,100)) + 
+      scale_y_continuous(NULL, breaks = NULL)
 
+p9 <- ggplot(data=exam_data, aes(x = ENGLISH)) +
+      geom_dotplot_interactive(aes(data_id = ID), stackgroups = TRUE,
+                               binwidth = 1, method = "histodot") + 
+      coord_cartesian(xlim=c(0,100)) + 
+      scale_y_continuous(NULL, breaks = NULL)
+
+girafe(code = print(p8 + p9), width_svg = 6, height_svg = 3, 
+       options = list(opts_hover(css = "fill: #202020;"),
+                      opts_hover_inv(css = "opacity:0.2;"))) 
+```
+
+In order to build a coordinated multiple views, the following programming strategy will be used:
+
+1.    Appropriate interactive functions of ggiraph will be used to create the multiple views.
+2.    patchwork function of patchwork package will be used inside girafe function to create the interactive coordinated multiple views.
+
+```{r}
+#| eval: false
+p8 <- ggplot(data=exam_data, aes(x = MATHS)) +
+      geom_dotplot_interactive(aes(data_id = ID), stackgroups = TRUE, 
+                               binwidth = 1, method = "histodot") +  
+      coord_cartesian(xlim=c(0,100)) + 
+      scale_y_continuous(NULL, breaks = NULL)
+
+p9 <- ggplot(data=exam_data, aes(x = ENGLISH)) +
+      geom_dotplot_interactive(aes(data_id = ID), stackgroups = TRUE,
+                               binwidth = 1, method = "histodot") + 
+      coord_cartesian(xlim=c(0,100)) + 
+      scale_y_continuous(NULL, breaks = NULL)
+
+girafe(code = print(p8 + p9), width_svg = 6, height_svg = 3, 
+       options = list(opts_hover(css = "fill: #202020;"),
+                      opts_hover_inv(css = "opacity:0.2;"))) 
+```
+
+# 3. Interactive Data Visualisation - plotly methods
+
+## 3.1 Creating an interactive scatter plot: plot_ly() method
+
+The tabset below shows an example a basic interactive plot created by using plot_ly().
+
+
+:::panel-tabset
+## The Plot
+
+```{r}
+#| echo: false
+
+plot_ly(data = exam_data, x = ~MATHS, y = ~ENGLISH)
+```
+
+## The Code
+
+```{r}
+#| eval: false
+
+plot_ly(data = exam_data, x = ~MATHS, y = ~ENGLISH)
+```
+:::
+
+## 3.2  Working with visual variable: plot_ly() method
+
+In the code chunk below, color argument is mapped to a qualitative visual variable (i.e. RACE).
+
+:::panel-tabset
+
+## The plot
+```{r}
+#| echo: false
+
+plot_ly(data = exam_data, x = ~MATHS, y = ~ENGLISH, color = ~RACE)
+```
+
+## The Code
+
+```{r}
+#| eval: false
+
+plot_ly(data = exam_data, x = ~MATHS, y = ~ENGLISH, color = ~RACE)
+```
+:::
+
+## 3.3 Creating an interactive scatter plot: ggplotly() method
+
+The code chunk below plots an interactive scatter plot by using ggplotly().
+
+:::panel-tabset
+
+## The Plot
+
+```{r}
+#| echo: false
+
+p8 <- ggplot(data=exam_data, aes(x = MATHS, y = ENGLISH)) +
+      geom_point(size=1) +
+      coord_cartesian(xlim=c(0,100), ylim=c(0,100))
+
+ggplotly(p8)
+```
+
+## The Code
+
+```{r}
+#| eval: false
+
+p8 <- ggplot(data=exam_data, aes(x = MATHS, y = ENGLISH)) +
+      geom_point(size=1) +
+      coord_cartesian(xlim=c(0,100), ylim=c(0,100))
+
+ggplotly(p8)
+```
+:::
+
+
+## 3.4 Coordinated Multiple Views with plotly
+
+
+The creation of a coordinated linked plot by using plotly involves three steps:
+
+-   [highlight_key()](https://www.rdocumentation.org/packages/plotly/versions/4.9.2/topics/highlight_key) of plotly package is used as shared data.
+-   2 scatterplots will be created by using ggplot2 functions.
+-   [subplot()](https://plotly.com/r/subplots/) of plotly package is used to place them next to each other side-by-side.
+
+
+:::panel-tabset
+
+## The Plot
+
+```{r}
+#| echo: false
+
+d <- highlight_key(exam_data)
+p9 <- ggplot(data=d, aes(x = MATHS, y = ENGLISH)) +
+        geom_point(size=1) +
+        coord_cartesian(xlim=c(0,100),ylim=c(0,100))
+
+p10 <- ggplot(data=d, aes(x = MATHS, y = SCIENCE)) +
+        geom_point(size=1) +
+        coord_cartesian(xlim=c(0,100), ylim=c(0,100))
+
+subplot(ggplotly(p9),
+        ggplotly(p10))
+
+```
+## The Code
+
+
+```{r}
+#| eval: false
+
+d <- highlight_key(exam_data)
+p9 <- ggplot(data=d, aes(x = MATHS, y = ENGLISH)) +
+        geom_point(size=1) +
+        coord_cartesian(xlim=c(0,100),ylim=c(0,100))
+
+p10 <- ggplot(data=d, aes(x = MATHS, y = SCIENCE)) +
+        geom_point(size=1) +
+        coord_cartesian(xlim=c(0,100), ylim=c(0,100))
+
+subplot(ggplotly(p9),
+        ggplotly(p10))
+
+```
+:::
+
+
+# 4. Interactive Data Visualisation - crosstalk methods!
+
+## 4.1 Interactive Data Table: DT package
+
+A wrapper of the JavaScript Library [DataTables](https://datatables.net/)
+
+Data objects in R can be rendered as HTML tables using the JavaScript library ‘DataTables’ (typically via R Markdown or Shiny).
+
+```{r}
+DT::datatable(exam_data, class= "display", style = "bootstrap5")
+```
+
+## 4.2 Linked brushing: crosstalk method
+
+:::panel-tabset
+## The Plot
+
+```{r}
+#| echo: false
+d <- highlight_key(exam_data) 
+p11 <- ggplot(d, aes(ENGLISH, MATHS)) + 
+        geom_point(size=1) +
+        coord_cartesian(xlim=c(0,100), ylim=c(0,100))
+
+gg <- highlight(ggplotly(p11), "plotly_selected")  
+
+crosstalk::bscols(gg, DT::datatable(d, class= "display", 
+                                    style = "bootstrap5"), widths = 5)        
+```
+## The Code
+
+```{r}
+#| eval: false
+d <- highlight_key(exam_data) 
+p11 <- ggplot(d, aes(ENGLISH, MATHS)) + 
+        geom_point(size=1) +
+        coord_cartesian(xlim=c(0,100), ylim=c(0,100))
+
+gg <- highlight(ggplotly(p11),"plotly_selected")  
+
+crosstalk::bscols(gg, DT::datatable(d,class= "display", 
+                                    style = "bootstrap5"), widths = 5)        
+```
+:::
