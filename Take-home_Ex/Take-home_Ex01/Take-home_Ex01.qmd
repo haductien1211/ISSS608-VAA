@@ -18,7 +18,7 @@ Assuming the role of a graphical editor of a median company, the purpose of this
 
 ## 1.2 The data
 
-For this exercise and to accomplish the task, transaction data of REALIS will be used, which provides comprehensive and up-to-date statistics on the property market in Singapore.
+For this exercise and to accomplish the task, transaction data of [REALIS](https://www.ura.gov.sg/reis/index) will be used, which provides comprehensive and up-to-date statistics on the property market in Singapore.
 
 A complete set of the private residential property transaction data from 1st January 2023 to 31st March 2024
 
@@ -40,7 +40,7 @@ For this Take-home exercise 1, I am planning to use some of the libraries below:
 
 [ggdist](https://mjskay.github.io/ggdist/reference/ggdist-package.html): an R package that provides a flexible set of ggplot2 geoms and stats designed especially for visualizing distributions and uncertainty which will assist with ggridges package
 
-### The Code:
+#### The Code:
 
 ```{r}
 pacman::p_load(ggrepel, patchwork, 

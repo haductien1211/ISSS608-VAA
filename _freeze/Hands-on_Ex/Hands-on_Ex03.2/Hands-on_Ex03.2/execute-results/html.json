@@ -1,0 +1,14 @@
+{
+  "hash": "a3f679a8d62567316b4e1d69d8fe2bb3",
+  "result": {
+    "markdown": "---\ntitle: \"Hands-on Exercise 1\"\nauthor: \"Ha Duc Tien\"\ndate: \"April 12, 2024\"\ndate-modified: \"last-modified\"\nexecute: \n  eval: true\n  echo: true\n  warning: false\n  freeze: true\n---\n\n\n# 1. Getting Started\n\n## 1.1 Install and launching R packages\n\nThe Code chunk below uses p_load() function of pacman package to check if tidyverse packages are installed in the computer. If they are, then they will be launched into R.\n\n\n::: {.cell}\n\n```{.r .cell-code}\npacman::p_load(tidyverse)\n```\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

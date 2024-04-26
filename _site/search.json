@@ -284,7 +284,7 @@
     "href": "Take-home_Ex/Take-home_Ex01/Take-home_Ex01.html#loading-the-packages",
     "title": "Take-home Exercise 1",
     "section": "2.1 Loading the packages",
-    "text": "2.1 Loading the packages\nFor this Take-home exercise 1, I am planning to use some of the libraries below:\ntidyverse: The tidyverse is an opinionated collection of R packages designed for data science.\npatchwork: a package to make it simple to combine separate ggplots into the same graphic\nggrepel: a package to provide geoms for ggplot2 to repel overlapping text labels\nggthemes: a package to provide some extra themes, geoms, and scales for ‘ggplot2’.\nggridges: a package for Ridgeline plots, which are partially overlapping line plots that create the impression of a mountain range.\nggdist: an R package that provides a flexible set of ggplot2 geoms and stats designed especially for visualizing distributions and uncertainty which will assist with ggridges package\n\nThe Code:\n\npacman::p_load(ggrepel, patchwork, \n               ggthemes, hrbrthemes,\n               tidyverse, ggridges, ggdist)"
+    "text": "2.1 Loading the packages\nFor this Take-home exercise 1, I am planning to use some of the libraries below:\ntidyverse: The tidyverse is an opinionated collection of R packages designed for data science.\npatchwork: a package to make it simple to combine separate ggplots into the same graphic\nggrepel: a package to provide geoms for ggplot2 to repel overlapping text labels\nggthemes: a package to provide some extra themes, geoms, and scales for ‘ggplot2’.\nggridges: a package for Ridgeline plots, which are partially overlapping line plots that create the impression of a mountain range.\nggdist: an R package that provides a flexible set of ggplot2 geoms and stats designed especially for visualizing distributions and uncertainty which will assist with ggridges package\n\nThe Code:\n\npacman::p_load(ggrepel, patchwork, \n               ggthemes, hrbrthemes,\n               tidyverse, ggridges, ggdist)\n\npackage 'hrbrthemes' successfully unpacked and MD5 sums checked\n\nThe downloaded binary packages are in\n    C:\\Users\\tien_\\AppData\\Local\\Temp\\RtmpysdqRZ\\downloaded_packages"
   },
   {
     "objectID": "Take-home_Ex/Take-home_Ex01/Take-home_Ex01.html#importing-the-data",
@@ -341,5 +341,61 @@
     "title": "Take-home Exercise 1",
     "section": "4.2 Time series data visualization from 2023 to first quarter of 2024",
     "text": "4.2 Time series data visualization from 2023 to first quarter of 2024\nThis part of the data visualization contain 3 plots:\n\nOn the top is a bar plot, counting the number of monthly sales breaking down by different Property Type\nIn the middle is a box plot showing the monthly distribution of Unit Price ($ PSM) by different Property Type\nBottom plot is a line plot as further breakdown from the middle box plot, showing the movement of Mean Unit Price ($ PSM) by different Property Type\n\n\nThe PlotThe Code\n\n\n\n\n\n\n\n\n\n\nplot4 &lt;- ggplot(data = Realis, aes(x = `Sale Month`)) +\n    geom_bar(color = \"grey10\", aes(fill = `Property Type`)) +\n    scale_x_discrete(name =\"Sale Month\", \n                     limits = c(\"Jan 2023\", \"Feb 2023\", \"Mar 2023\", \n                        \"Apr 2023\",\"May 2023\",\"Jun 2023\", \n                        \"Jul 2023\", \"Aug 2023\", \"Sep 2023\",\n                        \"Oct 2023\", \"Nov 2023\", \"Dec 2023\", \n                        \"Jan 2024\", \"Feb 2024\", \"Mar 2024\")) +\n  \n    ggtitle(\"Monthly number of sales by Property Type\") +\n    theme_economist() +\n    theme(axis.text=element_text(size = 15), \n          axis.title = element_text(size = 18)\n          , title = element_text(size = 20), axis)\n\nplot5 &lt;- ggplot(data = Realis, aes(x = `Sale Month`, y = `Unit Price ($ PSM)`)) +\n    scale_x_discrete(name =\"Sale Month\",\n                   limits = c(\"Jan 2023\", \"Feb 2023\", \"Mar 2023\",\n                      \"Apr 2023\",\"May 2023\",\"Jun 2023\",\n                      \"Jul 2023\", \"Aug 2023\", \"Sep 2023\",\n                      \"Oct 2023\", \"Nov 2023\", \"Dec 2023\",\n                      \"Jan 2024\", \"Feb 2024\", \"Mar 2024\")) +\n    \n    geom_boxplot(aes(color=`Property Type`)) + \n    theme(axis.text=element_text(size=12)) +\n    ggtitle(\"Monthly changes in Unit Price ($PSM)\")+\n    theme_economist() +\n    theme(axis.text=element_text(size = 15), \n          axis.title = element_text(size = 18)\n          , title = element_text(size = 20))\n\nby_month &lt;- Realis %&gt;%\n  group_by(`Property Type`, `Sale Month`) %&gt;%\n  summarise(`Mean Unit Price ($ PSM)` = mean(`Unit Price ($ PSM)`))\n\nby_month$`Sale Month` &lt;- factor(by_month$`Sale Month`, \n                                levels = c(\"Jan 2023\", \"Feb 2023\", \"Mar 2023\",\n                                            \"Apr 2023\",\"May 2023\",\"Jun 2023\",\n                                            \"Jul 2023\", \"Aug 2023\", \"Sep 2023\",\n                                            \"Oct 2023\", \"Nov 2023\", \"Dec 2023\",\n                                            \"Jan 2024\", \"Feb 2024\", \"Mar 2024\"))\n\nby_month &lt;- by_month[order(by_month$`Sale Month`),]\n\n\nplot6 &lt;- ggplot(data = by_month, aes(x = `Sale Month`, y = `Mean Unit Price ($ PSM)`, \n                            group = `Property Type`)) +\n    geom_path(aes(color = `Property Type`), size = 1) +\n    geom_point(size = 1.5) +\n    theme(axis.text=element_text(size=12))+\n    ggtitle(\"Monthly changes in Mean Unit Price ($PSM) 2023 to first quarter 2024\")+\n    theme_economist() +\n    theme(axis.text=element_text(size = 15), \n        axis.title = element_text(size = 18)\n        , title = element_text(size = 20))\n\n(plot4 / plot5 / plot6)\n\n\n\n\n\n\n\n\n\n\nObservations and insights\n\n\n\nFrom the data visualizations above, here are my observations:\n\nThe main property types for sales from Jan 2023 to Mar 2024 seem to be Apartment and Condominium followed by Executive Condominium. The highest sales amount for this period occurred in July 2023\nThe overall Unit Price ($ PSM) for different property type during the period seems stable except for Detached House which has a dip in July 2023 and Executive Condominium with overall downward trend and a dip in Jun 2023. For Apartment type, there seems to be an overall downward trend for Mean Unit Price ($ PSM) but seems to be picking up again\nSurprisingly, contrary to what being observed in the scatterplot where some of the most expensive properties are Executive Condominium, their overall Mean Unit Price ($ PSM) has been the lowest and quite stable, albeit there is a small increase starting 2024"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex03.2/Hands-on_Ex03.2.html",
+    "href": "Hands-on_Ex/Hands-on_Ex03.2/Hands-on_Ex03.2.html",
+    "title": "Hands-on Exercise 1",
+    "section": "",
+    "text": "The Code chunk below uses p_load() function of pacman package to check if tidyverse packages are installed in the computer. If they are, then they will be launched into R.\n\npacman::p_load(tidyverse)"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex03.2/Hands-on_Ex03.2.html#install-and-launching-r-packages",
+    "href": "Hands-on_Ex/Hands-on_Ex03.2/Hands-on_Ex03.2.html#install-and-launching-r-packages",
+    "title": "Hands-on Exercise 1",
+    "section": "",
+    "text": "The Code chunk below uses p_load() function of pacman package to check if tidyverse packages are installed in the computer. If they are, then they will be launched into R.\n\npacman::p_load(tidyverse)"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex03.1/Hands-on_Ex03.1.html",
+    "href": "Hands-on_Ex/Hands-on_Ex03.1/Hands-on_Ex03.1.html",
+    "title": "Hands-on Exercise 3.1",
+    "section": "",
+    "text": "In this hands-on exercise, I will be exploring interactive data visualisation by using functions provided by ggiraph and plotlyr packages\n\n\nThe Code chunk below uses p_load() function of pacman package to check if tidyverse packages are installed in the computer. If they are, then they will be launched into R.\n\npacman::p_load(ggiraph, plotly, \n               patchwork, DT, tidyverse) \n\n\n\n\n\nexam_data &lt;- read_csv(\"data/Exam_data.csv\")"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex03.1/Hands-on_Ex03.1.html#install-and-launching-r-packages",
+    "href": "Hands-on_Ex/Hands-on_Ex03.1/Hands-on_Ex03.1.html#install-and-launching-r-packages",
+    "title": "Hands-on Exercise 3.1",
+    "section": "",
+    "text": "The Code chunk below uses p_load() function of pacman package to check if tidyverse packages are installed in the computer. If they are, then they will be launched into R.\n\npacman::p_load(ggiraph, plotly, \n               patchwork, DT, tidyverse)"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex03.1/Hands-on_Ex03.1.html#importing-the-data",
+    "href": "Hands-on_Ex/Hands-on_Ex03.1/Hands-on_Ex03.1.html#importing-the-data",
+    "title": "Hands-on Exercise 3.1",
+    "section": "",
+    "text": "exam_data &lt;- read_csv(\"data/Exam_data.csv\")"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex03.1/Hands-on_Ex03.1.html#tooltip-effect-with-tooltip-aesthetic",
+    "href": "Hands-on_Ex/Hands-on_Ex03.1/Hands-on_Ex03.1.html#tooltip-effect-with-tooltip-aesthetic",
+    "title": "Hands-on Exercise 3.1",
+    "section": "2.1 Tooltip effect with tooltip aesthetic",
+    "text": "2.1 Tooltip effect with tooltip aesthetic\n\nThe Code\n\np1 &lt;- ggplot(data=exam_data, aes(x = MATHS)) +\n      geom_dotplot_interactive(aes(tooltip = ID), stackgroups = TRUE, \n                               binwidth = 1, method = \"histodot\") +\n      scale_y_continuous(NULL,  breaks = NULL)\n\ngirafe(ggobj = p1, width_svg = 6,height_svg = 6*0.618)\n\nTwo steps are involved, first, an interactive version of ggplot2 geom (geom_dotplot_interactive()) will be used to create the basic graph. Then, girafe() will be used to generate an svg object to be displayed on an html page.\n###Interactivity\nBy hovering the mouse pointer on an data point of interest, the student’s ID will be displayed."
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex03.1/Hands-on_Ex03.1.html#displaying-multiple-information-on-tooltip",
+    "href": "Hands-on_Ex/Hands-on_Ex03.1/Hands-on_Ex03.1.html#displaying-multiple-information-on-tooltip",
+    "title": "Hands-on Exercise 3.1",
+    "section": "2.2 Displaying multiple information on tooltip",
+    "text": "2.2 Displaying multiple information on tooltip\nThe content of the tooltip can be customised by including a list object as shown in the code chunk below.\n\nThe Code\n\nexam_data$tooltip &lt;- c(paste0( \"Name = \", exam_data$ID, \n                               \"\\n Class = \", exam_data$CLASS)) \n\np2 &lt;- ggplot(data=exam_data, aes(x = ENGLISH)) +\n      geom_dotplot_interactive(aes(tooltip = exam_data$tooltip), stackgroups = TRUE, \n                               binwidth = 1, method = \"histodot\") +\n      scale_y_continuous(NULL,  breaks = NULL)\n\ngirafe(ggobj = p2, width_svg = 8,height_svg = 8*0.618)\n\n###Interactivity\nBy hovering the mouse pointer on an data point of interest, the student’s ID and Class will be displayed."
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex03.1/Hands-on_Ex03.1.html#customising-tooltip-style",
+    "href": "Hands-on_Ex/Hands-on_Ex03.1/Hands-on_Ex03.1.html#customising-tooltip-style",
+    "title": "Hands-on Exercise 3.1",
+    "section": "2.3 Customising Tooltip style",
+    "text": "2.3 Customising Tooltip style\nCode chunk below uses opts_tooltip() of ggiraph to customize tooltip rendering by add css declarations\n\nThe Code\n\ntooltip_css &lt;- \"background-color:white; font-style:bold; color:black;\"\n\np3 &lt;- ggplot(data=exam_data, aes(x = MATHS)) +\n  geom_dotplot_interactive(aes(tooltip = ID), stackgroups = TRUE,\n                           binwidth = 1, method = \"histodot\") +               \n  scale_y_continuous(NULL,breaks = NULL)\n\ngirafe(ggobj = p3, width_svg = 6, height_svg = 6*0.618, \n       options = list(opts_tooltip(css = tooltip_css)))\n\n\n\nInteractivity\nThe background colour of the tooltip is black and the font colour is white and bold."
   }
 ]
