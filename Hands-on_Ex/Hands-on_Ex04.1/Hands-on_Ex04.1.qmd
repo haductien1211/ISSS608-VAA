@@ -1,5 +1,5 @@
 ---
-title: "Hands-on Exercise 4.1"
+title: "Hands-on Exercise 4.1 Visual Statistical Analysis"
 author: "Ha Duc Tien"
 date: "May 02, 2024"
 date-modified: "last-modified"
@@ -9,7 +9,6 @@ execute:
   warning: false
   freeze: true
 ---
-
 
 # 1. ggstatsplot
 
@@ -39,6 +38,7 @@ pacman::p_load(ggstatsplot, tidyverse)
 exam <- read_csv("data/Exam_data.csv")
 head(exam)
 ```
+
 ## 1.1. One-sample test: gghistostats() method
 
 In the code chunk below, gghistostats() is used to to build an visual of one-sample test on English scores.
@@ -59,11 +59,9 @@ ggbetweenstats(data = exam, x = GENDER, y = MATHS,
                type = "np", messages = FALSE)
 ```
 
-
 ## 1.3 Oneway ANOVA Test: ggbetweenstats() method
 
 In the code chunk below, ggbetweenstats() is used to build a visual for One-way ANOVA test on English score by race
-
 
 ```{r}
 ggbetweenstats(data = exam, x = RACE, y = ENGLISH, type = "parametric",
@@ -92,12 +90,11 @@ exam1 <- exam %>%
 
 In this code chunk below [ggbarstats()](https://indrajeetpatil.github.io/ggstatsplot/reference/ggbarstats.html) is used to build a visual for Significant Test of Association
 
-
 ```{r}
 ggbarstats(data = exam1, x = MATHS_bins, y = GENDER)
 ```
-# 2. Visualising Models
 
+# 2. Visualising Models
 
 In this section, we will work on how to visualise model diagnostic and model parameters by using parameters package.
 
@@ -143,7 +140,6 @@ In the code chunk, [check_collinearity()](https://easystats.github.io/performanc
 check_collinearity(model)
 ```
 
-
 ```{r}
 check_c <- check_collinearity(model)
 plot(check_c)
@@ -161,7 +157,6 @@ check_n <- check_normality(model1)
 
 plot(check_n)
 ```
-
 
 ## 2.4 Model Diagnostic: Check model for homogeneity of variances
 

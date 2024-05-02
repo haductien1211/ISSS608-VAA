@@ -1,5 +1,5 @@
 ---
-title: "Hands-on Exercise 2"
+title: "Hands-on Exercise 2 Beyond ggplot2 Fundamentals"
 author: "Ha Duc Tien"
 date: "April 14, 2024"
 date-modified: "last-modified"

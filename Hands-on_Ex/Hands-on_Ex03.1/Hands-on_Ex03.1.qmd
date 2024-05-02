@@ -1,5 +1,5 @@
 ---
-title: "Hands-on Exercise 3.1"
+title: "Hands-on Exercise 3.1 Programming Interactive Data Visualisation with R"
 author: "Ha Duc Tien"
 date: "April 25, 2024"
 date-modified: "last-modified"
@@ -34,6 +34,7 @@ exam_data <- read_csv("data/Exam_data.csv")
 ## 2.1 Tooltip effect with tooltip aesthetic
 
 ### The Code
+
 ```{r}
 #| eval: false
 p1 <- ggplot(data=exam_data, aes(x = MATHS)) +
@@ -45,13 +46,11 @@ girafe(ggobj = p1, width_svg = 6,height_svg = 6*0.618)
 
 ```
 
-
 Two steps are involved, first, an interactive version of ggplot2 geom ([geom_dotplot_interactive()](https://davidgohel.github.io/ggiraph/reference/geom_dotplot_interactive.html)) will be used to create the basic graph. Then, [girafe()](https://davidgohel.github.io/ggiraph/reference/girafe.html) will be used to generate an svg object to be displayed on an html page.
 
 ###Interactivity
 
 By hovering the mouse pointer on an data point of interest, the student’s ID will be displayed.
-
 
 ```{r}
 #| echo: false
@@ -137,7 +136,6 @@ girafe(ggobj = p3, width_svg = 6, height_svg = 6*0.618,
        options = list(opts_tooltip(css = tooltip_css)))
 ```
 
-
 # 2.4 Displaying statistics on tooltip
 
 The code chunk below is an advance way to customize tooltip. In the example, a function is used to compute 90% confident interval of the mean. The statistic is then displayed on the tooltip
@@ -197,6 +195,7 @@ girafe(ggobj = p4, width_svg = 6, height_svg = 6*0.618)
 In the code chunk below, the css codes are used to change the highlighting effect.
 
 ### The Code
+
 ```{r}
 #| eval: false
 p5 <- ggplot(data = exam_data, aes(x = ENGLISH)) +
@@ -245,11 +244,9 @@ girafe(ggobj = p6, width_svg = 6, height_svg = 6*0.618,
        options = list(opts_tooltip(css = tooltip_css)))                                        
 ```
 
-
 ### Interactivity
 
 The background colour of the tooltip is black and the font colour is white and bold.
-
 
 ```{r}
 #| echo: false
@@ -264,7 +261,6 @@ p6 <- ggplot(data=exam_data, aes(x = MATHS)) +
 girafe(ggobj = p6, width_svg = 6, height_svg = 6*0.618,
        options = list(opts_tooltip(css = tooltip_css)))                                        
 ```
-
 
 # 2.8 Click effect with onclick
 
@@ -306,7 +302,6 @@ p7 <- ggplot(data=exam_data, aes(x = MATHS)) +
 girafe(ggobj = p7, width_svg = 6, height_svg = 6*0.618)
 ```
 
-
 # 2.9 Coordinated Multiple Views with ggiraph
 
 ```{r}
@@ -330,8 +325,8 @@ girafe(code = print(p8 + p9), width_svg = 6, height_svg = 3,
 
 In order to build a coordinated multiple views, the following programming strategy will be used:
 
-1.    Appropriate interactive functions of ggiraph will be used to create the multiple views.
-2.    patchwork function of patchwork package will be used inside girafe function to create the interactive coordinated multiple views.
+1.  Appropriate interactive functions of ggiraph will be used to create the multiple views.
+2.  patchwork function of patchwork package will be used inside girafe function to create the interactive coordinated multiple views.
 
 ```{r}
 #| eval: false
@@ -358,8 +353,7 @@ girafe(code = print(p8 + p9), width_svg = 6, height_svg = 3,
 
 The tabset below shows an example a basic interactive plot created by using plot_ly().
 
-
-:::panel-tabset
+::: panel-tabset
 ## The Plot
 
 ```{r}
@@ -377,13 +371,13 @@ plot_ly(data = exam_data, x = ~MATHS, y = ~ENGLISH)
 ```
 :::
 
-## 3.2  Working with visual variable: plot_ly() method
+## 3.2 Working with visual variable: plot_ly() method
 
 In the code chunk below, color argument is mapped to a qualitative visual variable (i.e. RACE).
 
-:::panel-tabset
-
+::: panel-tabset
 ## The plot
+
 ```{r}
 #| echo: false
 
@@ -403,8 +397,7 @@ plot_ly(data = exam_data, x = ~MATHS, y = ~ENGLISH, color = ~RACE)
 
 The code chunk below plots an interactive scatter plot by using ggplotly().
 
-:::panel-tabset
-
+::: panel-tabset
 ## The Plot
 
 ```{r}
@@ -430,9 +423,7 @@ ggplotly(p8)
 ```
 :::
 
-
 ## 3.4 Coordinated Multiple Views with plotly
-
 
 The creation of a coordinated linked plot by using plotly involves three steps:
 
@@ -440,9 +431,7 @@ The creation of a coordinated linked plot by using plotly involves three steps:
 -   2 scatterplots will be created by using ggplot2 functions.
 -   [subplot()](https://plotly.com/r/subplots/) of plotly package is used to place them next to each other side-by-side.
 
-
-:::panel-tabset
-
+::: panel-tabset
 ## The Plot
 
 ```{r}
@@ -461,8 +450,8 @@ subplot(ggplotly(p9),
         ggplotly(p10))
 
 ```
-## The Code
 
+## The Code
 
 ```{r}
 #| eval: false
@@ -481,7 +470,6 @@ subplot(ggplotly(p9),
 
 ```
 :::
-
 
 # 4. Interactive Data Visualisation - crosstalk methods!
 
@@ -497,7 +485,7 @@ DT::datatable(exam_data, class= "display", style = "bootstrap5")
 
 ## 4.2 Linked brushing: crosstalk method
 
-:::panel-tabset
+::: panel-tabset
 ## The Plot
 
 ```{r}
@@ -512,6 +500,7 @@ gg <- highlight(ggplotly(p11), "plotly_selected")
 crosstalk::bscols(gg, DT::datatable(d, class= "display", 
                                     style = "bootstrap5"), widths = 5)        
 ```
+
 ## The Code
 
 ```{r}
