@@ -1,0 +1,14 @@
+{
+  "hash": "72942ecc68eac5573932b5b5ac77f534",
+  "result": {
+    "markdown": "---\ntitle: \"Hands-on Exercise 3.1\"\nauthor: \"Ha Duc Tien\"\ndate: \"April 25, 2024\"\ndate-modified: \"last-modified\"\nexecute: \n  eval: true\n  echo: true\n  warning: false\n  freeze: true\n---\n\n\n# 1. Getting Started\n\nIn this hands-on exercise, we will gain hands-on experience on using:\n\n-   ggstatsplot package to create visual graphics with rich statistical information,\n\n-   performance package to visualise model diagnostics, and\n\n-   parameters package to visualise model parameters\n\n[ggstatsplot](https://indrajeetpatil.github.io/ggstatsplot/) is an extension of ggplot2 package for creating graphics with details from statistical tests included in the information-rich plots themselves.\n\n## 1.1 Install and launching R packages\n\nThe Code chunk below uses p_load() function of pacman package to check if tidyverse and ggstatsplot packages are installed in the computer. If they are, then they will be launched into R.\n\n\n::: {.cell}\n\n```{.r .cell-code}\npacman::p_load(ggstatsplot, tidyverse) \n```\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

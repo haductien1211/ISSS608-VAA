@@ -1,0 +1,40 @@
+---
+title: "Hands-on Exercise 4.2"
+author: "Ha Duc Tien"
+date: "May 02, 2024"
+date-modified: "last-modified"
+execute: 
+  eval: true
+  echo: true
+  warning: false
+  freeze: true
+---
+
+# 1. Getting Started
+
+In this hands-on exercise, we will gain hands-on experience on using:
+
+-   ggstatsplot package to create visual graphics with rich statistical information,
+
+-   performance package to visualise model diagnostics, and
+
+-   parameters package to visualise model parameters
+
+[ggstatsplot](https://indrajeetpatil.github.io/ggstatsplot/) is an extension of ggplot2 package for creating graphics with details from statistical tests included in the information-rich plots themselves.
+
+## 1.1 Install and launching R packages
+
+The Code chunk below uses p_load() function of pacman package to check if tidyverse and ggstatsplot packages are installed in the computer. If they are, then they will be launched into R.
+
+```{r}
+pacman::p_load(ggstatsplot, tidyverse) 
+```
+
+## 1.2 Importing the data
+
+```{r}
+exam_data <- read_csv("data/Exam_data.csv")
+head(exam_data)
+```
+
+

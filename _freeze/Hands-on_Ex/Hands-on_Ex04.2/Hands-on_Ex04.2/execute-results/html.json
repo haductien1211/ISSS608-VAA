@@ -1,0 +1,14 @@
+{
+  "hash": "a702d0fc6e36ab5c6bba24dfe6f9ae42",
+  "result": {
+    "markdown": "---\ntitle: \"Hands-on Exercise 4.2\"\nauthor: \"Ha Duc Tien\"\ndate: \"May 02, 2024\"\ndate-modified: \"last-modified\"\nexecute: \n  eval: true\n  echo: true\n  warning: false\n  freeze: true\n---\n\n\n# 1. Getting Started\n\nIn this hands-on exercise, we will gain hands-on experience on using:\n\n-   ggstatsplot package to create visual graphics with rich statistical information,\n\n-   performance package to visualise model diagnostics, and\n\n-   parameters package to visualise model parameters\n\n[ggstatsplot](https://indrajeetpatil.github.io/ggstatsplot/) is an extension of ggplot2 package for creating graphics with details from statistical tests included in the information-rich plots themselves.\n\n## 1.1 Install and launching R packages\n\nThe Code chunk below uses p_load() function of pacman package to check if tidyverse and ggstatsplot packages are installed in the computer. If they are, then they will be launched into R.\n\n\n::: {.cell}\n\n```{.r .cell-code}\npacman::p_load(ggstatsplot, tidyverse) \n```\n:::\n\n\n## 1.2 Importing the data\n\n\n::: {.cell}\n\n```{.r .cell-code}\nexam_data <- read_csv(\"data/Exam_data.csv\")\nhead(exam_data)\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n# A tibble: 6 × 7\n  ID         CLASS GENDER RACE    ENGLISH MATHS SCIENCE\n  <chr>      <chr> <chr>  <chr>     <dbl> <dbl>   <dbl>\n1 Student321 3I    Male   Malay        21     9      15\n2 Student305 3I    Female Malay        24    22      16\n3 Student289 3H    Male   Chinese      26    16      16\n4 Student227 3F    Male   Chinese      27    77      31\n5 Student318 3I    Male   Malay        27    11      25\n6 Student306 3I    Female Malay        31    16      16\n```\n:::\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

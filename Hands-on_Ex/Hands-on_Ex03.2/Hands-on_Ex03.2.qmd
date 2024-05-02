@@ -21,10 +21,9 @@ pacman::p_load(readxl, gifski, gapminder,
                plotly, gganimate, tidyverse)
 ```
 
-
 ## 1.2 Importing the data
 
-nfortunately, mutate_each_() was deprecated in dplyr 0.7.0. and funs() was deprecated in dplyr 0.8.0. In view of this, we will re-write the code by using mutate_at() as shown in the code chunk below.
+nfortunately, mutate_each\_() was deprecated in dplyr 0.7.0. and funs() was deprecated in dplyr 0.8.0. In view of this, we will re-write the code by using mutate_at() as shown in the code chunk below.
 
 ```{r}
 col <- c("Country", "Continent")
@@ -32,7 +31,6 @@ globalPop <- read_xls("data/GlobalPopulation.xls", sheet="Data") %>%
               mutate_at(col, as.factor) %>%
               mutate(Year = as.integer(Year))
 ```
-
 
 Instead of using mutate_at(), [across()](https://dplyr.tidyverse.org/reference/across.html) can be used to derive the same outputs.
 
@@ -57,7 +55,6 @@ globalPop <- read_xls("data/GlobalPopulation.xls", sheet="Data") %>%
 
 In the code chunk below, the basic ggplot2 functions are used to create a static bubble plot.
 
-
 ```{r}
 ggplot(globalPop, aes(x = Old, y = Young, size = Population, colour = Country)) +
   geom_point(alpha = 0.7, show.legend = FALSE) +
@@ -66,14 +63,12 @@ ggplot(globalPop, aes(x = Old, y = Young, size = Population, colour = Country)) 
   labs(title = 'Year: {frame_time}', x = '% Aged', y = '% Young') 
 ```
 
-
 ## 2.2 Building the animated bubble plot
 
 In the code chunk below,
 
 -   [transition_time()](https://gganimate.com/reference/transition_time.html) of gganimate is used to create transition through distinct states in time (i.e. Year).
 -   `ease_aes()` is used to control easing of aesthetics. The default is linear. Other methods are: quadratic, cubic, quartic, quintic, sine, circular, exponential, elastic, back, and bounce.
-
 
 ```{r}
 
@@ -94,9 +89,7 @@ Both `ggplotly()` and `plot_ly()` support key `frame` animations through the fra
 
 In this sub-section, we will create an animated bubble plot by using `ggplotly()` method.
 
-
-:::panel-tabset
-
+::: panel-tabset
 ## The Plot
 
 ```{r}
@@ -128,11 +121,9 @@ ggplotly(gg)
 ```
 :::
 
-
 Notice that although `show.legend = FALSE` argument was used, the legend still appears on the plot. To overcome this problem, `theme(legend.position='none')` should be used as shown in the plot and code chunk below.
 
-:::panel-tabset
-
+::: panel-tabset
 ## The Plot
 
 ```{r}
@@ -168,8 +159,7 @@ ggplotly(gg)
 
 ## 3.2 Building an animated bubble plot: plot_ly() method
 
-:::panel-tabset
-
+::: panel-tabset
 ## The Plot
 
 ```{r}
@@ -193,5 +183,4 @@ bp <- globalPop %>%
   layout(showlegend = FALSE)
 bp
 ```
-
 :::
