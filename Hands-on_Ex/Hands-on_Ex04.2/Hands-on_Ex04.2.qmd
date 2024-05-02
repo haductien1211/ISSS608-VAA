@@ -32,11 +32,11 @@ For the purpose of this exercise, the following R packages will be used, they ar
 
 ::: callout-note
 ## Install package
-the code below is used to install ungeviz from github 
+
+the code below is used to install ungeviz from github
 
 devtools::install_github("wilkelab/ungeviz")
 :::
-
 
 ```{r}
 pacman::p_load(ungeviz, plotly, crosstalk,
@@ -334,5 +334,3 @@ ggplot(data = exam, (aes(x = factor(RACE), y = MATHS))) +
   # `.draw` is a generated column indicating the sample draw
   transition_states(.draw, 1, 3)
 ```
-
-
