@@ -103,7 +103,7 @@ From the data visualizations above, here are my starting observations
 
 ## 3.2 Critique of the original design
 
-![Figure 1. Classmate plot](data/Chart.png){fig-align="left"}
+![Figure 1. Classmate plot](Chart.png){fig-align="left"}
 
 -   **Plot size**: the plot size is a bit small.
 
@@ -325,7 +325,7 @@ To be honest the above graph is actually not my final idea of the plot. Due to t
 
 :::
 
-![Figure 2. Optimal plot](data/Chart2.png){fig-align="left"}
+![Figure 2. Optimal plot](Chart2.png){fig-align="left"}
 
 
 With this design, even if the smaller count property type sale is still nowhere to be seen the average line would help visualize the average number over the period instead.
