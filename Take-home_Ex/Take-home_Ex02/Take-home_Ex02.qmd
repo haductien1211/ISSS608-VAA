@@ -1,5 +1,5 @@
 ---
-title: "Take-home Exercise 1"
+title: "Take-home Exercise 2"
 author: "Ha Duc Tien"
 date: "May 02, 2024"
 date-modified: "last-modified"
@@ -89,17 +89,15 @@ ggplot(realis_data, aes(x = Quarter, fill =`Type of Sale`)) +
 
 ```
 
-
 ::: callout-tip
 ## Observations
 
 From the data visualizations above, here are my starting observations
 
 -   This graph purpose seems to be to showcase the number of properties sold for each `Type of Sale` per `Property Type` per `Quarter`.
--   The `Property Type` is separated into 2 rows grids 
+-   The `Property Type` is separated into 2 rows grids
 -   Different color theme representing different `Type of Sale`.
 :::
-
 
 ## 3.2 Critique of the original design
 
@@ -117,52 +115,41 @@ From the data visualizations above, here are my starting observations
 
 -   **The legends**: somehow the legend is taking a huge portion of the plot (approximately 1/4), this feels like such a waste of space and make it visually unattractive in a sense. It could be due to my classmate using the `theme_minimal()`, using a different theme and adjusting the legend position to make more space for the actual plot may make a big different here.
 
-
-
-
 ## 3.3 Make over of the original design.
 
 With the above 3 critiques made, I will go into details below on what I plan to do with the original design to address each point. Then, I will show the final code and the alternative design
 
-
-#### **Plot size**: 
+#### **Plot size**:
 
 I will be adjusting the size of the plot by putting some adjustment to the R code chunk using {r fig.height = 8, fig.width = 18} instead of {r}
 
-#### **Scale of measurement**: 
+#### **Scale of measurement**:
 
-This is actually quite an easy fix, by using the [Cartesian coordinates](https://ggplot2.tidyverse.org/reference/coord_cartesian.html) via 
- `coord_cartesian()` we could adjust the limits for the y axes and preventing the plot. With the knowledge of the original plot that the limit of y fall somewhere between 0 and 2600, I could just add in 
-***coord_cartesian(ylim=c(0,2600))***
-
+This is actually quite an easy fix, by using the [Cartesian coordinates](https://ggplot2.tidyverse.org/reference/coord_cartesian.html) via `coord_cartesian()` we could adjust the limits for the y axes and preventing the plot. With the knowledge of the original plot that the limit of y fall somewhere between 0 and 2600, I could just add in ***coord_cartesian(ylim=c(0,2600))***
 
 #### **2 rows grids**:
 
+The original code for creating the multifaceted ***facet_wrap(\~`Property Type`,scales = "free_y")***. However, as mentioned, for comparison purpose, I prefer if they could be on the same row with the same scale. Therefore, I will be replacing the above line of code with ***facet_wrap(\~`Property Type`, nrow = 1)*** instead
 
-The original code for creating the multifaceted ***facet_wrap(~`Property Type`,scales = "free_y")***. However, as mentioned, for comparison purpose, I prefer if they could be on the same row with the same scale. Therefore, I will be replacing the above line of code with ***facet_wrap(~`Property Type`, nrow = 1)*** instead 
-
-#### **The label**: 
+#### **The label**:
 
 I will be renaming the plot to ***Number of properties sold for each Type of Sale per Property Type per Quarter***.
 
-#### **Grid separation**: 
+#### **Grid separation**:
 
-Another easy change we just need to adjust the panel using `panel.border` argument of the gglot2 [`theme()`](https://ggplot2.tidyverse.org/reference/theme.html) here. For this purpose, I will be using 
+Another easy change we just need to adjust the panel using `panel.border` argument of the gglot2 [`theme()`](https://ggplot2.tidyverse.org/reference/theme.html) here. For this purpose, I will be using
 
 ***theme(panel.border = element_rect(color = "grey10", linetype = "solid", linewidth = 1)***
-                                    
-  
+
 #### **The legends**
 
 So for this part, there is a lot of things to make adjustment here since I will be using a different theme, `theme_economist()` to be specific. With this theme changes, I will be adjust a multitude of arguments of the of the gglot2 [`theme()`](https://ggplot2.tidyverse.org/reference/theme.html) to adjust both the text size as well as the margin between the text and the plot. These arguments include `axis.text`, `axis.title`, `title`, `strip.text`, `axis.title.y`, `axis.title.x`
 
-
-
 #### **Final Result**
 
-:::panel-tabset
-
+::: panel-tabset
 ## The Plot
+
 ```{r fig.height = 8, fig.width = 18}
 #| echo: false
 ggplot(realis_data, aes(x = Quarter, 
@@ -189,6 +176,7 @@ ggplot(realis_data, aes(x = Quarter,
                                     linewidth = 1))
 
 ```
+
 ## The Code
 
 ```{r fig.height = 8, fig.width = 18}
@@ -237,19 +225,17 @@ So the resulting plot of the make over of the original design seems to address t
 
 Therefore, I thought to myself what if I could separate the `Type of Sale` as well and hence reduce the scale of count so the missing "Sub Sale" and "New Sale" could be shown as well.
 
-
 ## 3.5 The further make over
 
 It is actually quite simple to separate the `Type of Sale`. However, instead of using the [`facet_wrap()`](https://ggplot2.tidyverse.org/reference/facet_wrap.html?q=facet_wrap), I will switch to using [`facet_grid()`](https://ggplot2.tidyverse.org/reference/facet_grid.html).
 
-Simply replacing *facet_wrap(~`Property Type`, nrow = 1)* with *facet_grid(cols = vars(`Property Type`), rows = vars(`Type of Sale`))*, and also removing *fill =`Type of Sale`* from `ggplot` since we will not really need the color to show different `Type of Sale`
-
+Simply replacing *facet_wrap(\~`Property Type`, nrow = 1)* with *facet_grid(cols = vars(`Property Type`), rows = vars(`Type of Sale`))*, and also removing *fill =`Type of Sale`* from `ggplot` since we will not really need the color to show different `Type of Sale`
 
 #### **Final Result**
 
-:::panel-tabset
-
+::: panel-tabset
 ## The Plot
+
 ```{r fig.height = 8, fig.width = 18}
 #| echo: false
 ggplot(realis_data, aes(x = Quarter)) + 
@@ -279,6 +265,7 @@ ggplot(realis_data, aes(x = Quarter)) +
                                     linewidth = 1))
 
 ```
+
 ## The Code
 
 ```{r fig.height = 10, fig.width = 18}
@@ -312,21 +299,17 @@ ggplot(realis_data, aes(x = Quarter)) +
 ```
 :::
 
-
 The resulting plot seems to be doing better. However, some smaller count property type sale is still nowhere to be seen and is negligible.
 
 # 4. Thoughts and learning points
-
 
 ::: callout-tip
 ## Thoughts
 
 To be honest the above graph is actually not my final idea of the plot. Due to the limitation of time to work on this exercise, I have not figured out on how to put a reference line on to the plot to show the average sales per `Property Type` per `Quarter` for each `Type of Sale`. For the final product, I actually want something that looks like the Tableau plot I created below
-
 :::
 
 ![Figure 2. Optimal plot](Chart2.png){fig-align="left"}
-
 
 With this design, even if the smaller count property type sale is still nowhere to be seen the average line would help visualize the average number over the period instead.
 
@@ -336,8 +319,6 @@ This exercise could be consider part 2 of Take-home Exercise 1, where we critiqu
 
 -   When visualizing data it is important to consider the purpose of the visualization and actually putting the idea into clear and insightful plots. Intentional or unintentional misleading graph must be avoid as it could impact viewer decisions greatly, one such case is with my critique on my classmate work where their y-axis is not of the same scale which create an illusion of the sales number being equivalent between different `Property Type` while in reality they are not.
 
--   Seeing classmate work and being able to critique their works actually give me even further insight into how to design a meaningful graph and also be very careful of the misleading or confusing plots out there which made for sole purpose of misleading. 
+-   Seeing classmate work and being able to critique their works actually give me even further insight into how to design a meaningful graph and also be very careful of the misleading or confusing plots out there which made for sole purpose of misleading.
 
--   `ggplot2`, `ggplot2` extensions and `tidyverse` packages gave a huge flexibility for us to design the plot that we want with enough time to practice. 
-
-
+-   `ggplot2`, `ggplot2` extensions and `tidyverse` packages gave a huge flexibility for us to design the plot that we want with enough time to practice.
