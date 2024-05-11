@@ -1,0 +1,11 @@
+---
+title: "Hands-on Exercise 6 Modelling, Visualising and Analysing Network Data with R"
+author: "Ha Duc Tien"
+date: "May 12, 2024"
+date-modified: "last-modified"
+execute: 
+  eval: true
+  echo: true
+  warning: false
+  freeze: true
+---
