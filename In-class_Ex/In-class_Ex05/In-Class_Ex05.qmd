@@ -12,7 +12,6 @@ execute:
 
 # 1. Loading R Packages for text data processing
 
-
 ```{r}
 pacman::p_load(tidyverse, readtext, quanteda, tidytext)
 ```
@@ -30,6 +29,7 @@ summary(corpus_text, 5)
 ```
 
 # 3. Some Text Data Processing
+
 ```{r}
 usenet_words <- text_data %>%
   unnest_tokens(word, text) %>%
@@ -39,12 +39,10 @@ usenet_words <- text_data %>%
 view(usenet_words)
 ```
 
-
 ```{r}
 usenet_words %>%
   count(word, sort = TRUE)
 ```
-
 
 ```{r}
 text_data_splitted <- text_data %>%
@@ -57,7 +55,6 @@ text_data_splitted <- text_data %>%
 ```{r}
 view(text_data_splitted)
 ```
-
 
 # 4. Loading R packages for json data processing
 

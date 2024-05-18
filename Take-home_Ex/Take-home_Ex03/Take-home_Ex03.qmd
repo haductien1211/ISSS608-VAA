@@ -1,0 +1,22 @@
+---
+title: "Take-home Exercise 3"
+author: "Ha Duc Tien"
+date: "May 18, 2024"
+date-modified: "last-modified"
+execute: 
+  eval: true
+  echo: true
+  warning: false
+  freeze: true
+---
+
+```{r}
+pacman::p_load(jsonlite, tidyverse)
+```
+
+```{r}
+# mc2_data <- fromJSON("data/mc2.json")
+
+```
+
+
