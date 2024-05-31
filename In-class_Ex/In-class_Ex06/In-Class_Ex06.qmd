@@ -26,7 +26,6 @@ This below is based on https://kgjerde.github.io/corporaexplorer/articles/bible.
 bible <- readr::read_lines("http://www.gutenberg.org/cache/epub/10/pg10.txt")
 ```
 
-
 ```{r}
 # Collapsing into one string.
 bible <- paste(bible, collapse = "\n")
@@ -73,7 +72,6 @@ chapters <- str_replace_all(books, "(\\d+:1 )", "NEW_CHAPTER\\1") %>%
 chapters <- lapply(chapters, function(x) x[-1])
 ```
 
-
 Metadata
 
 ```{r}
@@ -89,7 +87,6 @@ book_titles <- read_html("https://www.esv.org/resources/esv-global-study-bible/l
 #   knowing that they contain respectively 39 and 27 books.
 testament <- c(rep("Old", 39), rep("New", 27))
 ```
-
 
 Creating data frame with text and metadata
 
@@ -137,6 +134,7 @@ mc3_data <- fromJSON("data/MC3.json")
 ```
 
 Edge
+
 ```{r}
 mc3_edges <- as_tibble(mc3_data$links) %>%
   distinct() %>%
@@ -178,6 +176,7 @@ mc3_nodes1 <- rbind(id1, id2) %>%
 ```
 
 ### Graph Model
+
 ```{r}
 mc3_graph <- tbl_graph(nodes = mc3_nodes1,
                        edges = mc3_edges,
@@ -197,4 +196,3 @@ mc3_graph %>%
   scale_size_continuous(range = c(1, 10)) +
   theme_graph()
 ```
-
