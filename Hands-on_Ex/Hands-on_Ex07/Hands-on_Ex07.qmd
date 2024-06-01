@@ -36,7 +36,6 @@ pacman::p_load(scales, viridis, lubridate, ggthemes, gridExtra, readxl, knitr, d
 
 For the purpose of this hands-on exercise, eventlog.csv file will be used. This data file consists of 199,999 rows of time-series cyber attack records by country.
 
-
 ```{r}
 attacks <- read_csv("data/eventlog.csv")
 ```
@@ -75,8 +74,7 @@ make_hr_wkday <- function(ts, sc, tz) {
   }
 ```
 
-:::callout-note
-
+::: callout-note
 ## Note
 
 -   [ymd_hms()](https://lubridate.tidyverse.org/reference/ymd_hms.html) and [hour()](https://lubridate.tidyverse.org/reference/hour.html) are from [lubridate](https://lubridate.tidyverse.org/) package, and
@@ -103,8 +101,7 @@ attacks <- attacks %>%
       hour, levels = 0:23))
 ```
 
-:::callout-note
-
+::: callout-note
 ## Note
 
 Beside extracting the necessary data into **attacks** data frame, `mutate()` of *dplyr* package is used to convert **wkday** and **hour** fields into *factor* so they’ll be ordered when plotting
@@ -146,8 +143,7 @@ theme(axis.ticks = element_blank(),
       legend.text = element_text(size = 6) )
 ```
 
-:::callout-tip
-
+::: callout-tip
 ## Things to learn from the code chunk
 
 -   a tibble data table called grouped is derived by aggregating the attack by **wkday** and **hour** fields.
@@ -293,7 +289,6 @@ In this section you will learn how to plot a [slopegraph](https://www.storytelli
 
 Before getting start, make sure that *CGPfunctions* has been installed and loaded onto R environment. Then, refer to [Using newggslopegraph](https://cran.r-project.org/web/packages/CGPfunctions/vignettes/Using-newggslopegraph.html) to learn more about the function. Lastly, read more about [newggslopegraph()](https://www.rdocumentation.org/packages/CGPfunctions/versions/0.6.3/topics/newggslopegraph) and its arguments.
 
-
 ## 5.1 Data Import
 
 Import the rice data set into R environment by using the code chunk below.
@@ -305,7 +300,6 @@ rice <- read_csv("data/rice.csv")
 ## 5.2 Plotting the slopegraph
 
 Next, code chunk below will be used to plot a basic slopegraph as shown below.
-
 
 ```{r}
 rice %>% 
