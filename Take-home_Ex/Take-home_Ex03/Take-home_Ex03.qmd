@@ -387,6 +387,17 @@ What left now is to plot the graph showing the Individual total Beneficial Owner
 #| code-fold: true
 #| code-summary: "Show the code"
 
+BO_indv_count_table <- edges_BO_indv_count %>%
+  rename(`Start Date` = start_date,
+         `Individual` = source,
+         `Ownership at curent date` = BO_indv_count,
+         `Total Ownership at curent date` = BO_indv_total)
+  
+datatable(BO_indv_count_table, 
+              filter = 'top', 
+              options = list(pageLength = 10, 
+                             autoWidth = TRUE))
+
 fig <- edges_BO_indv_count %>%
   select(start_date, source, BO_indv_total) %>%
   filter(source %in% Owner_list$source)%>%
@@ -616,6 +627,17 @@ And finally plotting
 ```{r}
 #| code-fold: true
 #| code-summary: "Show the code"
+
+BO_owners_count_table <- BO_owners_count %>%
+  rename(`Start Date` = start_date,
+         `Organization` = target,
+         `New owners at curent date` = BeneficialOwnership_count,
+         `Total owners at curent date` = BeneficialOwnership_total)
+  
+datatable(BO_owners_count_table, 
+              filter = 'top', 
+              options = list(pageLength = 10, 
+                             autoWidth = TRUE))
 
 fig1 <- BO_owners_count %>%
   select(start_date, target, BeneficialOwnership_total) %>%
