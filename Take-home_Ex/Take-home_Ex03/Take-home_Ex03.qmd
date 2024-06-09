@@ -8,6 +8,8 @@ execute:
   echo: true
   warning: false
   freeze: true
+  code-fold: true
+  code-summary: "Show the code"
 
 ---
 
@@ -93,6 +95,9 @@ First I import this nodes data using `as_tibble()` function and have a quick `gl
 Nodes
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+
 mc3_nodes_raw <- as_tibble(mc3_data$nodes) %>%
   distinct()
 
@@ -104,6 +109,9 @@ glimpse(mc3_nodes_raw)
 Therefore, I will select from the raw file, columns that I think maybe of use for the data analysis and fix the issue with wrong data format using the code below and call the new data `mc3_nodes`,I also rename the `type` to `nodes_type` instead since both the `nodes` and `links` dataframes seems to have `type` as one of the column
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+
 mc3_nodes <- mc3_nodes_raw %>%
   mutate(founding_date = as.Date(founding_date),
          country = as.character(country),
@@ -132,6 +140,9 @@ The `founding_date` is now in the correct format
 First I import this nodes data using `as_tibble()` function and have a quick `glimpse()` at the data itself, let call this data `mc3_edges_raw`
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+
 mc3_edges_raw <- as_tibble(mc3_data$links) %>%
   distinct()
 
@@ -143,6 +154,9 @@ glimpse(mc3_edges_raw)
 Therefore, I will select from the raw file, columns that I think maybe of use for the data analysis and fix the issue with wrong data format using the code below and call the new data mc3_edges
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+
 mc3_edges <- mc3_edges_raw %>%
   select(source, 
          target, 
@@ -168,11 +182,17 @@ For this Analysis and visualization I want to create a time series line graph of
 Let us look at the different type that the `mc3_nodes` data have
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+
 unique(mc3_nodes$nodes_type)
 ```
 There seems to be multiple type including `Organization` and `Person`, for the purpose of this analysis, we will be focusing on `Organization`. Therefore, I will filter the data to `Organization`. In addition, since the duration of `founding_date` is between 1945 to 2035 (70 years of data), I will create another column called `founding_year` to breakdown the date to year instead
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+
 mc3_nodes_Organization <- mc3_nodes %>%
   mutate(founding_year = format(founding_date, format="%Y")) %>%
   filter(str_like(nodes_type, "%Entity.Organization%"))
@@ -181,6 +201,9 @@ glimpse(mc3_nodes_Organization)
 Next I would want to count the number of company founded per year using the code below under `Organization_historical_year`
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+
 Organization_historical_year <- mc3_nodes_Organization %>%
   group_by(`founding_year`, `nodes_type`) %>%
   summarise(count = n())
@@ -191,6 +214,9 @@ Organization_historical_year <- mc3_nodes_Organization %>%
 Next I will `pivot_wider()` the data so each different Organization counts would be in its own columns, this is for the purpose of plotting the graph later since I want to show them in the same plot as well as being able to select the specific Organization viewers want to choose. In addition, since I want to have a data table later showing the raw data I will also renaming the column to a more user friendly name and then sort the full table starting with the earliest year. This would create `Organization_historical_year_select`
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+
 Organization_historical_year_select <- Organization_historical_year %>%
   select(founding_year, nodes_type, count) %>%
   pivot_wider(names_from = nodes_type, values_from = count) %>%
@@ -211,6 +237,9 @@ Organization_historical_year_select <-
 With that done, I would showcase final data table and plot the interactive time series graph with a time slider
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+
 datatable(Organization_historical_year_select, 
               filter = 'top', 
               options = list(pageLength = 10, 
@@ -275,12 +304,18 @@ There seems to be a spike of number of Company founded between 2034 and 2035, th
 Let looks at the different of relationship type that the `mc3_edges` table has
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+
 unique(mc3_edges$type)
 ```
 There seems to be 4 type of relationship, for this part I would be focusing more on the Beneficial Ownership relationship. First thing first, as previously seen there seems to be 2 columns that represent the entity relation either `source` or `target`. I am curious to see what are the type of the entity for each of these source and target hence I would use the `mc3_nodes` to join with `mc3_edges` table to find out the nature of these `source` or `target`
 
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+
 nodes_type <- mc3_nodes %>%
   select(id, nodes_type)
 
@@ -295,6 +330,9 @@ mc3_edges <- mc3_edges %>%
 Let us check the data generated
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+
 mc3_edges %>%
   filter(type == "Event.Owns.BeneficialOwnership") %>%
   head()
@@ -310,8 +348,8 @@ With the understanding above I want find out want to know how many in total a `s
 For this part I will first filter the data to `Event.Owns.BeneficialOwnership` then do a `group_by()` of `start_date` and `source` then count the number of row creating `BO_indv_count`. Afteward, I will `group_by()` again using `source` and sum the `BO_indv_count` creating the cummulative column `BO_indv_total`
 
 ```{r}
-#|  code-fold: true
-#|  code-summary: "Show the code"
+#| code-fold: true
+#| code-summary: "Show the code"
 
 edges_BO_indv_count <- mc3_edges %>%
   filter(type == "Event.Owns.BeneficialOwnership") %>%
@@ -331,6 +369,9 @@ n_distinct(edges_BO_indv_count$source)
 16231 is quite a large number, hence I will reduce this number by create a list of Owner that own 10 or more `target` using the code below
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+
 Owner_list <- 
   edges_BO_indv_count[
     order(edges_BO_indv_count$BO_indv_total,
@@ -343,8 +384,9 @@ Owner_list <-
 What left now is to plot the graph showing the Individual total Beneficial Ownership over time
 
 ```{r}
-#|  code-fold: true
-#|  code-summary: "Show the code"
+#| code-fold: true
+#| code-summary: "Show the code"
+
 fig <- edges_BO_indv_count %>%
   select(start_date, source, BO_indv_total) %>%
   filter(source %in% Owner_list$source)%>%
@@ -540,6 +582,9 @@ There seems to be a few individual of interest such as Zachary Taylor or Breanna
 Same as before I will go through the data creation steps
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+
 BO_owners_count <- mc3_edges %>%
   filter(type == "Event.Owns.BeneficialOwnership") %>%
   group_by(start_date, target) %>%  
@@ -553,6 +598,9 @@ BO_owners_count <- mc3_edges %>%
 Company that has 35 or more `source` using the code below
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+
 Company_list <- 
   BO_owners_count[
     order(BO_owners_count$BeneficialOwnership_total,
@@ -566,6 +614,9 @@ Company_list <-
 And finally plotting
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+
 fig1 <- BO_owners_count %>%
   select(start_date, target, BeneficialOwnership_total) %>%
   filter(target %in% Company_list$target)%>%
@@ -574,7 +625,7 @@ fig1 <- BO_owners_count %>%
           type = 'scatter',
           mode = 'lines+markers',
           text = ~paste("Day: ", start_date, 
-                        "<br>Own: ", BeneficialOwnership_total),
+                        "<br>Owner: ", BeneficialOwnership_total),
           hoverinfo = 'text',
           fill = 'tozeroy',
           transforms = list(
@@ -715,22 +766,18 @@ fig1 <- BO_owners_count %>%
 fig1
 ```
 
-```{r}
-mc3_edges_final <- mc3_edges %>%
-  filter(type == "Event.Owns.Shareholdership"|
-         type == "Event.Owns.BeneficialOwnership")
-View(mc3_edges_final)
-```
 
-```{r}
-mc3_edges_WorksFor_count <- mc3_edges %>%
-  select(target, nodes_type_target, type) %>%
-  group_by(target, type) %>%
-  mutate(WorksFor_count = n()) %>%
-  distinct() %>%
-  pivot_wider(names_from = type, values_from = WorksFor_count) %>%
-  select(target,nodes_type_target, Event.WorksFor) %>%
-  filter(str_like(nodes_type_target, "%Entity.Organization%"))
+:::callout-tip
+## Observation
 
+There seems to be a few company of interest such as Downs Group who suddenly start having their business under owner ship at a significant rate between 2034 and 2035
 
-```
+:::
+
+# V. Observation
+
+To summarize the observations above
+
+-   The rate of company founded seems to be stable mostly throughout the year from 1945 to 2025. However, there seems to be a spike of number of Company founded between 2034 and 2035, the number of Fishing Company has a spike in 2031 but has been since on a steady decline ever since.
+-   There is around 37 individuals who has Beneficial Ownership in at least 10 companies, the maximum of which is 92. Ouf of these individual there seems to be a few individuals of interest such as **Zachary Taylor** or **Breanna Price** who suddenly start owning a significant number of entities between 2033 and 2034 but then slow down their activities in 2035
+-   There is around 29 Companies who were own by more than 35 individuals, the maximum of which is 119. There seems to be a few companies of interest such as **Downs Group** who suddenly start having their business under owner ship at a significant rate between 2034 and 2035
