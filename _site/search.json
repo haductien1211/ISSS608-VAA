@@ -1965,5 +1965,54 @@
     "title": "Hands-on Exercise 9.5 Treemap Visualisation with R",
     "section": "6.2 Designing An Interactive Treemap",
     "text": "6.2 Designing An Interactive Treemap\nThe codes below perform two processes.\ntreemap() is used to build a treemap by using selected variables in condominium data.frame. The treemap created is save as object called tm.\n\ntm &lt;- treemap(realis2018_summarised,\n        index=c(\"Planning Region\", \"Planning Area\"),\n        vSize=\"Total Unit Sold\",\n        vColor=\"Median Unit Price ($ psm)\",\n        type=\"value\",\n        title=\"Private Residential Property Sold, 2017\",\n        title.legend = \"Median Unit Price (S$ per sq. m)\"\n        )\n\n\n\n\nThen d3tree() is used to build an interactive treemap.\n\nd3tree(tm,rootname = \"Singapore\" )"
+  },
+  {
+    "objectID": "In-class_Ex/In-class_Ex09/In-class_Ex09.html",
+    "href": "In-class_Ex/In-class_Ex09/In-class_Ex09.html",
+    "title": "In-class Exercise 9",
+    "section": "",
+    "text": "pacman::p_load(corrplot, ggstatsplot, tidyverse, \n               scatterPlotMatrix, parallelPlot, \n               cluster, Clustering, factoextra)"
+  },
+  {
+    "objectID": "In-class_Ex/In-class_Ex09/In-class_Ex09.html#explore-wine-type",
+    "href": "In-class_Ex/In-class_Ex09/In-class_Ex09.html#explore-wine-type",
+    "title": "In-class Exercise 9",
+    "section": "Explore wine type",
+    "text": "Explore wine type\n\nggplot(data = wine,\n       aes(x = type)) +\n  geom_bar()"
+  },
+  {
+    "objectID": "In-class_Ex/In-class_Ex09/In-class_Ex09.html#filter-by-only-white-wine",
+    "href": "In-class_Ex/In-class_Ex09/In-class_Ex09.html#filter-by-only-white-wine",
+    "title": "In-class Exercise 9",
+    "section": "Filter by only White wine",
+    "text": "Filter by only White wine\n\nwhitewine &lt;- wine %&gt;%\n  filter(type ==\"white\") %&gt;%\n  select(c(1:11))"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex10/Hands-on_Ex10.html",
+    "href": "Hands-on_Ex/Hands-on_Ex10/Hands-on_Ex10.html",
+    "title": "Hands-on Exercise 10 Information Dashboard Design: R methods",
+    "section": "",
+    "text": "By the end of this hands-on exercise, you will be able to:\ncreate bullet chart by using ggplot2, create sparklines by using ggplot2 , build industry standard dashboard by using R Shiny."
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex10/Hands-on_Ex10.html#the-data-set",
+    "href": "Hands-on_Ex/Hands-on_Ex10/Hands-on_Ex10.html#the-data-set",
+    "title": "Hands-on Exercise 10 Information Dashboard Design: R methods",
+    "section": "3.1 The data set",
+    "text": "3.1 The data set\nFor the purpose of this study, a personal database in Microsoft Access mdb format called Coffee Chain will be used."
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex10/Hands-on_Ex10.html#importing-database-into-r",
+    "href": "Hands-on_Ex/Hands-on_Ex10/Hands-on_Ex10.html#importing-database-into-r",
+    "title": "Hands-on Exercise 10 Information Dashboard Design: R methods",
+    "section": "3.2 Importing database into R",
+    "text": "3.2 Importing database into R\nIn the code chunk below, odbcConnectAccess() of RODBC package is used used to import a database query table into R.\n\npacman::p_load(RODBC)\n\ncon &lt;- odbcConnectAccess2007('data/Coffee Chain.mdb')\ncoffeechain &lt;- sqlFetch(con, 'CoffeeChain Query')\n\nwrite_rds(coffeechain, \"data/CoffeeChain.rds\")\nodbcClose(con)\n\nNote: Before running the code chunk, you need to change the R system to 32bit version. This is because the odbcConnectAccess() is based on 32bit and not 64bit"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex10/Hands-on_Ex10.html#data-preparation",
+    "href": "Hands-on_Ex/Hands-on_Ex10/Hands-on_Ex10.html#data-preparation",
+    "title": "Hands-on Exercise 10 Information Dashboard Design: R methods",
+    "section": "3.3 Data Preparation",
+    "text": "3.3 Data Preparation\nThe code chunk below is used to import CoffeeChain.rds into R.\n\ncoffeechain &lt;- read_rds(\"data/rds/CoffeeChain.rds\")"
   }
 ]
